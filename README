@@ -1,0 +1,7 @@
+author  Anika Henke
+email   anika@selfthinker.org
+date    2009-08-23
+name    Wrap plugin
+desc    Wrap wiki text inside divs or spans and give them a class (choose from a variety of preset classes), a width and/or a language with its associated text direction.
+url     http://dokuwiki.org/plugin:wrap
+#syntax See example.txt

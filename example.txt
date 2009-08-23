@@ -1,0 +1,303 @@
+
+====== Examples for the Wrap Plugin ======
+
+===== Basic syntax =====
+
+An uppercase **%%<WRAP>%%** creates a **''div''** and should be used for **"big"** containers, **surrounding** paragraphs, lists, tables, etc.
+
+  <WRAP classname>... content ...</WRAP>
+
+A lowercase **%%<wrap>%%** creates a **''span''** and should be used for **"small"** containers, **inside** paragraphs, lists, tables, etc.
+
+  <wrap classname>... content ...</wrap>
+
+
+
+===== Classes and Styles =====
+
+
+==== Columns and Floats ====
+
+You can have columns easily by adding the class ''column'' and a width, e.g.
+  <WRAP column 30%>...content...</WRAP>
+
+<WRAP column 30%>
+
+//**__Emulated Big Headline__**//
+
+You can emulate a big headline with italic, bold and underlined text, e.g.
+<code>//**__Emulated Big Headline__**//</code>
+
+//**Emulated Small Headline**//
+
+A smaller headline uses no underlining, e.g.
+<code>//**Emulated Small Headline**//</code>
+
+If you need text that is bold and italic, simply use it the other way around:
+<code>**//No Headline//**</code>
+</WRAP>
+
+<WRAP column 30%>
+
+//**__Different Floating Options__**//
+
+Normally you would only need the class ''column'', but for more sophisticated uses (not only for columns, but for any other classes, like [[#boxes and notes]] as well) you can have several kinds of "floats":
+
+  * **''column''** is the same as **''left''** which will let you float your wrap on the left
+  * **''right''** will let the wrap float right
+  * **''center''** will position the wrap in the horizontal center of the page
+
+</WRAP>
+
+<WRAP column 30%>
+
+//**__Widths__**//
+
+You can set any valid widths: ''%, px, em, ex, pt, pc, cm, mm, in'', but most of the time you'd only want either
+
+^type^e.g.^note^
+^''%''|''30%''|makes sense in a liquid layout|
+^''px''|''420px''|makes sense if your layout has a fixed pixel width or if your container contains images with a certain width|
+^''em''|''20em''|makes sense if you like your wrap container to grow and shrink with the font size or if your layout is em-based|
+
+A table inside a column or box will always be 100% wide. This makes positioning and sizing tables possible.
+
+</WRAP>
+
+<wrap em>After using any of the float classes, you might come across something like this, where the following text protrudes into the space where only the floating containers should be ...</wrap>
+
+<WRAP clear></WRAP>
+
+... to prevent that, you should simply add
+  <WRAP clear></WRAP>
+after your last column.
+
+You **can** use the same options with small %%<wrap></wrap>%% (as each element that floats is automatically a block level element), but it probably doesn't make too much sense. Widths on spans normally do not work (by design), but can make sense, when it is floating.
+
+Attention: Widths can cause problems and will often look different and break in some browsers. If you're not a developer, you might not understand any problems regarding the [[http://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug|box model]]. Just try to test your columns in all major browsers and make your widths smaller than you initially think they should be.
+
+All of those options will also work in the [[#boxes and notes]] wraps (see below).
+
+
+==== Alignments ====
+
+You can use these different text alignments:
+
+  * ''leftalign''
+  * ''rightalign''
+  * ''centeralign''
+  * ''justify''
+
+<WRAP centeralign>
+
+Center aligned text ...
+</WRAP>
+
+<WRAP rightalign>
+
+... and right aligned.
+</WRAP>
+
+<code>
+<WRAP centeralign>
+
+Center aligned text ...
+</WRAP>
+
+<WRAP rightalign>
+
+... and right aligned.
+</WRAP>
+</code>
+
+You cannot add alignments to spans.
+
+
+==== Boxes and Notes ====
+
+<WRAP round box 570px center>
+
+//**__round box 570px center__**//
+
+  * ''box'' creates a box around the container and uses a colour from the template's ''style.ini'' as default colour
+  * any of the classes ''information'', ''tip'', ''important'', ''warning'', ''help'', ''download'', ''todo'' will add a special note container with a corresponding icon
+  * ''round'' can be added to anything with a background colour or a border and will only work in modern browsers (no Internet Explorer)
+</WRAP>
+
+
+<WRAP information 220px left>
+
+//**Information**//
+
+  <WRAP information></WRAP>
+</WRAP>
+
+
+<WRAP tip 220px left>
+
+//**Tip**//
+
+  <WRAP tip></WRAP>
+</WRAP>
+
+
+<WRAP important 220px left>
+
+//**Important**//
+
+  <WRAP important></WRAP>
+</WRAP>
+
+
+<WRAP warning 220px left>
+
+//**Warning**//
+
+  <WRAP warning></WRAP>
+</WRAP>
+
+
+<WRAP round help 220px left>
+
+//**Help**//
+
+  <WRAP round help></WRAP>
+</WRAP>
+
+
+<WRAP download 220px left>
+
+//**Download**//
+
+  <WRAP download></WRAP>
+</WRAP>
+
+
+<WRAP todo 220px left>
+
+//**Todo**//
+
+  <WRAP todo></WRAP>
+</WRAP>
+
+
+<WRAP clear></WRAP>
+
+You can use notes and boxes also inside text with the lowercase %%<wrap>%% like this:
+<wrap information>information</wrap>, <wrap help>help</wrap>, <wrap warning>warning</wrap>, <wrap important>important</wrap>, <wrap tip>tip</wrap>, <wrap download>download</wrap>, <wrap todo>todo</wrap> and <wrap round fancy box>round fancy box</wrap>.
+  <wrap information>information</wrap>, <wrap help>help</wrap>, ...
+
+
+==== Marks ====
+
+You can mark text as <wrap hi>highlighted</wrap>, <wrap lo>less significant</wrap> and <wrap em>especially emphasised</wrap>.
+
+  You can mark text as <wrap hi>highlighted</wrap>, <wrap lo>less significant</wrap> and <wrap em>especially emphasised</wrap>.
+
+The same works for divs.
+
+
+==== Miscellaneous ====
+
+These will work for divs, as well as spans.
+
+=== Indent ===
+
+<wrap indent>This text will appear indented.</wrap>
+
+  <wrap indent>This text will appear indented.</wrap>
+
+=== Outdent ===
+
+<wrap outdent>This text will appear "outdented".</wrap>
+
+  <wrap outdent>This text will appear "outdented".</wrap>
+
+=== Spoiler ===
+
+Here follows a spoiler: <wrap spoiler>Darth Vader is Luke's father.</wrap>
+
+  Here follows a spoiler: <wrap spoiler>Darth Vader is Luke's father.</wrap>
+
+Just select the text in the spoiler box to be able to read its content.
+
+=== Hide ===
+
+The following text is hidden: <wrap hide>John, please revise that sentence.</wrap>
+
+  The following text is hidden: <wrap hide>John, please revise that sentence.</wrap>
+
+Warning: The text will still appear in the source code, in non-modern browsers and is searchable. Do not hide any security risky secrets with it!
+
+==== Typography ====
+
+I advice against using the following typography classes. It's better to create semantic classes that reflect their meaning instead.
+
+  * font family: ''sansserif'', ''serif'', ''monospace''
+  * font size: ''bigger'', ''muchbigger'', ''smaller''
+  * font colour: ''fgred'', ''fggreen'', ''fgblue'', ''fgcyan'', ''fgviolet'', ''fgyellow'', ''fggrey''
+  * background colour: ''bgred'', ''bggreen'', ''bgblue'', ''bgcyan'', ''bgviolet'', ''bgyellow'', ''bggrey''
+
+
+==== Combining and Nesting ====
+
+You can combine and nest all classes and types of boxes, e.g.
+
+<WRAP box bggreen 350px right :en>
+
+//**__Outer green box floats right__**//
+
+<WRAP 165px left>
+
+Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with nested <wrap bigger>__bigger__ text</wrap> inside</wrap>.
+</WRAP>
+
+Text inside outer right box, but beneath inner left box.
+
+<WRAP clear></WRAP>
+<WRAP round tip>
+
+Round tip box underneath, after a ''clear''.
+</WRAP>
+</WRAP>
+
+
+<code>
+<WRAP box bggreen 350px right :en>
+
+//**__Outer green box floats right__**//
+
+<WRAP 165px left>
+
+Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with nested <wrap bigger>__bigger__ text</wrap> inside</wrap>.
+</WRAP>
+
+Text inside outer right box, but beneath inner left box.
+
+<WRAP clear></WRAP>
+<WRAP round tip>
+
+Round tip box underneath, after a ''clear''.
+</WRAP>
+</WRAP>
+</code>
+
+
+===== Language and Text Direction =====
+
+You can change the language and the reading direction of a wrap container by simply adding a colon followed by the language code, like this:
+
+<code>
+<WRAP :he>
+
+זה עברית. ((<wrap :en>This means "This is Hebrew.", at least according to [[http://translate.google.com/|Google Translate]].</wrap>))
+</WRAP>
+</code>
+
+<WRAP :he>
+
+זה עברית. ((<wrap :en>This means "This is Hebrew.", at least according to [[http://translate.google.com/|Google Translate]].</wrap>))
+</WRAP>
+
+The text direction (''rtl'', right to left or ''ltr'', left to right) will get inserted automatically and is solely dependent on the language. The list of currently supported languages is taken from: http://meta.wikimedia.org/wiki/Template:List_of_language_names_ordered_by_code
+(If you specify a language not listed there, it simply won't do anything.)
