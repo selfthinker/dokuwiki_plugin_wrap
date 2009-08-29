@@ -17,7 +17,7 @@ class syntax_plugin_wrap_span extends syntax_plugin_wrap_base {
         return array_merge(confToHash(dirname(__FILE__).'/../README'), array('name' => 'Span Component'));
     }
 
-    function getType(){ return 'container';}
+    function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('formatting', 'substition', 'disabled'); }
     function getPType(){ return 'normal';}
     function getSort(){ return 195; }

@@ -18,7 +18,7 @@ class syntax_plugin_wrap_div extends syntax_plugin_wrap_base {
         return array_merge(confToHash(dirname(__FILE__).'/../README'), array('name' => 'Div Component'));
     }
 
-    function getType(){ return 'container';}
+    function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'baseonly', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
     function getPType(){ return 'block';}
     function getSort(){ return 195; }
