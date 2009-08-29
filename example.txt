@@ -184,7 +184,7 @@ You cannot add alignments to spans.
 <WRAP clear></WRAP>
 
 You can use notes and boxes also inside text with the lowercase %%<wrap>%% like this:
-<wrap information>information</wrap>, <wrap help>help</wrap>, <wrap warning>warning</wrap>, <wrap important>important</wrap>, <wrap tip>tip</wrap>, <wrap download>download</wrap>, <wrap todo>todo</wrap> and <wrap round fancy box>round fancy box</wrap>.
+<wrap information>information</wrap>, <wrap help>help</wrap>, <wrap warning>warning</wrap>, <wrap important>important</wrap>, <wrap tip>tip</wrap>, <wrap download>download</wrap>, <wrap todo>todo</wrap> and <wrap round box>round box</wrap>.
   <wrap information>information</wrap>, <wrap help>help</wrap>, ...
 
 
