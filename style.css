@@ -6,14 +6,14 @@ CSS Styles for the Wrap Plugin
 .dokuwiki .wrap_column table,
 .dokuwiki .wrap_left table, .dokuwiki .wrap_right table, .dokuwiki .wrap_center table,
 .dokuwiki .wrap_box table,
-.dokuwiki .wrap_information table, .dokuwiki .wrap_important table, .dokuwiki .wrap_warning table, .dokuwiki .wrap_tip table, .dokuwiki .wrap_help table, .dokuwiki .wrap_todo table, .dokuwiki .wrap_download table {
+.dokuwiki .wrap_info table, .dokuwiki .wrap_information table, .dokuwiki .wrap_important table, .dokuwiki .wrap_warning table, .dokuwiki .wrap_tip table, .dokuwiki .wrap_help table, .dokuwiki .wrap_todo table, .dokuwiki .wrap_download table {
     width: 100%;
 }
 /* emulate a headline */
 .dokuwiki .wrap_column em strong,
 .dokuwiki .wrap_left em strong, .dokuwiki .wrap_right em strong, .dokuwiki .wrap_center em strong,
 .dokuwiki .wrap_box em strong,
-.dokuwiki .wrap_information em strong, .dokuwiki .wrap_important em strong, .dokuwiki .wrap_warning em strong, .dokuwiki .wrap_tip em strong, .dokuwiki .wrap_help em strong, .dokuwiki .wrap_todo em strong, .dokuwiki .wrap_download em strong {
+.dokuwiki .wrap_info em strong, .dokuwiki .wrap_information em strong, .dokuwiki .wrap_important em strong, .dokuwiki .wrap_warning em strong, .dokuwiki .wrap_tip em strong, .dokuwiki .wrap_help em strong, .dokuwiki .wrap_todo em strong, .dokuwiki .wrap_download em strong {
     font-size: 130%;
     font-weight: bold;
     font-style: normal;
@@ -23,7 +23,7 @@ CSS Styles for the Wrap Plugin
 .dokuwiki .wrap_column em strong em.u,
 .dokuwiki .wrap_left em strong em.u, .dokuwiki .wrap_right em strong em.u, .dokuwiki .wrap_center em strong em.u,
 .dokuwiki .wrap_box em strong em.u,
-.dokuwiki .wrap_information em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_warning em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
+.dokuwiki .wrap_info em strong em.u, .dokuwiki .wrap_information em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_warning em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
     font-size: 115%;
     border-bottom: 1px solid __border__;
     font-style: normal;
@@ -33,7 +33,7 @@ CSS Styles for the Wrap Plugin
 /* change border colour of emulated headlines inside boxes to something more neutral
    (to match all the different background colours) */
 .dokuwiki .wrap_box em strong em.u,
-.dokuwiki .wrap_information em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_warning em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
+.dokuwiki .wrap_info em strong em.u, .dokuwiki .wrap_information em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_warning em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
     border-bottom-color: #999;
 }
 
@@ -123,7 +123,7 @@ CSS Styles for the Wrap Plugin
 /*____________ notes with icons ____________*/
 
 /* general styles for all note divs */
-.dokuwiki div.wrap_information, .dokuwiki div.wrap_important, .dokuwiki div.wrap_warning, .dokuwiki div.wrap_tip, .dokuwiki div.wrap_help, .dokuwiki div.wrap_todo, .dokuwiki div.wrap_download {
+.dokuwiki div.wrap_info, .dokuwiki div.wrap_information, .dokuwiki div.wrap_important, .dokuwiki div.wrap_warning, .dokuwiki div.wrap_tip, .dokuwiki div.wrap_help, .dokuwiki div.wrap_todo, .dokuwiki div.wrap_download {
     padding: 1em 1em .5em 70px;
     margin-bottom: 1.5em;
     min-height: 68px;
@@ -131,25 +131,25 @@ CSS Styles for the Wrap Plugin
     background-repeat: no-repeat;
 }
 /* special treatment for IE6 */
-* html .dokuwiki div.wrap_information, * html .dokuwiki div.wrap_important, * html .dokuwiki div.wrap_warning, * html .dokuwiki div.wrap_tip, * html .dokuwiki div.wrap_help, * html .dokuwiki div.wrap_todo, * html .dokuwiki div.wrap_download {
+* html .dokuwiki div.wrap_info, * html .dokuwiki div.wrap_information, * html .dokuwiki div.wrap_important, * html .dokuwiki div.wrap_warning, * html .dokuwiki div.wrap_tip, * html .dokuwiki div.wrap_help, * html .dokuwiki div.wrap_todo, * html .dokuwiki div.wrap_download {
     height: 68px;
 }
 /* general styles for all note spans */
-.dokuwiki span.wrap_information, .dokuwiki span.wrap_important, .dokuwiki span.wrap_warning, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
+.dokuwiki span.wrap_info, .dokuwiki span.wrap_information, .dokuwiki span.wrap_important, .dokuwiki span.wrap_warning, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
     padding: 0 2px 0 20px;
     min-height: 20px;
     background-position: 2px 50%;
     background-repeat: no-repeat;
 }
 /* special treatment for IE6 */
-* html .dokuwiki span.wrap_information, * html .dokuwiki span.wrap_important, * html .dokuwiki span.wrap_warning, * html .dokuwiki span.wrap_tip, * html .dokuwiki span.wrap_help, * html .dokuwiki span.wrap_todo, * html .dokuwiki span.wrap_download {
+* html .dokuwiki span.wrap_info, * html .dokuwiki span.wrap_information, * html .dokuwiki span.wrap_important, * html .dokuwiki span.wrap_warning, * html .dokuwiki span.wrap_tip, * html .dokuwiki span.wrap_help, * html .dokuwiki span.wrap_todo, * html .dokuwiki span.wrap_download {
     height: 20px;
 }
 
 /*____________ information ____________*/
-.dokuwiki .wrap_information { background-color: #d1d7df; }
-.dokuwiki div.wrap_information { background-image: url(images/note/48/info.png); }
-.dokuwiki span.wrap_information { background-image: url(images/note/16/info.png); }
+.dokuwiki .wrap_info, .dokuwiki .wrap_information { background-color: #d1d7df; }
+.dokuwiki div.wrap_info, .dokuwiki div.wrap_information { background-image: url(images/note/48/info.png); }
+.dokuwiki span.wrap_info, .dokuwiki span.wrap_information { background-image: url(images/note/16/info.png); }
 
 /*____________ important ____________*/
 .dokuwiki .wrap_important { background-color: #ffd39f; }

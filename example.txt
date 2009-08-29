@@ -120,16 +120,16 @@ You cannot add alignments to spans.
 //**__round box 570px center__**//
 
   * ''box'' creates a box around the container and uses a colour from the template's ''style.ini'' as default colour
-  * any of the classes ''information'', ''tip'', ''important'', ''warning'', ''help'', ''download'', ''todo'' will add a special note container with a corresponding icon
+  * any of the classes ''info'', ''tip'', ''important'', ''warning'', ''help'', ''download'', ''todo'' will add a special note container with a corresponding icon
   * ''round'' can be added to anything with a background colour or a border and will only work in modern browsers (no Internet Explorer)
 </WRAP>
 
 
-<WRAP information 220px left>
+<WRAP info 220px left>
 
-//**Information**//
+//**Info**//
 
-  <WRAP information></WRAP>
+  <WRAP info></WRAP>
 </WRAP>
 
 
@@ -184,8 +184,8 @@ You cannot add alignments to spans.
 <WRAP clear></WRAP>
 
 You can use notes and boxes also inside text with the lowercase %%<wrap>%% like this:
-<wrap information>information</wrap>, <wrap help>help</wrap>, <wrap warning>warning</wrap>, <wrap important>important</wrap>, <wrap tip>tip</wrap>, <wrap download>download</wrap>, <wrap todo>todo</wrap> and <wrap round box>round box</wrap>.
-  <wrap information>information</wrap>, <wrap help>help</wrap>, ...
+<wrap info>info</wrap>, <wrap help>help</wrap>, <wrap warning>warning</wrap>, <wrap important>important</wrap>, <wrap tip>tip</wrap>, <wrap download>download</wrap>, <wrap todo>todo</wrap> and <wrap round box>round box</wrap>.
+  <wrap info>info</wrap>, <wrap help>help</wrap>, ...
 
 
 ==== Marks ====
