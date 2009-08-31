@@ -229,6 +229,14 @@ The following text is hidden: <wrap hide>John, please revise that sentence.</wra
 
 Warning: The text will still appear in the source code, in non-modern browsers and is searchable. Do not hide any security risky secrets with it!
 
+=== Pagebreak ===
+
+The following will add a pagebreak: <WRAP pagebreak></WRAP>
+
+  The following will add a pagebreak: <WRAP pagebreak></WRAP>
+
+This has no effect on the browser screen. A [[http://www.w3schools.com/CSS/pr_print_pageba.asp|pagebreak]] will force a new page in printouts.
+
 ==== Typography ====
 
 I advice against using the following typography classes. It's better to create semantic classes that reflect their meaning instead.

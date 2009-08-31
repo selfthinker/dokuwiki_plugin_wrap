@@ -41,3 +41,8 @@ div.dokuwiki .wrap_spoiler {
     visibility: hidden;
 }
 
+/*____________ pagebreak ____________*/
+div.dokuwiki .wrap_pagebreak {
+    page-break-after: always;
+}
+
