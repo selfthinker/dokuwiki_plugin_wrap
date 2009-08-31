@@ -1,0 +1,46 @@
+/********************************************************************
+RTL Styles for the Wrap Plugin
+********************************************************************/
+
+/* columns
+********************************************************************/
+
+.dokuwiki .wrap_column {
+    float: right;
+    margin-left: 1.5em;
+    margin-right: 0;
+}
+.dokuwiki .wrap_container {
+    margin-left: -1.5em;
+    margin-right: 0;
+}
+
+/* box
+********************************************************************/
+
+/*____________ notes with icons ____________*/
+/* sorry for icons glued to the right side, but there is currently no way
+     to make this look good without adjusting the images themselves */
+.dokuwiki div.wrap_info, .dokuwiki div.wrap_information, .dokuwiki div.wrap_important, .dokuwiki div.wrap_warning, .dokuwiki div.wrap_tip, .dokuwiki div.wrap_help, .dokuwiki div.wrap_todo, .dokuwiki div.wrap_download {
+    padding: 1em 60px .5em 1em;
+    background-position: right 50%;
+}
+.dokuwiki span.wrap_info, .dokuwiki span.wrap_information, .dokuwiki span.wrap_important, .dokuwiki span.wrap_warning, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
+    padding: 0 18px 0 2px;
+    background-position: right 50%;
+}
+
+/* miscellaneous
+********************************************************************/
+
+/*____________ indent ____________*/
+div.dokuwiki .wrap_indent {
+    padding-right: 1.5em;
+    padding-left: 0;
+}
+
+/*____________ outdent ____________*/
+div.dokuwiki .wrap_outdent {
+    margin-right: -1.5em;
+    margin-left: 0;
+}
