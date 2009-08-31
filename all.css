@@ -1,0 +1,215 @@
+/********************************************************************
+Screen and Print Styles for the Wrap Plugin
+********************************************************************/
+
+/* tables in columns and boxes should span the whole width */
+.dokuwiki .wrap_column table,
+.dokuwiki .wrap_left table, .dokuwiki .wrap_right table, .dokuwiki .wrap_center table,
+.dokuwiki .wrap_box table,
+.dokuwiki .wrap_info table, .dokuwiki .wrap_information table, .dokuwiki .wrap_important table, .dokuwiki .wrap_warning table, .dokuwiki .wrap_tip table, .dokuwiki .wrap_help table, .dokuwiki .wrap_todo table, .dokuwiki .wrap_download table {
+    width: 100%;
+}
+/* emulate a headline */
+.dokuwiki .wrap_column em strong,
+.dokuwiki .wrap_left em strong, .dokuwiki .wrap_right em strong, .dokuwiki .wrap_center em strong,
+.dokuwiki .wrap_box em strong,
+.dokuwiki .wrap_info em strong, .dokuwiki .wrap_information em strong, .dokuwiki .wrap_important em strong, .dokuwiki .wrap_warning em strong, .dokuwiki .wrap_tip em strong, .dokuwiki .wrap_help em strong, .dokuwiki .wrap_todo em strong, .dokuwiki .wrap_download em strong {
+    font-size: 130%;
+    font-weight: bold;
+    font-style: normal;
+    display: block;
+}
+/* emulate a bigger headline with a bottom border */
+.dokuwiki .wrap_column em strong em.u,
+.dokuwiki .wrap_left em strong em.u, .dokuwiki .wrap_right em strong em.u, .dokuwiki .wrap_center em strong em.u,
+.dokuwiki .wrap_box em strong em.u,
+.dokuwiki .wrap_info em strong em.u, .dokuwiki .wrap_information em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_warning em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
+    font-size: 115%;
+    border-bottom: 1px solid __border__;
+    font-style: normal;
+    text-decoration: none;
+    display: block;
+}
+/* change border colour of emulated headlines inside boxes to something more neutral
+   (to match all the different background colours) */
+.dokuwiki .wrap_box em strong em.u,
+.dokuwiki .wrap_info em strong em.u, .dokuwiki .wrap_information em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_warning em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
+    border-bottom-color: #999;
+}
+
+
+/* columns
+********************************************************************/
+
+.dokuwiki .wrap_left,
+.dokuwiki .wrap_column {
+    float: left;
+    margin-right: 1.5em;
+}
+.dokuwiki .wrap_right {
+    float: right;
+    margin-left: 1.5em;
+}
+.dokuwiki .wrap_center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*
+.dokuwiki .wrap_column,
+.dokuwiki .wrap_left,
+.dokuwiki .wrap_right {
+    overflow: hidden;
+}
+*/
+.dokuwiki .wrap_container {
+    margin-right: -1.5em;
+}
+
+
+/* alignments
+********************************************************************/
+
+.dokuwiki .wrap_leftalign {
+    text-align: left;
+}
+.dokuwiki .wrap_centeralign {
+    text-align: center;
+}
+.dokuwiki .wrap_rightalign {
+    text-align: right;
+}
+.dokuwiki .wrap_justify {
+    text-align: justify;
+}
+
+
+/* box
+********************************************************************/
+
+/* see styles for boxes and notes with icons in style.css */
+
+/*____________ rounded corners ____________*/
+/* (only for modern browsers) */
+
+.dokuwiki div.wrap_round {
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+}
+.dokuwiki span.wrap_round {
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+}
+
+
+/* mark
+********************************************************************/
+
+div.dokuwiki .wrap_lo {
+    color: __text_neu__;
+    font-size: 85%;
+}
+div.dokuwiki .wrap_em {
+    color: #c00;
+    font-weight: bold;
+}
+
+/* see styles for highlighted text in style.css */
+
+
+/* typography
+********************************************************************/
+
+/*____________ fonts ____________*/
+
+div.dokuwiki .wrap_sansserif {
+    font-family: Verdana,Tahoma,Geneva,"DejaVu Sans","Bitstream Vera Sans","Liberation Sans", Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L", sans-serif;
+}
+div.dokuwiki .wrap_serif {
+    font-family: Georgia,Garamond,"Palatino Linotype","Book Antiqua",Palatino,Palladio,"URW Palladio L","Liberation Serif",Didot,Gentium,"Bitstream Charter","Century Schoolbook L", "Times New Roman",Times,"Nimbus Roman No9 L","FreeSerif", serif;
+}
+div.dokuwiki .wrap_monospace {
+    font-family: Courier,"Courier New",FreeMono,"Nimbus Mono L","Liberation Mono", "Lucida Console",Monaco,"DejaVu Sans Mono","Bitstream Vera Sans Mono", monospace;
+}
+
+/*____________ font size ____________*/
+
+div.dokuwiki .wrap_bigger {
+    font-size: 125%;
+}
+div.dokuwiki .wrap_muchbigger {
+    font-size: 200%;
+}
+div.dokuwiki .wrap_smaller {
+    font-size: 75%;
+}
+
+/*____________ font colours ____________*/
+
+div.dokuwiki .wrap_fgred {
+    color: #900;
+}
+div.dokuwiki .wrap_fggreen {
+    color: #090;
+}
+div.dokuwiki .wrap_fgblue {
+    color: #009;
+}
+div.dokuwiki .wrap_fgcyan {
+    color: #099;
+}
+div.dokuwiki .wrap_fgviolet {
+    color: #909;
+}
+div.dokuwiki .wrap_fgyellow {
+    color: #990;
+}
+div.dokuwiki .wrap_fggrey {
+    color: #666;
+}
+
+/* see styles for background colours in style.css */
+
+
+/* miscellaneous
+********************************************************************/
+
+/*____________ indent ____________*/
+
+div.dokuwiki .wrap_indent {
+    padding-left: 1.5em;
+}
+
+/*____________ outdent ____________*/
+
+div.dokuwiki .wrap_outdent {
+    margin-left: -1.5em;
+}
+
+/*____________ spoiler ____________*/
+
+div.dokuwiki div.wrap_spoiler {
+    margin-bottom: 1.5em;
+}
+/* see rest of spoiler styles in style.css */
+
+/*____________ clear float ____________*/
+
+div.dokuwiki .wrap_clear {
+    clear: both;
+    line-height: 0;
+    height: 0;
+    font-size: 1px;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+/*____________ hide ____________*/
+
+div.dokuwiki .wrap_hide {
+    display: none;
+}
