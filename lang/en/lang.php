@@ -2,16 +2,16 @@
 
 $lang['picker'] = 'Wrap Plugin';
 
-$lang['left']      = 'A box floating on the left';
-$lang['right']     = 'A box floating on the right';
-$lang['box']       = 'A simple centered box';
-$lang['info']      = 'An informational box';
-$lang['download']  = 'A download box';
-$lang['help']      = 'A help box';
-$lang['important'] = 'An important box';
-$lang['tip']       = 'A tip box';
-$lang['todo']      = 'A todo box';
-$lang['warning']   = 'A warning box';
+$lang['left']      = 'box floating on the left';
+$lang['right']     = 'box floating on the right';
+$lang['box']       = 'simple centered box';
+$lang['info']      = 'info box';
+$lang['download']  = 'download box';
+$lang['help']      = 'help box';
+$lang['important'] = 'important box';
+$lang['tip']       = 'tip box';
+$lang['todo']      = 'todo box';
+$lang['warning']   = 'warning box';
 
 
 
