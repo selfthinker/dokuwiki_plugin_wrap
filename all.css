@@ -171,8 +171,11 @@ div.dokuwiki .wrap_fgyellow {
 div.dokuwiki .wrap_fggrey {
     color: #666;
 }
+div.dokuwiki .wrap_fgblack {
+    color: #000;
+}
 
-/* see styles for background colours in style.css */
+/* see styles for background colours and white font colour in style.css */
 
 
 /* miscellaneous

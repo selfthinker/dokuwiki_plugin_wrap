@@ -243,8 +243,8 @@ I advice against using the following typography classes. It's better to create s
 
   * font family: ''sansserif'', ''serif'', ''monospace''
   * font size: ''bigger'', ''muchbigger'', ''smaller''
-  * font colour: ''fgred'', ''fggreen'', ''fgblue'', ''fgcyan'', ''fgviolet'', ''fgyellow'', ''fggrey''
-  * background colour: ''bgred'', ''bggreen'', ''bgblue'', ''bgcyan'', ''bgviolet'', ''bgyellow'', ''bggrey''
+  * font colour: ''fgred'', ''fggreen'', ''fgblue'', ''fgcyan'', ''fgviolet'', ''fgyellow'', ''fggrey', ''fgwhite''', ''fgblack''
+  * background colour: ''bgred'', ''bggreen'', ''bgblue'', ''bgcyan'', ''bgviolet'', ''bgyellow'', ''bggrey'', ''bgwhite'', ''bgblack''
 
 
 ==== Combining and Nesting ====
