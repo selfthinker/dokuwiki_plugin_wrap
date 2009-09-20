@@ -241,6 +241,18 @@ The following will add a pagebreak: <WRAP pagebreak></WRAP>
 
 This has no effect on the browser screen. A [[http://www.w3schools.com/CSS/pr_print_pageba.asp|pagebreak]] will force a new page in printouts.
 
+=== Noprint ===
+
+<wrap noprint>This text appears on the screen, but not in print.</wrap>
+
+  <wrap noprint>This text appears on the screen, but not in print.</wrap>
+
+=== Onlyprint ===
+
+<wrap onlyprint>This text does not appear on the screen, but only in print.</wrap>
+
+  <wrap onlyprint>This text does not appear on the screen, but only in print.</wrap>
+
 ==== Typography ====
 
 I advice against using the following typography classes. It's better to create semantic classes that reflect their meaning instead.

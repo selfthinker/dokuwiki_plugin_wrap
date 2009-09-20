@@ -46,3 +46,9 @@ div.dokuwiki .wrap_pagebreak {
     page-break-after: always;
 }
 
+/*____________ no print ____________*/
+
+div.dokuwiki .wrap_noprint {
+    display: none;
+}
+

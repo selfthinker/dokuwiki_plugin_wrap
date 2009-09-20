@@ -142,3 +142,8 @@ div.dokuwiki .wrap_spoiler {
     border: 1px dotted red;
 }
 
+/*____________ only print ____________*/
+
+div.dokuwiki .wrap_onlyprint {
+    display: none;
+}
