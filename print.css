@@ -42,8 +42,16 @@ div.dokuwiki .wrap_spoiler {
 }
 
 /*____________ pagebreak ____________*/
+
 div.dokuwiki .wrap_pagebreak {
     page-break-after: always;
+}
+
+/*____________ avoid page break ____________*/
+/* not yet supported by most browsers */
+
+div.dokuwiki .wrap_nopagebreak {
+    page-break-inside: avoid;
 }
 
 /*____________ no print ____________*/
@@ -51,4 +59,3 @@ div.dokuwiki .wrap_pagebreak {
 div.dokuwiki .wrap_noprint {
     display: none;
 }
-

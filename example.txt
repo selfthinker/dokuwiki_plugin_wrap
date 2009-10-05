@@ -239,7 +239,15 @@ The following will add a pagebreak: <WRAP pagebreak></WRAP>
 
   The following will add a pagebreak: <WRAP pagebreak></WRAP>
 
-This has no effect on the browser screen. A [[http://www.w3schools.com/CSS/pr_print_pageba.asp|pagebreak]] will force a new page in printouts.
+This has no effect on the browser screen. A [[http://reference.sitepoint.com/css/page-break-after|pagebreak]] will force a new page in printouts.
+
+=== Nopagebreak ===
+
+The following will try to avoid a pagebreak: <WRAP nopagebreak>much content, belonging together (like a long table)</WRAP>
+
+  The following will try to avoid a pagebreak: <WRAP nopagebreak>much content, belonging together (like a long table)</WRAP>
+
+This also has no effect on the browser screen. It will try to [[http://reference.sitepoint.com/css/page-break-inside|avoid a page break]] in printouts.
 
 === Noprint ===
 
