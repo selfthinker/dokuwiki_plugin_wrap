@@ -1,9 +1,8 @@
 <?php
 
-$lang['picker'] = 'Wrap Plugin';
+$lang['picker']    = 'Wrap Plugin';
 
-$lang['left']      = 'box floating on the left';
-$lang['right']     = 'box floating on the right';
+$lang['column']    = 'column';
 $lang['box']       = 'simple centered box';
 $lang['info']      = 'info box';
 $lang['download']  = 'download box';
@@ -13,5 +12,8 @@ $lang['tip']       = 'tip box';
 $lang['todo']      = 'todo box';
 $lang['warning']   = 'warning box';
 
+$lang['clear']     = 'clear floats';
 
-
+$lang['em']        = 'especially emphasised';
+$lang['hi']        = 'highlighted';
+$lang['lo']        = 'less significant';
