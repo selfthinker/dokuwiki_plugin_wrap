@@ -20,6 +20,7 @@ class syntax_plugin_wrap_base extends DokuWiki_Syntax_Plugin {
 
         $attr = array();
         $tokens = preg_split('/\s+/', $data, 9);
+        $noPrefix = array_map('trim', explode(",", $this->getConf('noPrefix')));
 
         foreach ($tokens as $token) {
 
@@ -38,7 +39,8 @@ class syntax_plugin_wrap_base extends DokuWiki_Syntax_Plugin {
             //get classes
             //restrict token (class names) characters to prevent any malicious data
             if (preg_match('/[^A-Za-z0-9_-]/',$token)) continue;
-            $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').'wrap_'.$token;
+            $prefix = in_array($token, $noPrefix) ? '' : 'wrap_';
+            $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').$prefix.$token;
         }
 
         //get dir
