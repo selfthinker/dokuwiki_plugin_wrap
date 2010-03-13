@@ -10,7 +10,7 @@ $lang['help']      = 'help box';
 $lang['important'] = 'important box';
 $lang['tip']       = 'tip box';
 $lang['todo']      = 'todo box';
-$lang['warning']   = 'warning box';
+$lang['alert']     = 'alert box';
 
 $lang['clear']     = 'clear floats';
 

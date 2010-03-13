@@ -6,19 +6,19 @@ Print Styles for the Wrap Plugin (additional to all.css)
 ********************************************************************/
 
 .dokuwiki .wrap_box,
-.dokuwiki .wrap_info, .dokuwiki .wrap_information, .dokuwiki .wrap_important, .dokuwiki .wrap_warning, .dokuwiki .wrap_tip, .dokuwiki .wrap_help, .dokuwiki .wrap_todo, .dokuwiki .wrap_download {
+.dokuwiki .wrap_info, .dokuwiki .wrap_important, .dokuwiki .wrap_alert, .dokuwiki .wrap_tip, .dokuwiki .wrap_help, .dokuwiki .wrap_todo, .dokuwiki .wrap_download {
 /*
     overflow: hidden;
 */
 }
 .dokuwiki div.wrap_box,
-.dokuwiki div.wrap_info, .dokuwiki div.wrap_information, .dokuwiki div.wrap_important, .dokuwiki div.wrap_warning, .dokuwiki div.wrap_tip, .dokuwiki div.wrap_help, .dokuwiki div.wrap_todo, .dokuwiki div.wrap_download {
+.dokuwiki div.wrap_info, .dokuwiki div.wrap_important, .dokuwiki div.wrap_alert, .dokuwiki div.wrap_tip, .dokuwiki div.wrap_help, .dokuwiki div.wrap_todo, .dokuwiki div.wrap_download {
     border: 2px solid #999;
     padding: 1em 1em .5em;
     margin-bottom: 1.5em;
 }
 .dokuwiki span.wrap_box,
-.dokuwiki span.wrap_info, .dokuwiki span.wrap_information, .dokuwiki span.wrap_important, .dokuwiki span.wrap_warning, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
+.dokuwiki span.wrap_info, .dokuwiki span.wrap_important, .dokuwiki span.wrap_alert, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
     border: 1px solid #999;
     padding: 0 .3em;
 }

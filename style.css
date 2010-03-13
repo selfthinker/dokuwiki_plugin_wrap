@@ -23,7 +23,7 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 /*____________ notes with icons ____________*/
 
 /* general styles for all note divs */
-.dokuwiki div.wrap_info, .dokuwiki div.wrap_information, .dokuwiki div.wrap_important, .dokuwiki div.wrap_warning, .dokuwiki div.wrap_tip, .dokuwiki div.wrap_help, .dokuwiki div.wrap_todo, .dokuwiki div.wrap_download {
+.dokuwiki div.wrap_info, .dokuwiki div.wrap_important, .dokuwiki div.wrap_alert, .dokuwiki div.wrap_tip, .dokuwiki div.wrap_help, .dokuwiki div.wrap_todo, .dokuwiki div.wrap_download {
     padding: 1em 1em .5em 70px;
     margin-bottom: 1.5em;
     min-height: 68px;
@@ -32,11 +32,11 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     color: #000;
 }
 /* special treatment for IE6 */
-* html .dokuwiki div.wrap_info, * html .dokuwiki div.wrap_information, * html .dokuwiki div.wrap_important, * html .dokuwiki div.wrap_warning, * html .dokuwiki div.wrap_tip, * html .dokuwiki div.wrap_help, * html .dokuwiki div.wrap_todo, * html .dokuwiki div.wrap_download {
+* html .dokuwiki div.wrap_info, * html .dokuwiki div.wrap_important, * html .dokuwiki div.wrap_alert, * html .dokuwiki div.wrap_tip, * html .dokuwiki div.wrap_help, * html .dokuwiki div.wrap_todo, * html .dokuwiki div.wrap_download {
     height: 68px;
 }
 /* general styles for all note spans */
-.dokuwiki span.wrap_info, .dokuwiki span.wrap_information, .dokuwiki span.wrap_important, .dokuwiki span.wrap_warning, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
+.dokuwiki span.wrap_info, .dokuwiki span.wrap_important, .dokuwiki span.wrap_alert, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
     padding: 0 2px 0 20px;
     min-height: 20px;
     background-position: 2px 50%;
@@ -44,24 +44,24 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     color: #000;
 }
 /* special treatment for IE6 */
-* html .dokuwiki span.wrap_info, * html .dokuwiki span.wrap_information, * html .dokuwiki span.wrap_important, * html .dokuwiki span.wrap_warning, * html .dokuwiki span.wrap_tip, * html .dokuwiki span.wrap_help, * html .dokuwiki span.wrap_todo, * html .dokuwiki span.wrap_download {
+* html .dokuwiki span.wrap_info, * html .dokuwiki span.wrap_important, * html .dokuwiki span.wrap_alert, * html .dokuwiki span.wrap_tip, * html .dokuwiki span.wrap_help, * html .dokuwiki span.wrap_todo, * html .dokuwiki span.wrap_download {
     height: 20px;
 }
 
-/*____________ information ____________*/
-.dokuwiki .wrap_info, .dokuwiki .wrap_information { background-color: #d1d7df; }
-.dokuwiki div.wrap_info, .dokuwiki div.wrap_information { background-image: url(images/note/48/info.png); }
-.dokuwiki span.wrap_info, .dokuwiki span.wrap_information { background-image: url(images/note/16/info.png); }
+/*____________ info ____________*/
+.dokuwiki .wrap_info { background-color: #d1d7df; }
+.dokuwiki div.wrap_info { background-image: url(images/note/48/info.png); }
+.dokuwiki span.wrap_info { background-image: url(images/note/16/info.png); }
 
 /*____________ important ____________*/
 .dokuwiki .wrap_important { background-color: #ffd39f; }
 .dokuwiki div.wrap_important { background-image: url(images/note/48/important.png); }
 .dokuwiki span.wrap_important { background-image: url(images/note/16/important.png); }
 
-/*____________ warning ____________*/
-.dokuwiki .wrap_warning { background-color: #ffbcaf; }
-.dokuwiki div.wrap_warning { background-image: url(images/note/48/warning.png); }
-.dokuwiki span.wrap_warning { background-image: url(images/note/16/warning.png); }
+/*____________ alert ____________*/
+.dokuwiki .wrap_alert { background-color: #ffbcaf; }
+.dokuwiki div.wrap_alert { background-image: url(images/note/48/alert.png); }
+.dokuwiki span.wrap_alert { background-image: url(images/note/16/alert.png); }
 
 /*____________ tip ____________*/
 .dokuwiki .wrap_tip { background-color: #fff79f; }

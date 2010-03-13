@@ -127,7 +127,7 @@ Center aligned text ...
 //**__round box 570px center__**//
 
   * ''box'' creates a box around the container and uses the colours from the template's ''style.ini'' as default colours (''%%__background_alt__%%'' and ''%%__text__%%'')
-  * any of the classes ''info'', ''tip'', ''important'', ''warning'', ''help'', ''download'', ''todo'' will add a special note container with a corresponding icon
+  * any of the classes ''info'', ''tip'', ''important'', ''alert'', ''help'', ''download'', ''todo'' will add a special note container with a corresponding icon
   * ''round'' can be added to anything with a background colour or a border and will only work in modern browsers (no Internet Explorer)
 </WRAP>
 
@@ -156,11 +156,11 @@ Center aligned text ...
 </WRAP>
 
 
-<WRAP warning 220px left>
+<WRAP alert 220px left>
 
-//**Warning**//
+//**Alert**//
 
-  <WRAP warning></WRAP>
+  <WRAP alert></WRAP>
 </WRAP>
 
 
@@ -191,7 +191,7 @@ Center aligned text ...
 <WRAP clear></WRAP>
 
 You can use notes and boxes also inside text with the lowercase %%<wrap>%% like this:
-<wrap info>info</wrap>, <wrap help>help</wrap>, <wrap warning>warning</wrap>, <wrap important>important</wrap>, <wrap tip>tip</wrap>, <wrap download>download</wrap>, <wrap todo>todo</wrap> and <wrap round box>round box</wrap>.
+<wrap info>info</wrap>, <wrap help>help</wrap>, <wrap alert>alert</wrap>, <wrap important>important</wrap>, <wrap tip>tip</wrap>, <wrap download>download</wrap>, <wrap todo>todo</wrap> and <wrap round box>round box</wrap>.
   <wrap info>info</wrap>, <wrap help>help</wrap>, ...
 
 

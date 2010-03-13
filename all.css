@@ -6,14 +6,14 @@ Screen and Print Styles for the Wrap Plugin
 .dokuwiki .wrap_column table,
 .dokuwiki .wrap_left table, .dokuwiki .wrap_right table, .dokuwiki .wrap_center table,
 .dokuwiki .wrap_box table,
-.dokuwiki .wrap_info table, .dokuwiki .wrap_information table, .dokuwiki .wrap_important table, .dokuwiki .wrap_warning table, .dokuwiki .wrap_tip table, .dokuwiki .wrap_help table, .dokuwiki .wrap_todo table, .dokuwiki .wrap_download table {
+.dokuwiki .wrap_info table, .dokuwiki .wrap_important table, .dokuwiki .wrap_alert table, .dokuwiki .wrap_tip table, .dokuwiki .wrap_help table, .dokuwiki .wrap_todo table, .dokuwiki .wrap_download table {
     width: 100%;
 }
 /* emulate a headline */
 .dokuwiki .wrap_column em strong,
 .dokuwiki .wrap_left em strong, .dokuwiki .wrap_right em strong, .dokuwiki .wrap_center em strong,
 .dokuwiki .wrap_box em strong,
-.dokuwiki .wrap_info em strong, .dokuwiki .wrap_information em strong, .dokuwiki .wrap_important em strong, .dokuwiki .wrap_warning em strong, .dokuwiki .wrap_tip em strong, .dokuwiki .wrap_help em strong, .dokuwiki .wrap_todo em strong, .dokuwiki .wrap_download em strong {
+.dokuwiki .wrap_info em strong, .dokuwiki .wrap_important em strong, .dokuwiki .wrap_alert em strong, .dokuwiki .wrap_tip em strong, .dokuwiki .wrap_help em strong, .dokuwiki .wrap_todo em strong, .dokuwiki .wrap_download em strong {
     font-size: 130%;
     font-weight: bold;
     font-style: normal;
@@ -23,7 +23,7 @@ Screen and Print Styles for the Wrap Plugin
 .dokuwiki .wrap_column em strong em.u,
 .dokuwiki .wrap_left em strong em.u, .dokuwiki .wrap_right em strong em.u, .dokuwiki .wrap_center em strong em.u,
 .dokuwiki .wrap_box em strong em.u,
-.dokuwiki .wrap_info em strong em.u, .dokuwiki .wrap_information em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_warning em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
+.dokuwiki .wrap_info em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_alert em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
     font-size: 115%;
     border-bottom: 1px solid __border__;
     font-style: normal;
@@ -33,7 +33,7 @@ Screen and Print Styles for the Wrap Plugin
 /* change border colour of emulated headlines inside boxes to something more neutral
    (to match all the different background colours) */
 .dokuwiki .wrap_box em strong em.u,
-.dokuwiki .wrap_info em strong em.u, .dokuwiki .wrap_information em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_warning em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
+.dokuwiki .wrap_info em strong em.u, .dokuwiki .wrap_important em strong em.u, .dokuwiki .wrap_alert em strong em.u, .dokuwiki .wrap_tip em strong em.u, .dokuwiki .wrap_help em strong em.u, .dokuwiki .wrap_todo em strong em.u, .dokuwiki .wrap_download em strong em.u {
     border-bottom-color: #999;
 }
 

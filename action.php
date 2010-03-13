@@ -59,16 +59,9 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                 ),
                 array(
                     'type'   => 'format',
-                    'title'  => $this->getLang('download'),
-                    'icon'   => '../../plugins/wrap/images/note/16/download.png',
-                    'open'   => '<WRAP center round download 60%>\n\n',
-                    'close'  => '\n</WRAP>\n',
-                ),
-                array(
-                    'type'   => 'format',
-                    'title'  => $this->getLang('help'),
-                    'icon'   => '../../plugins/wrap/images/note/16/help.png',
-                    'open'   => '<WRAP center round help 60%>\n\n',
+                    'title'  => $this->getLang('tip'),
+                    'icon'   => '../../plugins/wrap/images/note/16/tip.png',
+                    'open'   => '<WRAP center round tip 60%>\n\n',
                     'close'  => '\n</WRAP>\n',
                 ),
                 array(
@@ -80,9 +73,23 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                 ),
                 array(
                     'type'   => 'format',
-                    'title'  => $this->getLang('tip'),
-                    'icon'   => '../../plugins/wrap/images/note/16/tip.png',
-                    'open'   => '<WRAP center round tip 60%>\n\n',
+                    'title'  => $this->getLang('alert'),
+                    'icon'   => '../../plugins/wrap/images/note/16/alert.png',
+                    'open'   => '<WRAP center round alert 60%>\n\n',
+                    'close'  => '\n</WRAP>\n',
+                ),
+                array(
+                    'type'   => 'format',
+                    'title'  => $this->getLang('help'),
+                    'icon'   => '../../plugins/wrap/images/note/16/help.png',
+                    'open'   => '<WRAP center round help 60%>\n\n',
+                    'close'  => '\n</WRAP>\n',
+                ),
+                array(
+                    'type'   => 'format',
+                    'title'  => $this->getLang('download'),
+                    'icon'   => '../../plugins/wrap/images/note/16/download.png',
+                    'open'   => '<WRAP center round download 60%>\n\n',
                     'close'  => '\n</WRAP>\n',
                 ),
                 array(
@@ -90,13 +97,6 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                     'title'  => $this->getLang('todo'),
                     'icon'   => '../../plugins/wrap/images/note/16/todo.png',
                     'open'   => '<WRAP center round todo 60%>\n\n',
-                    'close'  => '\n</WRAP>\n',
-                ),
-                array(
-                    'type'   => 'format',
-                    'title'  => $this->getLang('warning'),
-                    'icon'   => '../../plugins/wrap/images/note/16/warning.png',
-                    'open'   => '<WRAP center round warning 60%>\n\n',
                     'close'  => '\n</WRAP>\n',
                 ),
                 array(
