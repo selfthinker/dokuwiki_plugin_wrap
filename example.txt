@@ -128,6 +128,7 @@ Center aligned text ...
 
   * ''box'' creates a box around the container and uses the colours from the template's ''style.ini'' as default colours (''%%__background_alt__%%'' and ''%%__text__%%'')
   * any of the classes ''info'', ''tip'', ''important'', ''alert'', ''help'', ''download'', ''todo'' will add a special note container with a corresponding icon
+  * the classes ''danger'', ''warning'', ''caution'', ''notice'', ''safety'' use safety colours (and no icons)
   * ''round'' can be added to anything with a background colour or a border and will only work in modern browsers (no Internet Explorer)
 </WRAP>
 
@@ -190,10 +191,50 @@ Center aligned text ...
 
 <WRAP clear></WRAP>
 
-You can use notes and boxes also inside text with the lowercase %%<wrap>%% like this:
-<wrap info>info</wrap>, <wrap help>help</wrap>, <wrap alert>alert</wrap>, <wrap important>important</wrap>, <wrap tip>tip</wrap>, <wrap download>download</wrap>, <wrap todo>todo</wrap> and <wrap round box>round box</wrap>.
-  <wrap info>info</wrap>, <wrap help>help</wrap>, ...
 
+**Safety Notes:**
+
+<WRAP danger 27% left>
+
+//**Danger**//
+
+  <WRAP danger></WRAP>
+</WRAP>
+
+<WRAP warning 27% left>
+
+//**Warning**//
+
+  <WRAP warning></WRAP>
+</WRAP>
+
+<WRAP caution 27% left>
+
+//**Caution**//
+
+  <WRAP caution></WRAP>
+</WRAP>
+
+<WRAP round notice 27% left>
+
+//**Notice**//
+
+  <WRAP round notice></WRAP>
+</WRAP>
+
+<WRAP round safety 27% left>
+
+//**Safety**//
+
+  <WRAP round safety></WRAP>
+</WRAP>
+
+<WRAP clear></WRAP>
+
+
+You can use notes and boxes also inside text with the lowercase %%<wrap>%% like this:
+<wrap info>info</wrap>, <wrap help>help</wrap>, <wrap alert>alert</wrap>, <wrap important>important</wrap>, <wrap tip>tip</wrap>, <wrap download>download</wrap>, <wrap todo>todo</wrap> and <wrap round box>round box</wrap> and <wrap danger>danger</wrap>, <wrap warning>warning</wrap>, <wrap caution>caution</wrap>, <wrap notice>notice</wrap>, <wrap safety>safety</wrap>.
+  <wrap info>info</wrap>, <wrap help>help</wrap>, ...
 
 ==== Marks ====
 
