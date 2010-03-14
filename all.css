@@ -202,6 +202,14 @@ div.dokuwiki .wrap_outdent {
     margin-left: -1.5em;
 }
 
+/*____________ word wrapping in pre ____________*/
+
+div.dokuwiki div.wrap_prewrap pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;/* for IE < 8 */
+    /* white-space: -moz-pre-wrap; for FF < 3 */
+}
+
 /*____________ spoiler ____________*/
 
 div.dokuwiki div.wrap_spoiler {

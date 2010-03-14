@@ -258,6 +258,20 @@ You can mark text as <wrap hi>highlighted</wrap>, <wrap lo>less significant</wra
 
   <wrap outdent>This text will appear "outdented".</wrap>
 
+=== Prewrap ===
+
+<WRAP prewrap 250px>
+<code>
+Inside this code block the words will wrap to a new line although they are all in one line.
+</code>
+</WRAP>
+
+  <WRAP prewrap 250px>
+  <code>
+  Inside this code block the words will wrap to a new line although they are all in one line.
+  </code>
+  </WRAP>
+
 === Spoiler ===
 
 Here follows a spoiler: <wrap spoiler>Darth Vader is Luke's father.</wrap>
