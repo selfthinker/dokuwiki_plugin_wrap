@@ -30,6 +30,15 @@ Screen and Print Styles for the Wrap Plugin
     text-decoration: none;
     display: block;
 }
+/* different bigger headline for safety notes */
+.dokuwiki .wrap_danger em strong em.u, .dokuwiki .wrap_warning em strong em.u, .dokuwiki .wrap_caution em strong em.u, .dokuwiki .wrap_notice em strong em.u, .dokuwiki .wrap_safety em strong em.u {
+    font-size: 115%;
+    font-style: normal;
+    text-decoration: none;
+    display: block;
+    text-transform: uppercase;
+    border-bottom-width: 0;
+}
 /* change border colour of emulated headlines inside boxes to something more neutral
    (to match all the different background colours) */
 .dokuwiki .wrap_box em strong em.u,
