@@ -8,14 +8,12 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 .dokuwiki .wrap_box {
     background: __background_alt__;
     color: __text__;
-/*
-    overflow: hidden;
-*/
 }
 .dokuwiki div.wrap_box,
 .dokuwiki div.wrap_danger, .dokuwiki div.wrap_warning, .dokuwiki div.wrap_caution, .dokuwiki div.wrap_notice, .dokuwiki div.wrap_safety {
     padding: 1em 1em .5em;
     margin-bottom: 1.5em;
+    overflow: hidden;
 }
 .dokuwiki span.wrap_box,
 .dokuwiki span.wrap_danger, .dokuwiki span.wrap_warning, .dokuwiki span.wrap_caution, .dokuwiki span.wrap_notice, .dokuwiki span.wrap_safety {
@@ -32,10 +30,12 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     background-position: 10px 50%;
     background-repeat: no-repeat;
     color: #000;
+    overflow: hidden;
 }
 /* special treatment for IE6 */
 * html .dokuwiki div.wrap_info, * html .dokuwiki div.wrap_important, * html .dokuwiki div.wrap_alert, * html .dokuwiki div.wrap_tip, * html .dokuwiki div.wrap_help, * html .dokuwiki div.wrap_todo, * html .dokuwiki div.wrap_download {
     height: 68px;
+    overflow: visible;
 }
 /* general styles for all note spans */
 .dokuwiki span.wrap_info, .dokuwiki span.wrap_important, .dokuwiki span.wrap_alert, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
@@ -115,6 +115,7 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 
 div.dokuwiki .wrap_hi {
     background-color: #ff9;
+    overflow: hidden;
 }
 
 /* typography
@@ -127,6 +128,10 @@ div.dokuwiki .wrap_fgwhite {
 }
 
 /*____________ background colours ____________*/
+
+div.dokuwiki div.wrap_bgred, div.dokuwiki div.wrap_bggreen, div.dokuwiki div.wrap_bgblue, div.dokuwiki div.wrap_bgcyan, div.dokuwiki div.wrap_bgviolet, div.dokuwiki div.wrap_bgyellow, div.dokuwiki div.wrap_bggrey, div.dokuwiki div.wrap_bgwhite, div.dokuwiki div.wrap_bgblack {
+    overflow: hidden;
+}
 
 div.dokuwiki .wrap_bgred {
     background-color: #fcc;
