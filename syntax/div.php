@@ -20,7 +20,7 @@ class syntax_plugin_wrap_div extends syntax_plugin_wrap_base {
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'baseonly', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
-    function getPType(){ return 'block';}
+    function getPType(){ return 'stack';}
     function getSort(){ return 195; }
     // override default accepts() method to allow nesting - ie, to get the plugin accepts its own entry syntax
     function accepts($mode) {
