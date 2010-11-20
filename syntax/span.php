@@ -48,7 +48,7 @@ class syntax_plugin_wrap_span extends syntax_plugin_wrap_base {
     function handle($match, $state, $pos, &$handler){
         switch ($state) {
             case DOKU_LEXER_ENTER:
-                $data = strtolower(trim(substr($match,5,-1)));
+                $data = strtolower(trim(substr($match,strpos($match,' '),-1)));
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED :
