@@ -13,15 +13,6 @@ require_once(DOKU_PLUGIN.'action.php');
 class action_plugin_wrap extends DokuWiki_Action_Plugin {
 
     /**
-     * return some info
-     *
-     * @author Andreas Gohr <andi@splitbrain.org>
-     */
-    function getInfo(){
-        return array_merge(confToHash(dirname(__FILE__).'/README'), array('name' => 'Toolbar Component'));
-    }
-
-    /**
      * register the eventhandlers
      *
      * @author Andreas Gohr <andi@splitbrain.org>

@@ -14,10 +14,6 @@ include_once(dirname(__FILE__).'/../base.php');
 
 class syntax_plugin_wrap_div extends syntax_plugin_wrap_base {
 
-    function getInfo(){
-        return array_merge(confToHash(dirname(__FILE__).'/../README'), array('name' => 'Div Component'));
-    }
-
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
     function getPType(){ return 'stack';}
