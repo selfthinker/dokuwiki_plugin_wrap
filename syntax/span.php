@@ -32,10 +32,14 @@ class syntax_plugin_wrap_span extends syntax_plugin_wrap_base {
      */
     function connectTo($mode) {
         $this->Lexer->addEntryPattern('<wrap.*?>(?=.*?</wrap>)',$mode,'plugin_wrap_span');
+        $this->Lexer->addEntryPattern('<inline.*?>(?=.*?</inline>)',$mode,'plugin_wrap_span');
+        $this->Lexer->addEntryPattern('<span.*?>(?=.*?</span>)',$mode,'plugin_wrap_span');
     }
 
     function postConnect() {
         $this->Lexer->addExitPattern('</wrap>', 'plugin_wrap_span');
+        $this->Lexer->addExitPattern('</inline>', 'plugin_wrap_span');
+        $this->Lexer->addExitPattern('</span>', 'plugin_wrap_span');
     }
 
     /**

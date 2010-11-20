@@ -6,8 +6,7 @@
 An uppercase **%%<WRAP>%%** creates a **''div''** and should be used for **"big"** containers, **surrounding** paragraphs, lists, tables, etc.
 
   <WRAP classes width :language>
-  
-  "big" content
+    "big" content
   </WRAP>
 
 A lowercase **%%<wrap>%%** creates a **''span''** and should be used for **"small"** containers, **inside** paragraphs, lists, tables, etc.
@@ -19,6 +18,13 @@ A lowercase **%%<wrap>%%** creates a **''span''** and should be used for **"smal
   * and **widths**
 if the according wrap isn't floated as well.
 
+==== Alternative Syntax ====
+
+Alternatively to **%%<WRAP>%%** you can also use either **%%<block>%%** or **%%<div>%%**.
+
+And alternatively to **%%<wrap>%%** you can also use either **%%<inline>%%** or **%%<span>%%**.
+
+
 ===== Classes and Styles =====
 
 
@@ -28,7 +34,6 @@ You can have columns easily by adding the class ''column'' and a width, e.g.
   <WRAP column 30%>...content...</WRAP>
 
 <WRAP column 30%>
-
 //**__Emulated Big Headline__**//
 
 You can emulate a big headline with italic, bold and underlined text, e.g.
@@ -44,7 +49,6 @@ If you need text that is bold and italic, simply use it the other way around:
 </WRAP>
 
 <WRAP column 30%>
-
 //**__Different Floating Options__**//
 
 Normally you would only need the class ''column'', but for more sophisticated uses (not only for columns, but for any other classes, like [[#boxes and notes]] as well) you can have several kinds of "floats":
@@ -57,7 +61,6 @@ Normally you would only need the class ''column'', but for more sophisticated us
 </WRAP>
 
 <WRAP column 30%>
-
 //**__Widths__**//
 
 You can set any valid widths (but only on uppercase %%<WRAP>%%s): ''%, px, em, ex, pt, pc, cm, mm, in'', but most of the time you'd only want either
@@ -96,23 +99,19 @@ You can use these different text alignments:
   * ''justify''
 
 <WRAP centeralign>
-
 Center aligned text ...
 </WRAP>
 
 <WRAP rightalign>
-
 ... and right aligned.
 </WRAP>
 
 <code>
 <WRAP centeralign>
-
 Center aligned text ...
 </WRAP>
 
 <WRAP rightalign>
-
 ... and right aligned.
 </WRAP>
 </code>
@@ -123,7 +122,6 @@ Center aligned text ...
 ==== Boxes and Notes ====
 
 <WRAP round box 570px center>
-
 //**__round box 570px center__**//
 
   * ''box'' creates a box around the container and uses the colours from the template's ''style.ini'' as default colours (''%%__background_alt__%%'' and ''%%__text__%%'')
@@ -134,7 +132,6 @@ Center aligned text ...
 
 
 <WRAP info 220px left>
-
 //**Info**//
 
   <WRAP info></WRAP>
@@ -142,7 +139,6 @@ Center aligned text ...
 
 
 <WRAP tip 220px left>
-
 //**Tip**//
 
   <WRAP tip></WRAP>
@@ -150,7 +146,6 @@ Center aligned text ...
 
 
 <WRAP important 220px left>
-
 //**Important**//
 
   <WRAP important></WRAP>
@@ -158,7 +153,6 @@ Center aligned text ...
 
 
 <WRAP alert 220px left>
-
 //**Alert**//
 
   <WRAP alert></WRAP>
@@ -166,7 +160,6 @@ Center aligned text ...
 
 
 <WRAP round help 220px left>
-
 //**Help**//
 
   <WRAP round help></WRAP>
@@ -174,7 +167,6 @@ Center aligned text ...
 
 
 <WRAP download 220px left>
-
 //**Download**//
 
   <WRAP download></WRAP>
@@ -182,7 +174,6 @@ Center aligned text ...
 
 
 <WRAP todo 220px left>
-
 //**Todo**//
 
   <WRAP todo></WRAP>
@@ -195,35 +186,30 @@ Center aligned text ...
 **Safety Notes:**
 
 <WRAP danger 27% left>
-
 //**Danger**//
 
   <WRAP danger></WRAP>
 </WRAP>
 
 <WRAP warning 27% left>
-
 //**Warning**//
 
   <WRAP warning></WRAP>
 </WRAP>
 
 <WRAP caution 27% left>
-
 //**Caution**//
 
   <WRAP caution></WRAP>
 </WRAP>
 
 <WRAP round notice 27% left>
-
 //**Notice**//
 
   <WRAP round notice></WRAP>
 </WRAP>
 
 <WRAP round safety 27% left>
-
 //**Safety**//
 
   <WRAP round safety></WRAP>
@@ -331,41 +317,39 @@ I advice against using the following typography classes. It's better to create s
 You can combine and nest all classes and types of boxes, e.g.
 
 <WRAP box bggreen fgblack 350px right :en>
-
 //**__Outer green box floats right__**//
 
 <WRAP 165px left>
-
 Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with nested <wrap bigger>__bigger__ text</wrap> inside</wrap>.
 </WRAP>
 
 Text inside outer right box, but beneath inner left box.
 
 <WRAP clear></WRAP>
-<WRAP round tip>
 
+<WRAP round tip>
 Round tip box underneath, after a ''clear''.
 </WRAP>
+
 </WRAP>
 
 
 <code>
 <WRAP box bggreen fgblack 350px right :en>
-
 //**__Outer green box floats right__**//
 
 <WRAP 165px left>
-
 Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with nested <wrap bigger>__bigger__ text</wrap> inside</wrap>.
 </WRAP>
 
 Text inside outer right box, but beneath inner left box.
 
 <WRAP clear></WRAP>
-<WRAP round tip>
 
+<WRAP round tip>
 Round tip box underneath, after a ''clear''.
 </WRAP>
+
 </WRAP>
 </code>
 
@@ -376,13 +360,11 @@ You can change the language and the reading direction of a wrap container by sim
 
 <code>
 <WRAP :he>
-
 זה עברית. ((<wrap :en>This means "This is Hebrew.", at least according to [[http://translate.google.com/|Google Translate]].</wrap>))
 </WRAP>
 </code>
 
 <WRAP :he>
-
 זה עברית. ((<wrap :en>This means "This is Hebrew.", at least according to [[http://translate.google.com/|Google Translate]].</wrap>))
 </WRAP>
 

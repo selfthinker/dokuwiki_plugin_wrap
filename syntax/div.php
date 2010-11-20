@@ -33,10 +33,14 @@ class syntax_plugin_wrap_div extends syntax_plugin_wrap_base {
      */
     function connectTo($mode) {
         $this->Lexer->addEntryPattern('<WRAP.*?>(?=.*?</WRAP>)',$mode,'plugin_wrap_div');
+        $this->Lexer->addEntryPattern('<block.*?>(?=.*?</block>)',$mode,'plugin_wrap_div');
+        $this->Lexer->addEntryPattern('<div.*?>(?=.*?</div>)',$mode,'plugin_wrap_div');
     }
 
     function postConnect() {
         $this->Lexer->addExitPattern('</WRAP>', 'plugin_wrap_div');
+        $this->Lexer->addExitPattern('</block>', 'plugin_wrap_div');
+        $this->Lexer->addExitPattern('</div>', 'plugin_wrap_div');
     }
 
     /**
