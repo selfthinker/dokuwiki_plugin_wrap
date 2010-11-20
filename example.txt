@@ -1,4 +1,3 @@
-
 ====== Examples for the Wrap Plugin ======
 
 ===== Basic syntax =====
@@ -87,6 +86,14 @@ You **can** use the same options with small %%<wrap>%%s (as each element that fl
 :!: Attention: Widths can cause problems and will often look different and break in some browsers. If you're not a web developer, you might not understand any problems regarding the [[http://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug|box model]]. Just try to test your columns in all major browsers and make your widths smaller than you initially think they should be.
 
 All of those options will also work in the [[#boxes and notes]] wraps (see below).
+
+=== Multi-columns ===
+
+<WRAP col3>
+For modern browsers (Firefox, Chrome and Safari) you can use multi-columns. Just use ''%%<WRAP col2>%%'' for 2 columns, ''%%<WRAP col3>%%'' for 3 columns, ''%%<WRAP col4>%%'' for 4 columns and ''%%<WRAP col5>%%'' for 5 columns.
+
+Note: Multi-columns don't make sense for lowercase ''%%<wrap>%%''s.
+</WRAP>
 
 
 ==== Alignments ====
