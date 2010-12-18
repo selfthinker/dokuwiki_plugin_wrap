@@ -61,12 +61,14 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
     /**
      * build attributes (write out classes, width, lang and dir)
      */
-    function buildAttributes($data) {
+    function buildAttributes($data, $addClass='') {
 
         $attr = $this->getAttributes($data);
         $out = '';
 
-        if($attr['class']) $out .= ' class="'.hsc($attr['class']).'"';
+        if($attr['class']) $out .= ' class="'.hsc($attr['class']).' '.$addClass.'"';
+        // if used in other plugins, they might want to add their own class(es)
+        elseif($addClass)  $out .= ' class="'.$addClass.'"';
         // width on spans normally doesn't make much sense, but in the case of floating elements it could be used
         if($attr['width']) $out .= ' style="width:'.hsc($attr['width']).';"';
         // only write lang if it's a language in lang2dir.conf
