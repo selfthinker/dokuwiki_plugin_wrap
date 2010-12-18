@@ -10,9 +10,8 @@ if(!defined('DOKU_INC')) die();
 
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
-include_once(dirname(__FILE__).'/../base.php');
 
-class syntax_plugin_wrap_div extends syntax_plugin_wrap_base {
+class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
@@ -68,7 +67,7 @@ class syntax_plugin_wrap_div extends syntax_plugin_wrap_base {
         if($mode == 'xhtml'){
             switch ($state) {
                 case DOKU_LEXER_ENTER:
-                    $wrap = new syntax_plugin_wrap_base();
+                    $wrap =& plugin_load('helper', 'wrap');
                     $attr = $wrap->buildAttributes($data);
 
                     $renderer->doc .= '<div'.$attr.'>';

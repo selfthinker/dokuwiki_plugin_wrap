@@ -1,12 +1,15 @@
 <?php
 /**
- * base functions for the wrap plugin
+ * Helper Component for the Wrap Plugin
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Anika Henke <anika@selfthinker.org>
  */
 
-class syntax_plugin_wrap_base extends DokuWiki_Syntax_Plugin {
+// must be run within Dokuwiki
+if(!defined('DOKU_INC')) die();
+
+class helper_plugin_wrap extends DokuWiki_Plugin {
 
     /**
      * get attributes (pull apart the string between '<wrap' and '>')
