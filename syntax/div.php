@@ -48,7 +48,8 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED :
-                return array($state, $match);
+                $handler->_addCall('cdata', array($match), $pos);
+                return false;
 
             case DOKU_LEXER_EXIT :
                 return array($state, '');
@@ -71,10 +72,6 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $attr = $wrap->buildAttributes($data);
 
                     $renderer->doc .= '<div'.$attr.'>';
-                    break;
-
-                case DOKU_LEXER_UNMATCHED:
-                    $renderer->doc .= $renderer->_xmlEntities($data);
                     break;
 
                 case DOKU_LEXER_EXIT:
