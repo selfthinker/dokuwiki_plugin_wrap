@@ -1,5 +1,6 @@
 <?php
 /**
+ * Span Syntax Component of the Wrap Plugin
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Anika Henke <anika@selfthinker.org>
