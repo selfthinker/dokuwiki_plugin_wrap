@@ -61,18 +61,20 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
     /**
      * build attributes (write out classes, width, lang and dir)
      */
-    function buildAttributes($data, $addClass='') {
+    function buildAttributes($data, $addClass='', $mode='xhtml') {
 
         $attr = $this->getAttributes($data);
         $out = '';
 
-        if($attr['class']) $out .= ' class="'.hsc($attr['class']).' '.$addClass.'"';
-        // if used in other plugins, they might want to add their own class(es)
-        elseif($addClass)  $out .= ' class="'.$addClass.'"';
-        // width on spans normally doesn't make much sense, but in the case of floating elements it could be used
-        if($attr['width']) $out .= ' style="width:'.hsc($attr['width']).';"';
-        // only write lang if it's a language in lang2dir.conf
-        if($attr['dir'])   $out .= ' lang="'.$attr['lang'].'" xml:lang="'.$attr['lang'].'" dir="'.$attr['dir'].'"';
+        if ($mode=='xhtml') {
+            if($attr['class']) $out .= ' class="'.hsc($attr['class']).' '.$addClass.'"';
+            // if used in other plugins, they might want to add their own class(es)
+            elseif($addClass)  $out .= ' class="'.$addClass.'"';
+            // width on spans normally doesn't make much sense, but in the case of floating elements it could be used
+            if($attr['width']) $out .= ' style="width:'.hsc($attr['width']).';"';
+            // only write lang if it's a language in lang2dir.conf
+            if($attr['dir'])   $out .= ' lang="'.$attr['lang'].'" xml:lang="'.$attr['lang'].'" dir="'.$attr['dir'].'"';
+        }
 
         return $out;
     }
