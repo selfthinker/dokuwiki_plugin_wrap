@@ -119,15 +119,11 @@ div.dokuwiki .wrap_hi {
 }
 
 /* typography
-********************************************************************/
-
-/*____________ font colours ____________*/
+********************************************************************
 
 div.dokuwiki .wrap_fgwhite {
     color: #fff;
 }
-
-/*____________ background colours ____________*/
 
 div.dokuwiki div.wrap_bgred, div.dokuwiki div.wrap_bggreen, div.dokuwiki div.wrap_bgblue, div.dokuwiki div.wrap_bgcyan, div.dokuwiki div.wrap_bgviolet, div.dokuwiki div.wrap_bgyellow, div.dokuwiki div.wrap_bggrey, div.dokuwiki div.wrap_bgwhite, div.dokuwiki div.wrap_bgblack {
     overflow: hidden;
@@ -160,7 +156,7 @@ div.dokuwiki .wrap_bgwhite {
 div.dokuwiki .wrap_bgblack {
     background-color: #000;
 }
-
+*/
 
 /* miscellaneous
 ********************************************************************/

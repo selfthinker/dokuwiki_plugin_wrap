@@ -308,25 +308,16 @@ This also has no effect on the browser screen. It will try to [[http://reference
 
   <wrap onlyprint>This text does not appear on the screen, but only in print.</wrap>
 
-==== Typography ====
-
-I advice against using the following typography classes. It's better to create semantic classes that reflect their meaning instead.
-
-  * font family: ''sansserif'', ''serif'', ''monospace''
-  * font size: ''bigger'', ''muchbigger'', ''smaller''
-  * font colour: ''fgred'', ''fggreen'', ''fgblue'', ''fgcyan'', ''fgviolet'', ''fgyellow'', ''fggrey'', ''fgwhite'', ''fgblack''
-  * background colour: ''bgred'', ''bggreen'', ''bgblue'', ''bgcyan'', ''bgviolet'', ''bgyellow'', ''bggrey'', ''bgwhite'', ''bgblack''
-
 
 ==== Combining and Nesting ====
 
 You can combine and nest all classes and types of boxes, e.g.
 
-<WRAP box bggreen fgblack 350px right :en>
-//**__Outer green box floats right__**//
+<WRAP box 350px right :en>
+//**__Outer box floats right__**//
 
 <WRAP 165px left>
-Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with nested <wrap bigger>__bigger__ text</wrap> inside</wrap>.
+Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with a nested <wrap notice>__notice__</wrap> inside</wrap>.
 </WRAP>
 
 Text inside outer right box, but beneath inner left box.
@@ -341,11 +332,11 @@ Round tip box underneath, after a ''clear''.
 
 
 <code>
-<WRAP box bggreen fgblack 350px right :en>
-//**__Outer green box floats right__**//
+<WRAP box 350px right :en>
+//**__Outer box floats right__**//
 
 <WRAP 165px left>
-Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with nested <wrap bigger>__bigger__ text</wrap> inside</wrap>.
+Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with a nested <wrap notice>__notice__</wrap> inside</wrap>.
 </WRAP>
 
 Text inside outer right box, but beneath inner left box.

@@ -162,9 +162,7 @@ div.dokuwiki .wrap_em {
 
 
 /* typography
-********************************************************************/
-
-/*____________ fonts ____________*/
+********************************************************************
 
 div.dokuwiki .wrap_sansserif {
     font-family: Verdana,Tahoma,Geneva,"DejaVu Sans","Bitstream Vera Sans","Liberation Sans", Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L", sans-serif;
@@ -176,8 +174,6 @@ div.dokuwiki .wrap_monospace {
     font-family: Courier,"Courier New",FreeMono,"Nimbus Mono L","Liberation Mono", "Lucida Console",Monaco,"DejaVu Sans Mono","Bitstream Vera Sans Mono", monospace;
 }
 
-/*____________ font size ____________*/
-
 div.dokuwiki .wrap_bigger {
     font-size: 125%;
 }
@@ -187,8 +183,6 @@ div.dokuwiki .wrap_muchbigger {
 div.dokuwiki .wrap_smaller {
     font-size: 75%;
 }
-
-/*____________ font colours ____________*/
 
 div.dokuwiki .wrap_fgred {
     color: #900;
@@ -215,7 +209,7 @@ div.dokuwiki .wrap_fgblack {
     color: #000;
 }
 
-/* see styles for background colours and white font colour in style.css */
+see styles for background colours and white font colour in style.css */
 
 
 /* miscellaneous
