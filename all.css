@@ -33,6 +33,15 @@ Screen and Print Styles for the Wrap Plugin
     border-bottom-color: #999;
 }
 
+/* real headlines should not be indented inside a wrap */
+.dokuwiki .plugin_wrap h1, .dokuwiki .plugin_wrap h2, .dokuwiki .plugin_wrap h3, .dokuwiki .plugin_wrap h4, .dokuwiki .plugin_wrap h5 {
+    margin-left: 0;
+    margin-right: 0;
+}
+/* hide section edit buttons (because they don't work inside a wrap) */
+.dokuwiki .plugin_wrap div.secedit {
+    display: none;
+}
 
 /* columns
 ********************************************************************/
