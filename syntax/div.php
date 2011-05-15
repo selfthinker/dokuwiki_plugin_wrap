@@ -47,11 +47,23 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                 $data = strtolower(trim(substr($match,strpos($match,' '),-1)));
                 return array($state, $data);
 
-            case DOKU_LEXER_UNMATCHED :
-                $handler->_addCall('cdata', array($match), $pos);
-                return false;
+            case DOKU_LEXER_UNMATCHED:
+                $headerMatch = preg_grep('/([ \t]*={2,}[^\n]+={2,}[ \t]*(?=))/msSi', array($match));
+                if (!empty($headerMatch)) {
+                    // copied from core header() in inc/parser/handler.php
+                    $title = trim($match);
+                    $level = 7 - strspn($title,'=');
+                    if($level < 1) $level = 1;
+                    $title = trim($title,'=');
+                    $title = trim($title);
 
-            case DOKU_LEXER_EXIT :
+                    $handler->_addCall('header',array($title,$level,$pos), $pos);
+                } else {
+                    $handler->_addCall('cdata', array($match), $pos);
+                    return false;
+                }
+
+            case DOKU_LEXER_EXIT:
                 return array($state, '');
         }
         return false;
