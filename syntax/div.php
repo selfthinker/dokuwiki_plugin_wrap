@@ -48,9 +48,13 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED:
+                // check if $match is a == header ==
                 $headerMatch = preg_grep('/([ \t]*={2,}[^\n]+={2,}[ \t]*(?=))/msSi', array($match));
-                if (!empty($headerMatch)) {
-                    // copied from core header() in inc/parser/handler.php
+                if (empty($headerMatch)) {
+                    $handler->_addCall('cdata', array($match), $pos);
+                } else {
+                    // if it's a == header ==, use the core header() renderer
+                    // (copied from core header() in inc/parser/handler.php)
                     $title = trim($match);
                     $level = 7 - strspn($title,'=');
                     if($level < 1) $level = 1;
@@ -58,8 +62,6 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $title = trim($title);
 
                     $handler->_addCall('header',array($title,$level,$pos), $pos);
-                } else {
-                    $handler->_addCall('cdata', array($match), $pos);
                 }
                 return false;
 
