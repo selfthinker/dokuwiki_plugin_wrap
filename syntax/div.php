@@ -60,8 +60,8 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $handler->_addCall('header',array($title,$level,$pos), $pos);
                 } else {
                     $handler->_addCall('cdata', array($match), $pos);
-                    return false;
                 }
+                return false;
 
             case DOKU_LEXER_EXIT:
                 return array($state, '');
