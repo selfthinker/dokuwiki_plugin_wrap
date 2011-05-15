@@ -81,7 +81,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
             switch ($state) {
                 case DOKU_LEXER_ENTER:
                     $wrap =& plugin_load('helper', 'wrap');
-                    $attr = $wrap->buildAttributes($data);
+                    $attr = $wrap->buildAttributes($data, 'plugin_wrap');
 
                     $renderer->doc .= '<div'.$attr.'>';
                     break;
