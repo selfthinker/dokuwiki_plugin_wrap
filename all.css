@@ -73,7 +73,7 @@ Screen and Print Styles for the Wrap Plugin
 
 /*____________ CSS3 columns  ____________*/
 
-.wrap_col2, .wrap_col3, .wrap_col4, .wrap_col5 {
+.dokuwiki .wrap_col2, .dokuwiki .wrap_col3, .dokuwiki .wrap_col4, .dokuwiki .wrap_col5 {
     -moz-column-gap: 1.5em;
     -moz-column-rule: 1px dotted #666;
     -webkit-column-gap: 1.5em;
@@ -81,22 +81,22 @@ Screen and Print Styles for the Wrap Plugin
     column-gap: 1.5em;
     column-rule: 1px dotted #666;
 }
-.wrap_col2 {
+.dokuwiki .wrap_col2 {
     -moz-column-count: 2;
     -webkit-column-count: 2;
     column-count: 2;
 }
-.wrap_col3 {
+.dokuwiki .wrap_col3 {
     -moz-column-count: 3;
     -webkit-column-count: 3;
     column-count: 3;
 }
-.wrap_col4 {
+.dokuwiki .wrap_col4 {
     -moz-column-count: 4;
     -webkit-column-count: 4;
     column-count: 4;
 }
-.wrap_col5 {
+.dokuwiki .wrap_col5 {
     -moz-column-count: 5;
     -webkit-column-count: 5;
     column-count: 5;
@@ -145,11 +145,11 @@ Screen and Print Styles for the Wrap Plugin
 /* mark
 ********************************************************************/
 
-div.dokuwiki .wrap_lo {
+.dokuwiki .wrap_lo {
     color: __text_neu__;
     font-size: 85%;
 }
-div.dokuwiki .wrap_em {
+.dokuwiki .wrap_em {
     color: #c00;
     font-weight: bold;
 }
@@ -160,48 +160,48 @@ div.dokuwiki .wrap_em {
 /* typography
 ********************************************************************
 
-div.dokuwiki .wrap_sansserif {
+.dokuwiki .wrap_sansserif {
     font-family: Verdana,Tahoma,Geneva,"DejaVu Sans","Bitstream Vera Sans","Liberation Sans", Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L", sans-serif;
 }
-div.dokuwiki .wrap_serif {
+.dokuwiki .wrap_serif {
     font-family: Georgia,Garamond,"Palatino Linotype","Book Antiqua",Palatino,Palladio,"URW Palladio L","Liberation Serif",Didot,Gentium,"Bitstream Charter","Century Schoolbook L", "Times New Roman",Times,"Nimbus Roman No9 L","FreeSerif", serif;
 }
-div.dokuwiki .wrap_monospace {
+.dokuwiki .wrap_monospace {
     font-family: Courier,"Courier New",FreeMono,"Nimbus Mono L","Liberation Mono", "Lucida Console",Monaco,"DejaVu Sans Mono","Bitstream Vera Sans Mono", monospace;
 }
 
-div.dokuwiki .wrap_bigger {
+.dokuwiki .wrap_bigger {
     font-size: 125%;
 }
-div.dokuwiki .wrap_muchbigger {
+.dokuwiki .wrap_muchbigger {
     font-size: 200%;
 }
-div.dokuwiki .wrap_smaller {
+.dokuwiki .wrap_smaller {
     font-size: 75%;
 }
 
-div.dokuwiki .wrap_fgred {
+.dokuwiki .wrap_fgred {
     color: #900;
 }
-div.dokuwiki .wrap_fggreen {
+.dokuwiki .wrap_fggreen {
     color: #090;
 }
-div.dokuwiki .wrap_fgblue {
+.dokuwiki .wrap_fgblue {
     color: #009;
 }
-div.dokuwiki .wrap_fgcyan {
+.dokuwiki .wrap_fgcyan {
     color: #099;
 }
-div.dokuwiki .wrap_fgviolet {
+.dokuwiki .wrap_fgviolet {
     color: #909;
 }
-div.dokuwiki .wrap_fgyellow {
+.dokuwiki .wrap_fgyellow {
     color: #990;
 }
-div.dokuwiki .wrap_fggrey {
+.dokuwiki .wrap_fggrey {
     color: #666;
 }
-div.dokuwiki .wrap_fgblack {
+.dokuwiki .wrap_fgblack {
     color: #000;
 }
 
@@ -213,19 +213,19 @@ see styles for background colours and white font colour in style.css */
 
 /*____________ indent ____________*/
 
-div.dokuwiki .wrap_indent {
+.dokuwiki .wrap_indent {
     padding-left: 1.5em;
 }
 
 /*____________ outdent ____________*/
 
-div.dokuwiki .wrap_outdent {
+.dokuwiki .wrap_outdent {
     margin-left: -1.5em;
 }
 
 /*____________ word wrapping in pre ____________*/
 
-div.dokuwiki div.wrap_prewrap pre {
+.dokuwiki div.wrap_prewrap pre {
     white-space: pre-wrap;
     word-wrap: break-word;/* for IE < 8 */
     /* white-space: -moz-pre-wrap; for FF < 3 */
@@ -233,14 +233,14 @@ div.dokuwiki div.wrap_prewrap pre {
 
 /*____________ spoiler ____________*/
 
-div.dokuwiki div.wrap_spoiler {
+.dokuwiki div.wrap_spoiler {
     margin-bottom: 1.5em;
 }
 /* see rest of spoiler styles in style.css */
 
 /*____________ clear float ____________*/
 
-div.dokuwiki .wrap_clear {
+.dokuwiki .wrap_clear {
     clear: both;
     line-height: 0;
     height: 0;
@@ -251,6 +251,6 @@ div.dokuwiki .wrap_clear {
 
 /*____________ hide ____________*/
 
-div.dokuwiki .wrap_hide {
+.dokuwiki .wrap_hide {
     display: none;
 }

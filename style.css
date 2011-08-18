@@ -113,7 +113,7 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 /* mark
 ********************************************************************/
 
-div.dokuwiki .wrap_hi {
+.dokuwiki .wrap_hi {
     background-color: #ff9;
     overflow: hidden;
 }
@@ -121,39 +121,39 @@ div.dokuwiki .wrap_hi {
 /* typography
 ********************************************************************
 
-div.dokuwiki .wrap_fgwhite {
+.dokuwiki .wrap_fgwhite {
     color: #fff;
 }
 
-div.dokuwiki div.wrap_bgred, div.dokuwiki div.wrap_bggreen, div.dokuwiki div.wrap_bgblue, div.dokuwiki div.wrap_bgcyan, div.dokuwiki div.wrap_bgviolet, div.dokuwiki div.wrap_bgyellow, div.dokuwiki div.wrap_bggrey, div.dokuwiki div.wrap_bgwhite, div.dokuwiki div.wrap_bgblack {
+.dokuwiki div.wrap_bgred, .dokuwiki div.wrap_bggreen, .dokuwiki div.wrap_bgblue, .dokuwiki div.wrap_bgcyan, .dokuwiki div.wrap_bgviolet, .dokuwiki div.wrap_bgyellow, .dokuwiki div.wrap_bggrey, .dokuwiki div.wrap_bgwhite, .dokuwiki div.wrap_bgblack {
     overflow: hidden;
 }
 
-div.dokuwiki .wrap_bgred {
+.dokuwiki .wrap_bgred {
     background-color: #fcc;
 }
-div.dokuwiki .wrap_bggreen {
+.dokuwiki .wrap_bggreen {
     background-color: #cfc;
 }
-div.dokuwiki .wrap_bgblue {
+.dokuwiki .wrap_bgblue {
     background-color: #ccf;
 }
-div.dokuwiki .wrap_bgcyan {
+.dokuwiki .wrap_bgcyan {
     background-color: #9ff;
 }
-div.dokuwiki .wrap_bgviolet {
+.dokuwiki .wrap_bgviolet {
     background-color: #f9f;
 }
-div.dokuwiki .wrap_bgyellow {
+.dokuwiki .wrap_bgyellow {
     background-color: #ff9;
 }
-div.dokuwiki .wrap_bggrey {
+.dokuwiki .wrap_bggrey {
     background-color: #ccc;
 }
-div.dokuwiki .wrap_bgwhite {
+.dokuwiki .wrap_bgwhite {
     background-color: #fff;
 }
-div.dokuwiki .wrap_bgblack {
+.dokuwiki .wrap_bgblack {
     background-color: #000;
 }
 */
@@ -163,7 +163,7 @@ div.dokuwiki .wrap_bgblack {
 
 /*____________ spoiler ____________*/
 
-div.dokuwiki .wrap_spoiler {
+.dokuwiki .wrap_spoiler {
     background-color: __background__ !important;
     color: __background__ !important;
     border: 1px dotted red;
@@ -171,6 +171,6 @@ div.dokuwiki .wrap_spoiler {
 
 /*____________ only print ____________*/
 
-div.dokuwiki .wrap_onlyprint {
+.dokuwiki .wrap_onlyprint {
     display: none;
 }

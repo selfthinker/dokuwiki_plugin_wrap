@@ -30,7 +30,7 @@ Print Styles for the Wrap Plugin (additional to all.css)
 /* mark
 ********************************************************************/
 
-div.dokuwiki .wrap_hi {
+.dokuwiki .wrap_hi {
     border: 1px solid #999;
 }
 
@@ -40,25 +40,25 @@ div.dokuwiki .wrap_hi {
 
 /*____________ spoiler ____________*/
 
-div.dokuwiki .wrap_spoiler {
+.dokuwiki .wrap_spoiler {
     visibility: hidden;
 }
 
 /*____________ pagebreak ____________*/
 
-div.dokuwiki .wrap_pagebreak {
+.dokuwiki .wrap_pagebreak {
     page-break-after: always;
 }
 
 /*____________ avoid page break ____________*/
 /* not yet supported by most browsers */
 
-div.dokuwiki .wrap_nopagebreak {
+.dokuwiki .wrap_nopagebreak {
     page-break-inside: avoid;
 }
 
 /*____________ no print ____________*/
 
-div.dokuwiki .wrap_noprint {
+.dokuwiki .wrap_noprint {
     display: none;
 }

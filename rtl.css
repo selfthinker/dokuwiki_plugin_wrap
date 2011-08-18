@@ -34,13 +34,13 @@ RTL Styles for the Wrap Plugin
 ********************************************************************/
 
 /*____________ indent ____________*/
-div.dokuwiki .wrap_indent {
+.dokuwiki .wrap_indent {
     padding-right: 1.5em;
     padding-left: 0;
 }
 
 /*____________ outdent ____________*/
-div.dokuwiki .wrap_outdent {
+.dokuwiki .wrap_outdent {
     margin-right: -1.5em;
     margin-left: 0;
 }
