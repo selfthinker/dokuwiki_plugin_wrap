@@ -39,6 +39,12 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                 continue;
             }
 
+            //get id
+            if (preg_match('/#([A-Za-z0-9_-]+)/', $token)) {
+                $attr['id'] = trim($token,'#');
+                continue;
+            }
+
             //get classes
             //restrict token (class names) characters to prevent any malicious data
             if (preg_match('/[^A-Za-z0-9_-]/',$token)) continue;
@@ -70,6 +76,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             if($attr['class']) $out .= ' class="'.hsc($attr['class']).' '.$addClass.'"';
             // if used in other plugins, they might want to add their own class(es)
             elseif($addClass)  $out .= ' class="'.$addClass.'"';
+            if($attr['id'])    $out .= ' id="'.hsc($attr['id']).'"';
             // width on spans normally doesn't make much sense, but in the case of floating elements it could be used
             if($attr['width']) $out .= ' style="width:'.hsc($attr['width']).';"';
             // only write lang if it's a language in lang2dir.conf
