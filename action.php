@@ -21,6 +21,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
      */
     function register(&$controller){
         $controller->register_hook('TOOLBAR_DEFINE', 'AFTER', $this, 'handle_toolbar', array ());
+        $controller->register_hook('HTML_SECEDIT_BUTTON', 'BEFORE', $this, 'handle_secedit_button');
     }
 
     function handle_toolbar(&$event, $param) {
@@ -121,6 +122,28 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                 ),
             )
         );
+    }
+
+    /**
+     * Handle section edit buttons, prevents section buttons inside the wrap plugin from being displayed
+     *
+     * @param Doku_Event $event The event object
+     * @param array      $args Parameters for the event
+     */
+    public function handle_secedit_button($event, $args) {
+        // counter of the number of currently opened wraps
+        static $wraps = 0;
+        $data = $event->data;
+
+        if ($data['target'] == 'plugin_wrap_start') {
+            ++$wraps;
+        } elseif ($data['target'] == 'plugin_wrap_end') {
+            --$wraps;
+        } elseif ($wraps > 0 && $data['target'] == 'section') {
+            $event->preventDefault();
+            $event->stopPropagation();
+            $event->result = '';
+        }
     }
 }
 

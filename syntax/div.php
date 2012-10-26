@@ -42,6 +42,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
      * Handle the match
      */
     function handle($match, $state, $pos, &$handler){
+        global $conf;
         switch ($state) {
             case DOKU_LEXER_ENTER:
                 $data = strtolower(trim(substr($match,strpos($match,' '),-1)));
@@ -62,6 +63,10 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $title = trim($title);
 
                     $handler->_addCall('header',array($title,$level,$pos), $pos);
+                    // close the section edit the header could open
+                    if ($title && $level <= $conf['maxseclevel']) {
+                        $handler->addPluginCall('wrap_closesection', array(), $state, $pos, '');
+                    }
                 }
                 return false;
 
@@ -80,8 +85,17 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         list($state, $data) = $indata;
 
         if($mode == 'xhtml'){
+            /** @var Doku_Renderer_xhtml $renderer */
             switch ($state) {
                 case DOKU_LEXER_ENTER:
+                    // add a section edit right at the beginning of the wrap output
+                    $renderer->startSectionEdit(0, 'plugin_wrap_start');
+                    $renderer->finishSectionEdit();
+                    // add a section edit for the end of the wrap output. This prevents the renderer
+                    // from closing the last section edit so the next section button after the wrap syntax will
+                    // include the whole wrap syntax
+                    $renderer->startSectionEdit(0, 'plugin_wrap_end');
+
                     $wrap =& plugin_load('helper', 'wrap');
                     $attr = $wrap->buildAttributes($data, 'plugin_wrap');
 
@@ -90,6 +104,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
 
                 case DOKU_LEXER_EXIT:
                     $renderer->doc .= "</div>";
+                    $renderer->finishSectionEdit();
                     break;
             }
             return true;
