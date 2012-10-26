@@ -125,7 +125,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
     }
 
     /**
-     * Handle section edit buttons, prevents section buttons inside the wrap plugin from being displayed
+     * Handle section edit buttons, prevents section buttons inside the wrap plugin from being rendered
      *
      * @param Doku_Event $event The event object
      * @param array      $args Parameters for the event
