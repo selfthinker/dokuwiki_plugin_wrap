@@ -38,10 +38,6 @@ Screen and Print Styles for the Wrap Plugin
     margin-left: 0;
     margin-right: 0;
 }
-/* hide section edit buttons (because they don't work inside a wrap) */
-.dokuwiki .plugin_wrap div.secedit {
-    display: none;
-}
 
 /* columns
 ********************************************************************/
