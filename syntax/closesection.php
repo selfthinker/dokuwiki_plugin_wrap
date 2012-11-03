@@ -13,7 +13,8 @@ require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_closesection extends DokuWiki_Syntax_Plugin {
 
-    function getType(){ return 'formatting';}
+    function getType(){ return 'substition';}
+    function getPType(){ return 'block';}
     function getSort(){ return 195; }
 
     /**
