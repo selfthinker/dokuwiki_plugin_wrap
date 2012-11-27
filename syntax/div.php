@@ -65,7 +65,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $handler->_addCall('header',array($title,$level,$pos), $pos);
                     // close the section edit the header could open
                     if ($title && $level <= $conf['maxseclevel']) {
-                        $handler->addPluginCall('wrap_closesection', array(), $state, $pos, '');
+                        $handler->addPluginCall('wrap_closesection', array(), DOKU_LEXER_SPECIAL, $pos, '');
                     }
                 }
                 return false;
