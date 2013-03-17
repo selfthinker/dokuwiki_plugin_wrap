@@ -149,16 +149,10 @@ Screen and Print Styles for the Wrap Plugin
 /* (only for modern browsers) */
 
 .dokuwiki div.wrap_round {
-    border-radius: 20px;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -khtml-border-radius: 20px;
+    border-radius: 1.4em;
 }
 .dokuwiki span.wrap_round {
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -khtml-border-radius: 2px;
+    border-radius: .14em;
 }
 
 
@@ -206,7 +200,6 @@ Screen and Print Styles for the Wrap Plugin
 .dokuwiki div.wrap_prewrap pre {
     white-space: pre-wrap;
     word-wrap: break-word;/* for IE < 8 */
-    /* white-space: -moz-pre-wrap; for FF < 3 */
 }
 
 /*____________ spoiler ____________*/
