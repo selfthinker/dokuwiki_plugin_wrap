@@ -32,11 +32,6 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     color: #000;
     overflow: hidden;
 }
-/* special treatment for IE6 */
-* html .dokuwiki div.wrap_info, * html .dokuwiki div.wrap_important, * html .dokuwiki div.wrap_alert, * html .dokuwiki div.wrap_tip, * html .dokuwiki div.wrap_help, * html .dokuwiki div.wrap_todo, * html .dokuwiki div.wrap_download {
-    height: 68px;
-    overflow: visible;
-}
 /* general styles for all note spans */
 .dokuwiki span.wrap_info, .dokuwiki span.wrap_important, .dokuwiki span.wrap_alert, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
     padding: 0 2px 0 20px;
@@ -44,10 +39,6 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     background-position: 2px 50%;
     background-repeat: no-repeat;
     color: #000;
-}
-/* special treatment for IE6 */
-* html .dokuwiki span.wrap_info, * html .dokuwiki span.wrap_important, * html .dokuwiki span.wrap_alert, * html .dokuwiki span.wrap_tip, * html .dokuwiki span.wrap_help, * html .dokuwiki span.wrap_todo, * html .dokuwiki span.wrap_download {
-    height: 20px;
 }
 
 /* sorry for icons glued to the right side, but there is currently no way
