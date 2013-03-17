@@ -163,57 +163,6 @@ Screen and Print Styles for the Wrap Plugin
 /* see styles for highlighted text in style.css */
 
 
-/* typography
-********************************************************************
-
-.dokuwiki .wrap_sansserif {
-    font-family: Verdana,Tahoma,Geneva,"DejaVu Sans","Bitstream Vera Sans","Liberation Sans", Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L", sans-serif;
-}
-.dokuwiki .wrap_serif {
-    font-family: Georgia,Garamond,"Palatino Linotype","Book Antiqua",Palatino,Palladio,"URW Palladio L","Liberation Serif",Didot,Gentium,"Bitstream Charter","Century Schoolbook L", "Times New Roman",Times,"Nimbus Roman No9 L","FreeSerif", serif;
-}
-.dokuwiki .wrap_monospace {
-    font-family: Courier,"Courier New",FreeMono,"Nimbus Mono L","Liberation Mono", "Lucida Console",Monaco,"DejaVu Sans Mono","Bitstream Vera Sans Mono", monospace;
-}
-
-.dokuwiki .wrap_bigger {
-    font-size: 125%;
-}
-.dokuwiki .wrap_muchbigger {
-    font-size: 200%;
-}
-.dokuwiki .wrap_smaller {
-    font-size: 75%;
-}
-
-.dokuwiki .wrap_fgred {
-    color: #900;
-}
-.dokuwiki .wrap_fggreen {
-    color: #090;
-}
-.dokuwiki .wrap_fgblue {
-    color: #009;
-}
-.dokuwiki .wrap_fgcyan {
-    color: #099;
-}
-.dokuwiki .wrap_fgviolet {
-    color: #909;
-}
-.dokuwiki .wrap_fgyellow {
-    color: #990;
-}
-.dokuwiki .wrap_fggrey {
-    color: #666;
-}
-.dokuwiki .wrap_fgblack {
-    color: #000;
-}
-
-see styles for background colours and white font colour in style.css */
-
-
 /* miscellaneous
 ********************************************************************/
 

@@ -129,45 +129,6 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     overflow: hidden;
 }
 
-/* typography
-********************************************************************
-
-.dokuwiki .wrap_fgwhite {
-    color: #fff;
-}
-
-.dokuwiki div.wrap_bgred, .dokuwiki div.wrap_bggreen, .dokuwiki div.wrap_bgblue, .dokuwiki div.wrap_bgcyan, .dokuwiki div.wrap_bgviolet, .dokuwiki div.wrap_bgyellow, .dokuwiki div.wrap_bggrey, .dokuwiki div.wrap_bgwhite, .dokuwiki div.wrap_bgblack {
-    overflow: hidden;
-}
-
-.dokuwiki .wrap_bgred {
-    background-color: #fcc;
-}
-.dokuwiki .wrap_bggreen {
-    background-color: #cfc;
-}
-.dokuwiki .wrap_bgblue {
-    background-color: #ccf;
-}
-.dokuwiki .wrap_bgcyan {
-    background-color: #9ff;
-}
-.dokuwiki .wrap_bgviolet {
-    background-color: #f9f;
-}
-.dokuwiki .wrap_bgyellow {
-    background-color: #ff9;
-}
-.dokuwiki .wrap_bggrey {
-    background-color: #ccc;
-}
-.dokuwiki .wrap_bgwhite {
-    background-color: #fff;
-}
-.dokuwiki .wrap_bgblack {
-    background-color: #000;
-}
-*/
 
 /* miscellaneous
 ********************************************************************/
