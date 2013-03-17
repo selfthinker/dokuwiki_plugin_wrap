@@ -47,6 +47,11 @@ Screen and Print Styles for the Wrap Plugin
     float: left;
     margin-right: 1.5em;
 }
+[dir=rtl] .dokuwiki .wrap_column {
+    float: right;
+    margin-left: 1.5em;
+    margin-right: 0;
+}
 .dokuwiki .wrap_right {
     float: right;
     margin-left: 1.5em;
@@ -63,8 +68,13 @@ Screen and Print Styles for the Wrap Plugin
     overflow: hidden;
 }
 */
+
 .dokuwiki .wrap_container {
     margin-right: -1.5em;
+}
+[dir=rtl] .dokuwiki .wrap_container {
+    margin-left: -1.5em;
+    margin-right: 0;
 }
 
 /*____________ CSS3 columns  ____________*/
@@ -212,11 +222,20 @@ see styles for background colours and white font colour in style.css */
 .dokuwiki .wrap_indent {
     padding-left: 1.5em;
 }
+[dir=rtl] .dokuwiki .wrap_indent {
+    padding-right: 1.5em;
+    padding-left: 0;
+}
+
 
 /*____________ outdent ____________*/
 
 .dokuwiki .wrap_outdent {
     margin-left: -1.5em;
+}
+[dir=rtl] .dokuwiki .wrap_outdent {
+    margin-right: -1.5em;
+    margin-left: 0;
 }
 
 /*____________ word wrapping in pre ____________*/

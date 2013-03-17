@@ -50,6 +50,17 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     height: 20px;
 }
 
+/* sorry for icons glued to the right side, but there is currently no way
+     to make this look good without adjusting the images themselves */
+[dir=rtl] .dokuwiki div.wrap_info, [dir=rtl] .dokuwiki div.wrap_important, [dir=rtl] .dokuwiki div.wrap_alert, [dir=rtl] .dokuwiki div.wrap_tip, [dir=rtl] .dokuwiki div.wrap_help, [dir=rtl] .dokuwiki div.wrap_todo, [dir=rtl] .dokuwiki div.wrap_download {
+    padding: 1em 60px .5em 1em;
+    background-position: right 50%;
+}
+[dir=rtl] .dokuwiki span.wrap_info, [dir=rtl] .dokuwiki span.wrap_important, [dir=rtl] .dokuwiki span.wrap_alert, [dir=rtl] .dokuwiki span.wrap_tip, [dir=rtl] .dokuwiki span.wrap_help, [dir=rtl] .dokuwiki span.wrap_todo, [dir=rtl] .dokuwiki span.wrap_download {
+    padding: 0 18px 0 2px;
+    background-position: right 50%;
+}
+
 /*____________ info ____________*/
 .dokuwiki .wrap_info { background-color: #d1d7df; }
 .dokuwiki div.wrap_info { background-image: url(images/note/48/info.png); }
