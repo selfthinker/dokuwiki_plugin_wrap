@@ -75,21 +75,6 @@ Screen and Print Styles for the Wrap Plugin
     margin-left: auto;
     margin-right: auto;
 }
-/*
-.dokuwiki .wrap_column,
-.dokuwiki .wrap_left,
-.dokuwiki .wrap_right {
-    overflow: hidden;
-}
-*/
-
-.dokuwiki .wrap_container {
-    margin-right: -1.5em;
-}
-[dir=rtl] .dokuwiki .wrap_container {
-    margin-left: -1.5em;
-    margin-right: 0;
-}
 
 /*____________ CSS3 columns  ____________*/
 

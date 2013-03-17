@@ -5,13 +5,6 @@ Print Styles for the Wrap Plugin (additional to all.css)
 /* boxes and notes with icons
 ********************************************************************/
 
-.dokuwiki .wrap_box,
-.dokuwiki .wrap_danger, .dokuwiki .wrap_warning, .dokuwiki .wrap_caution, .dokuwiki .wrap_notice, .dokuwiki .wrap_safety,
-.dokuwiki .wrap_info, .dokuwiki .wrap_important, .dokuwiki .wrap_alert, .dokuwiki .wrap_tip, .dokuwiki .wrap_help, .dokuwiki .wrap_todo, .dokuwiki .wrap_download {
-/*
-    overflow: hidden;
-*/
-}
 .dokuwiki div.wrap_box,
 .dokuwiki div.wrap_danger, .dokuwiki div.wrap_warning, .dokuwiki div.wrap_caution, .dokuwiki div.wrap_notice, .dokuwiki div.wrap_safety,
 .dokuwiki div.wrap_info, .dokuwiki div.wrap_important, .dokuwiki div.wrap_alert, .dokuwiki div.wrap_tip, .dokuwiki div.wrap_help, .dokuwiki div.wrap_todo, .dokuwiki div.wrap_download {
