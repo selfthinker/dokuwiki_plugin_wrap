@@ -169,3 +169,10 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 .dokuwiki .wrap_onlyprint {
     display: none;
 }
+
+/*____________ tabs ____________*/
+/* in addition to template styles */
+
+.dokuwiki .plugin_wrap.tabs {
+    margin-bottom: 1.4em;
+}

@@ -4,4 +4,4 @@
  *
  */
 
-$conf['noPrefix'] = '';
+$conf['noPrefix'] = 'tabs';

@@ -236,6 +236,24 @@ You can mark text as <wrap hi>highlighted</wrap>, <wrap lo>less significant</wra
 
 :!: This might look ugly in some templates and should be adjusted accordingly.
 
+==== Tabs ====
+
+You can create a row of tabs by simply wrapping a list of links in ''%%<WRAP tabs></WRAP>%%''.
+
+<WRAP tabs>
+  * [[Some page]]
+  * [[example|This page]]
+  * [[Another page]]
+</WRAP>
+
+  <WRAP tabs>
+    * [[Some page]]
+    * [[example|This page]]
+    * [[Another page]]
+  </WRAP>
+
+:!: Please note, the styling of these tabs depend on the template you are using and not on the wrap plugin. If you only see a list of links and no tabs, please make sure to add "tabs" to the ''noPrefix'' config option and that your template supports at least the 2012-01-25 "Angua" DokuWiki release.
+
 ==== Miscellaneous ====
 
 === Indent ===
