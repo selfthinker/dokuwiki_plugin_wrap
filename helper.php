@@ -23,7 +23,12 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
 
         $attr = array();
         $tokens = preg_split('/\s+/', $data, 9);
-        $noPrefix = array_map('trim', explode(",", $this->getConf('noPrefix')));
+        $noPrefix = array_map('trim', explode(',', $this->getConf('noPrefix')));
+        $restrictedClasses = $this->getConf('restrictedClasses');
+        if ($restrictedClasses) {
+            $restrictedClasses = array_map('trim', explode(',', $this->getConf('restrictedClasses')));
+        }
+        $restrictionType = $this->getConf('restrictionType');
 
         foreach ($tokens as $token) {
 
@@ -48,6 +53,16 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             //get classes
             //restrict token (class names) characters to prevent any malicious data
             if (preg_match('/[^A-Za-z0-9_-]/',$token)) continue;
+            if ($restrictedClasses) {
+                $classIsInList = in_array(trim($token), $restrictedClasses);
+                // either allow only certain classes
+                if ($restrictionType) {
+                    if (!$classIsInList) continue;
+                // or disallow certain classes
+                } else {
+                    if ($classIsInList) continue;
+                }
+            }
             $prefix = in_array($token, $noPrefix) ? '' : 'wrap_';
             $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').$prefix.$token;
         }
