@@ -46,20 +46,20 @@ You can have columns easily by adding the class ''column'' and a width, e.g.
 <WRAP column 28%>
 //**__Emulated Big Headline__**//
 
-You can emulate a big headline with italic, bold and underlined text, e.g.
-<code>//**__Emulated Big Headline__**//</code>
+You can emulate a big headline with italic, bold and underlined text, e.g. ''%%//**__Emulated Big Headline__**//%%''
 
 //**Emulated Small Headline**//
 
-A smaller headline uses no underlining, e.g.
-<code>//**Emulated Small Headline**//</code>
+A smaller headline uses no underlining, e.g. ''%%//**Emulated Small Headline**//%%''
 
-If you need text that is bold and italic, simply use it the other way around:
-<code>**//No Headline//**</code>
+If you need text that is bold and italic, simply use it the other way around: ''%%**//No Headline//**%%''
+
+=== Normal Headline ===
+:!: Note: Standard DokuWiki headlines are **experimental** and might not work as expected under all circumstances.
 </WRAP>
 
 <WRAP column 28%>
-//**__Different Floating Options__**//
+//**__Floating Options__**//
 
 Normally you would only need the class ''column'', but for more sophisticated uses (not only for columns, but for any other classes, like [[#boxes and notes]] as well) you can have several kinds of "floats":
 
@@ -76,9 +76,9 @@ Normally you would only need the class ''column'', but for more sophisticated us
 You can set any valid widths (but only on divs): ''%, px, em, ex, pt, pc, cm, mm, in'', but most of the time you'd only want either
 
 ^type^e.g.^note^
-^''%''|''30%''|makes sense in a liquid layout|
-^''px''|''420px''|makes sense if your layout has a fixed pixel width or if your container contains images with a certain width|
-^''em''|''20em''|makes sense if you like your wrap container to grow and shrink with the font size or if your layout is em-based|
+^''%''|''30%''|makes sense in most cases|
+^''px''|''420px''|makes sense if your container contains images with a certain width|
+^''em''|''20em''|makes sense if you like your wrap container to grow and shrink with the font size|
 
 A **table** inside a column or box will always be **100% wide**. This makes positioning and sizing tables possible.
 
@@ -97,6 +97,26 @@ You **can** use the same options with spans (as each element that floats is auto
 :!: Attention: Widths can cause problems and will often look different and break in some browsers. If you're not a web developer, you might not understand any problems regarding the [[http://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug|box model]]. Just try to test your columns in all major browsers and make your widths smaller than you initially think they should be.
 
 All of those options will also work in the [[#boxes and notes]] wraps (see below).
+
+=== Automatically sized and responsive columns ===
+
+With certain **width keywords** you can fit your columns automatically to fill the available horizontal space. Those columns will also react to the screen size, so will be responsive and wrap underneath each other on mobile devices.
+
+<WRAP half column>
+There are three width keywords. These should not be combined with any other width.
+
+  * ''half'' fits two columns in a row
+  * ''third'' fits three columns in a row
+  * ''quarter'' fits four columns in a row
+</WRAP>
+
+<WRAP half column>
+This one uses
+  <WRAP half column>
+But you can also combine that with any of the boxes and notes, e.g. ''%%<WRAP half round box column>%%''.
+</WRAP>
+
+:!: Attention: This feature is **experimental** and might not always work as expected. It also doesn't work in IE8 and below.
 
 === Multi-columns ===
 

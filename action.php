@@ -34,7 +34,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                     'type'   => 'format',
                     'title'  => $this->getLang('column'),
                     'icon'   => '../../plugins/wrap/images/toolbar/column.png',
-                    'open'   => '<WRAP column 30%>\n',
+                    'open'   => '<WRAP third column>\n',
                     'close'  => '\n</WRAP>\n',
                 ),
                 array(
