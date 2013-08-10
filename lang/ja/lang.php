@@ -1,4 +1,10 @@
 <?php
+/**
+ * Japanese language file of Wrap plugin
+ *
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author     Satoshi Sahara <sahara.satoshi@gmail.com>
+ */
 $lang['picker']    = 'Wrap プラグイン';
 
 $lang['column']    = '多段組み';
@@ -14,5 +20,5 @@ $lang['todo']      = 'TODO枠';
 $lang['clear']     = '初期化';
 
 $lang['em']        = '特に強調';
-$lang['hi']        = '強調する';
-$lang['lo']        = '強調しない';
+$lang['hi']        = 'ハイライト表示';
+$lang['lo']        = '非強調（薄色表示）';
