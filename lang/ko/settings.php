@@ -5,8 +5,8 @@
  * 
  * @author Myeongjin <aranet100@gmail.com>
  */
-$lang['noPrefix']              = '어느 (쉼표로 구분된) 클래스 이름은 "wrap_" 접두어에서 제외되어야 합니까?';
+$lang['noPrefix']              = '어떤 (쉼표로 구분된) 클래스 이름은 "wrap_" 접두어가 필요가 없습니까?';
 $lang['restrictedClasses']     = '다음 (쉼표로 구분된) 클래스에 플러그인의 사용을 제한';
-$lang['restrictionType']       = '위의 클래스가 포함되거나 제외되어야하는 경우 지정할 제한 유형';
-$lang['restrictionType_o_0']   = '위의 클래스을 제외하고 모든 클래스 허용';
-$lang['restrictionType_o_1']   = '위의 클래스와 다른 클래스만 제한';
+$lang['restrictionType']       = '제한 유형은 위의 클래스가 포함되거나 제외되어야 하는지 지정';
+$lang['restrictionType_o_0']   = '위의 클래스를 제외하고 모든 클래스를 허용';
+$lang['restrictionType_o_1']   = '위의 클래스만 허용하고 다른 클래스를 제한';
