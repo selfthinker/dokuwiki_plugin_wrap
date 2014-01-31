@@ -19,7 +19,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
      *
      * @author Andreas Gohr <andi@splitbrain.org>
      */
-    function register(&$controller){
+    function register(Doku_Event_Handler $controller){
         $controller->register_hook('TOOLBAR_DEFINE', 'AFTER', $this, 'handle_toolbar', array ());
         $controller->register_hook('HTML_SECEDIT_BUTTON', 'BEFORE', $this, 'handle_secedit_button');
     }
