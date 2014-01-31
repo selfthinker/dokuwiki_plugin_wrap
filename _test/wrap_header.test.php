@@ -23,7 +23,7 @@ class plugin_wrap_header_test extends DokuWikiTest {
                 array(
                     'plugin',
                     array(
-                        'wrap_div',
+                        'wrap_divwrap',
                         array(
                             DOKU_LEXER_ENTER,
                             '<wrap'
@@ -72,7 +72,7 @@ class plugin_wrap_header_test extends DokuWikiTest {
                 array(
                     'plugin',
                     array(
-                        'wrap_div',
+                        'wrap_divwrap',
                         array(
                             DOKU_LEXER_EXIT,
                             ''
