@@ -13,6 +13,9 @@ require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
 
+    protected $entry_pattern = '<div.*?>(?=.*?</div>)';
+    protected $exit_pattern  = '</div>';
+
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
     function getPType(){ return 'stack';}
@@ -27,15 +30,11 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
      * Connect pattern to lexer
      */
     function connectTo($mode) {
-        $this->Lexer->addEntryPattern('<WRAP.*?>(?=.*?</WRAP>)',$mode,'plugin_wrap_div');
-        $this->Lexer->addEntryPattern('<block.*?>(?=.*?</block>)',$mode,'plugin_wrap_div');
-        $this->Lexer->addEntryPattern('<div.*?>(?=.*?</div>)',$mode,'plugin_wrap_div');
+        $this->Lexer->addEntryPattern($this->entry_pattern,$mode,'plugin_wrap_'.$this->getPluginComponent());
     }
 
     function postConnect() {
-        $this->Lexer->addExitPattern('</WRAP>', 'plugin_wrap_div');
-        $this->Lexer->addExitPattern('</block>', 'plugin_wrap_div');
-        $this->Lexer->addExitPattern('</div>', 'plugin_wrap_div');
+        $this->Lexer->addExitPattern($this->exit_pattern, 'plugin_wrap_'.$this->getPluginComponent());
     }
 
     /**

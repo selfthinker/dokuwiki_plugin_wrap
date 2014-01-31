@@ -13,6 +13,9 @@ require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
 
+    protected $entry_pattern = '<span.*?>(?=.*?</span>)';
+    protected $exit_pattern  = '</span>';
+
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('formatting', 'substition', 'disabled'); }
     function getPType(){ return 'normal';}
@@ -27,15 +30,11 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
      * Connect pattern to lexer
      */
     function connectTo($mode) {
-        $this->Lexer->addEntryPattern('<wrap.*?>(?=.*?</wrap>)',$mode,'plugin_wrap_span');
-        $this->Lexer->addEntryPattern('<inline.*?>(?=.*?</inline>)',$mode,'plugin_wrap_span');
-        $this->Lexer->addEntryPattern('<span.*?>(?=.*?</span>)',$mode,'plugin_wrap_span');
+        $this->Lexer->addEntryPattern($this->entry_pattern,$mode,'plugin_wrap_'.$this->getPluginComponent());
     }
 
     function postConnect() {
-        $this->Lexer->addExitPattern('</wrap>', 'plugin_wrap_span');
-        $this->Lexer->addExitPattern('</inline>', 'plugin_wrap_span');
-        $this->Lexer->addExitPattern('</span>', 'plugin_wrap_span');
+        $this->Lexer->addExitPattern($this->exit_pattern, 'plugin_wrap_'.$this->getPluginComponent());
     }
 
     /**
