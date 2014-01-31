@@ -1,6 +1,9 @@
 <?php
 /**
  * Test if headers inside the wrap syntax are correctly processed
+ *
+ * @group plugin_wrap
+ * @group plugins
  */
 class plugin_wrap_header_test extends DokuWikiTest {
     public function setUp() {
