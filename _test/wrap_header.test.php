@@ -90,4 +90,154 @@ class plugin_wrap_header_test extends DokuWikiTest {
             );
         $this->assertEquals($expected, $instructions);
     }
+
+    public function test_blocknesting() {
+        $instructions = p_get_instructions("<WRAP>\nFoo\n\n</div> </block> Bar\n</WRAP>");
+        $expected =
+            array(
+                array(
+                    'document_start',
+                    array(),
+                    0
+                ),
+                array(
+                    'plugin',
+                    array(
+                        'wrap_divwrap',
+                        array(
+                            DOKU_LEXER_ENTER,
+                            '<wrap'
+                        ),
+                        DOKU_LEXER_ENTER,
+                        '<WRAP>'
+                    ),
+                    1
+                ),
+                array(
+                    'p_open',
+                    array(
+                    ),
+                    1
+                ),
+                array(
+                    'cdata',
+                    array(
+                        'Foo'
+                    ),
+                    8
+                ),
+                array(
+                    'p_close',
+                    array(),
+                    11
+                ),
+                array(
+                    'p_open',
+                    array(
+                    ),
+                    11
+                ),
+                array(
+                    'cdata',
+                    array(
+                        '</div> </block> Bar'
+                    ),
+                    13
+                ),
+                array(
+                    'p_close',
+                    array(),
+                    33
+                ),
+                array(
+                    'plugin',
+                    array(
+                        'wrap_divwrap',
+                        array(
+                            DOKU_LEXER_EXIT,
+                            ''
+                        ),
+                        DOKU_LEXER_EXIT,
+                        '</WRAP>'
+                    ),
+                    33
+                ),
+                array(
+                    'document_end',
+                    array(),
+                    33
+                )
+            );
+        $this->assertEquals($expected, $instructions);
+    }
+
+    public function test_inlinenesting() {
+        $instructions = p_get_instructions("<wrap>Foo </span> </inline> Bar</wrap>");
+        $expected =
+            array(
+                array(
+                    'document_start',
+                    array(),
+                    0
+                ),
+                array(
+                    'p_open',
+                    array(
+                    ),
+                    0
+                ),
+                array(
+                    'plugin',
+                    array(
+                        'wrap_spanwrap',
+                        array(
+                            DOKU_LEXER_ENTER,
+                            '<wrap'
+                        ),
+                        DOKU_LEXER_ENTER,
+                        '<wrap>'
+                    ),
+                    1
+                ),
+                array(
+                    'cdata',
+                    array(
+                        'Foo </span> </inline> Bar'
+                    ),
+                    7
+                ),
+                array(
+                    'plugin',
+                    array(
+                        'wrap_spanwrap',
+                        array(
+                            DOKU_LEXER_EXIT,
+                            ''
+                        ),
+                        DOKU_LEXER_EXIT,
+                        '</wrap>'
+                    ),
+                    32
+                ),
+                array(
+                    'cdata',
+                    array(
+                        ''
+                    ),
+                    39
+                ),
+                array(
+                    'p_close',
+                    array(),
+                    39
+                ),
+                array(
+                    'document_end',
+                    array(),
+                    39
+                )
+            );
+        $this->assertEquals($expected, $instructions);
+    }
+
 }
