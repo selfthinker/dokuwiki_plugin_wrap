@@ -11,7 +11,7 @@ class plugin_wrap_test extends DokuWikiTest {
         parent::setUp();
     }
 
-    public function test_instructions() {
+    public function test_nestedheading() {
         $instructions = p_get_instructions("<WRAP>\n==== Heading ====\n\nSome text\n</WRAP>");
         $expected =
             array(
