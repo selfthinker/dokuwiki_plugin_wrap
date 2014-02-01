@@ -20,13 +20,13 @@ class syntax_plugin_wrap_closesection extends DokuWiki_Syntax_Plugin {
     /**
      * Dummy handler, this syntax part has no syntax but is directly added to the instructions by the div syntax
      */
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler &$handler){
     }
 
     /**
      * Create output
      */
-    function render($mode, &$renderer, $indata) {
+    function render($mode, Doku_Renderer &$renderer, $indata) {
         if($mode == 'xhtml'){
             /** @var Doku_Renderer_xhtml $renderer */
             $renderer->finishSectionEdit();
