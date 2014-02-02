@@ -2,6 +2,13 @@
 Screen and Print Styles for the Wrap Plugin
 ********************************************************************/
 
+/* resetting the box model to something more sane makes life a whole lot easier */
+.dokuwiki .plugin_wrap {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 /* tables in columns and boxes should span the whole width */
 .dokuwiki .plugin_wrap table {
     width: 100%;
@@ -110,14 +117,6 @@ Screen and Print Styles for the Wrap Plugin
 
 /* widths
 ********************************************************************/
-
-.dokuwiki .wrap_half,
-.dokuwiki .wrap_third,
-.dokuwiki .wrap_quarter {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 .dokuwiki .wrap_half {
     width: 48%;

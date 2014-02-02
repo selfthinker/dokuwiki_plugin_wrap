@@ -93,7 +93,14 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             elseif($addClass)  $out .= ' class="'.$addClass.'"';
             if($attr['id'])    $out .= ' id="'.hsc($attr['id']).'"';
             // width on spans normally doesn't make much sense, but in the case of floating elements it could be used
-            if($attr['width']) $out .= ' style="width:'.hsc($attr['width']).';"';
+            if($attr['width']) {
+                if (strpos($attr['width'],'%') !== false) {
+                    $out .= ' style="width: '.hsc($attr['width']).';"';
+                } else {
+                    // anything but % should be 100% when the screen gets smaller
+                    $out .= ' style="width: '.hsc($attr['width']).'; max-width: 100%;"';
+                }
+            }
             // only write lang if it's a language in lang2dir.conf
             if($attr['dir'])   $out .= ' lang="'.$attr['lang'].'" xml:lang="'.$attr['lang'].'" dir="'.$attr['dir'].'"';
         }

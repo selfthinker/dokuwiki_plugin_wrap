@@ -159,8 +159,8 @@ Center aligned text ...
 
 ==== Boxes and Notes ====
 
-<WRAP round box 570px center>
-//**__round box 570px center__**//
+<WRAP round box 500px center>
+//**__round box 500px center__**//
 
   * ''box'' creates a box around the container and uses the colours from the template's ''style.ini'' as default colours (''%%__background_alt__%%'' and ''%%__text__%%'')
   * any of the classes ''info'', ''tip'', ''important'', ''alert'', ''help'', ''download'', ''todo'' will add a special note container with a corresponding icon
@@ -169,43 +169,43 @@ Center aligned text ...
 </WRAP>
 
 
-<WRAP info 220px left>
+<WRAP info 300px left>
 //**Info**//
   <WRAP info></WRAP>
 </WRAP>
 
 
-<WRAP tip 220px left>
+<WRAP tip 300px left>
 //**Tip**//
   <WRAP tip></WRAP>
 </WRAP>
 
 
-<WRAP important 220px left>
+<WRAP important 300px left>
 //**Important**//
   <WRAP important></WRAP>
 </WRAP>
 
 
-<WRAP alert 220px left>
+<WRAP alert 300px left>
 //**Alert**//
   <WRAP alert></WRAP>
 </WRAP>
 
 
-<WRAP round help 220px left>
+<WRAP round help 300px left>
 //**Help**//
   <WRAP round help></WRAP>
 </WRAP>
 
 
-<WRAP download 220px left>
+<WRAP download 300px left>
 //**Download**//
   <WRAP download></WRAP>
 </WRAP>
 
 
-<WRAP todo 220px left>
+<WRAP todo 300px left>
 //**Todo**//
   <WRAP todo></WRAP>
 </WRAP>
@@ -216,27 +216,27 @@ Center aligned text ...
 
 **Safety Notes:**
 
-<WRAP danger 27% left>
+<WRAP danger 30% left>
 //**Danger**//
   <WRAP danger></WRAP>
 </WRAP>
 
-<WRAP warning 27% left>
+<WRAP warning 30% left>
 //**Warning**//
   <WRAP warning></WRAP>
 </WRAP>
 
-<WRAP caution 27% left>
+<WRAP caution 30% left>
 //**Caution**//
   <WRAP caution></WRAP>
 </WRAP>
 
-<WRAP round notice 27% left>
+<WRAP round notice 30% left>
 //**Notice**//
   <WRAP round notice></WRAP>
 </WRAP>
 
-<WRAP round safety 27% left>
+<WRAP round safety 30% left>
 //**Safety**//
   <WRAP round safety></WRAP>
 </WRAP>
