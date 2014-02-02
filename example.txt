@@ -46,7 +46,7 @@ You can have columns easily by adding the class ''column'' and a width, e.g.
 The example below uses the following structure:
 
 <code>
-<WRAP>
+<WRAP group>
 
 <WRAP third column>...content...</WRAP>
 <WRAP third column>...content...</WRAP>
@@ -56,8 +56,8 @@ The example below uses the following structure:
 </code>
 
 
-<WRAP>
-<WRAP column third>
+<WRAP group>
+<WRAP third column>
 === Floating Options ===
 
 Normally you would only need the class ''column'', but for more sophisticated uses (not only for columns, but for any other classes, like [[#boxes and notes]] as well) you can have several kinds of "floats":
@@ -71,7 +71,7 @@ A **table** inside a column or box will always be **100% wide**. This makes posi
 
 </WRAP>
 
-<WRAP column third>
+<WRAP third column>
 === Widths ===
 
 You can set any valid widths (but only on divs): ''%, px, em, ex, pt, pc, cm, mm, in'', but most of the time you'd only want either
@@ -82,7 +82,7 @@ You can set any valid widths (but only on divs): ''%, px, em, ex, pt, pc, cm, mm
 ^''em''|''20em''|makes sense if you like your wrap container to grow and shrink with the font size|
 
 </WRAP>
-<WRAP column third>
+<WRAP third column>
 === Width Keywords ===
 
 With certain width keywords you can fit your columns automatically to fill the available horizontal space. Those columns will also react to the screen size, so will be responsive and wrap underneath each other on mobile devices.
@@ -93,7 +93,7 @@ There are three width keywords. These should not be combined with any other widt
   * **''third''** fits three columns in a row
   * **''quarter''** fits four columns in a row
 
-:!: Attention: In order to work properly, wraps with width keywords need an **additional (empty) ''%%<WRAP>%%'' around a set** of them.
+:!: Attention: In order to work properly, wraps with width keywords need an **additional ''%%<WRAP group>%%'' around a set** of them.
 
 </WRAP>
 

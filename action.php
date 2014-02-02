@@ -37,8 +37,8 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                     'type'   => 'format',
                     'title'  => $this->getLang('column'),
                     'icon'   => '../../plugins/wrap/images/toolbar/column.png',
-                    'open'   => '<'.$syntaxDiv.' third column>\n',
-                    'close'  => '\n</'.$syntaxDiv.'>\n',
+                    'open'   => '<'.$syntaxDiv.' group>\n<'.$syntaxDiv.' half column>\n',
+                    'close'  => '\n</'.$syntaxDiv.'>\n\n<'.$syntaxDiv.' half column>\n\n</'.$syntaxDiv.'>\n</'.$syntaxDiv.'>\n',
                 ),
                 array(
                     'type'   => 'format',

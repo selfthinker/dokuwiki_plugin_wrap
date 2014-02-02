@@ -2,13 +2,13 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Laynee <seedfloyd@gmail.com>
  * @author schplurtz <Schplurtz@laposte.net>
  * @author Schplurtz le Déboulonné <schplurtz@laposte.net>
  */
 $lang['picker']                = 'Extension Wrap';
-$lang['column']                = 'colonne';
+$lang['column']                = 'colonnes';
 $lang['box']                   = 'bloc simple';
 $lang['info']                  = 'bloc information';
 $lang['tip']                   = 'bloc astuce';

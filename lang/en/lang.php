@@ -2,7 +2,7 @@
 
 $lang['picker']    = 'Wrap Plugin';
 
-$lang['column']    = 'column';
+$lang['column']    = 'columns';
 $lang['box']       = 'simple centered box';
 $lang['info']      = 'info box';
 $lang['tip']       = 'tip box';
