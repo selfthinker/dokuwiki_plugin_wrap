@@ -43,23 +43,22 @@ if the according wrap isn't floated as well.
 You can have columns easily by adding the class ''column'' and a width, e.g.
   <WRAP column 30%>...content...</WRAP>
 
-<WRAP column 28%>
-//**__Emulated Big Headline__**//
+The example below uses the following structure:
 
-You can emulate a big headline with italic, bold and underlined text, e.g. ''%%//**__Emulated Big Headline__**//%%''
+<code>
+<WRAP>
 
-//**Emulated Small Headline**//
+<WRAP third column>...content...</WRAP>
+<WRAP third column>...content...</WRAP>
+<WRAP third column>...content...</WRAP>
 
-A smaller headline uses no underlining, e.g. ''%%//**Emulated Small Headline**//%%''
-
-If you need text that is bold and italic, simply use it the other way around: ''%%**//No Headline//**%%''
-
-=== Normal Headline ===
-:!: Note: Standard DokuWiki headlines are **experimental** and might not work as expected under all circumstances.
 </WRAP>
+</code>
 
-<WRAP column 28%>
-//**__Floating Options__**//
+
+<WRAP>
+<WRAP column third>
+=== Floating Options ===
 
 Normally you would only need the class ''column'', but for more sophisticated uses (not only for columns, but for any other classes, like [[#boxes and notes]] as well) you can have several kinds of "floats":
 
@@ -68,10 +67,12 @@ Normally you would only need the class ''column'', but for more sophisticated us
   * **''right''** will let the wrap float right
   * **''center''** will position the wrap in the horizontal center of the page
 
+A **table** inside a column or box will always be **100% wide**. This makes positioning and sizing tables possible.
+
 </WRAP>
 
-<WRAP column 28%>
-//**__Widths__**//
+<WRAP column third>
+=== Widths ===
 
 You can set any valid widths (but only on divs): ''%, px, em, ex, pt, pc, cm, mm, in'', but most of the time you'd only want either
 
@@ -80,51 +81,46 @@ You can set any valid widths (but only on divs): ''%, px, em, ex, pt, pc, cm, mm
 ^''px''|''420px''|makes sense if your container contains images with a certain width|
 ^''em''|''20em''|makes sense if you like your wrap container to grow and shrink with the font size|
 
-A **table** inside a column or box will always be **100% wide**. This makes positioning and sizing tables possible.
+</WRAP>
+<WRAP column third>
+=== Width Keywords ===
+
+With certain width keywords you can fit your columns automatically to fill the available horizontal space. Those columns will also react to the screen size, so will be responsive and wrap underneath each other on mobile devices.
+
+There are three width keywords. These should not be combined with any other width.
+
+  * **''half''** fits two columns in a row
+  * **''third''** fits three columns in a row
+  * **''quarter''** fits four columns in a row
+
+:!: Attention: In order to work properly, wraps with width keywords need an **additional (empty) ''%%<WRAP>%%'' around a set** of them.
 
 </WRAP>
 
-<wrap em>After using any of the float classes, you might come across something like this, where the following text protrudes into the space where only the floating containers should be ...</wrap>
+</WRAP>
 
-<WRAP clear></WRAP>
+You can use the same options with spans (as each element that floats is automatically a block level element), but it probably doesn't make too much sense. :!: Widths on spans normally do not work (by design), but can make sense, when it is floating.
 
-... to prevent that, you should simply add
-  <WRAP clear></WRAP>
-after your last column.
-
-You **can** use the same options with spans (as each element that floats is automatically a block level element), but it probably doesn't make too much sense. :!: Widths on spans normally do not work (by design), but can make sense, when it is floating.
-
-:!: Attention: Widths can cause problems and will often look different and break in some browsers. If you're not a web developer, you might not understand any problems regarding the [[http://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug|box model]]. Just try to test your columns in all major browsers and make your widths smaller than you initially think they should be.
+:!: Attention: What is the difference between widths and width keywords and when is it best to use which? **Widths** can cause problems and will never fully add up, therefore will break the layout under some circumstances. (See [[http://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug|box model]] for a technical explanation.) So, getting widths right will need some fiddling around and testing in various browsers. **Width keywords** on the other hand fit automatically and work better on mobile devices. But the drawback is that they need an extra wrap around them and don't work properly in older browsers (IE8 and under).
 
 All of those options will also work in the [[#boxes and notes]] wraps (see below).
 
-=== Automatically sized and responsive columns ===
+=== Old Emulated Headlines ===
 
-With certain **width keywords** you can fit your columns automatically to fill the available horizontal space. Those columns will also react to the screen size, so will be responsive and wrap underneath each other on mobile devices.
+Every ''%%//**__text like this__**//%%'' or ''%%//**like that**//%%'' will create an "emulated headline" when used within a box or a column. Now that headlines within wraps are supported, they are not needed anymore, but are still supported for backwards-compatibility.
 
-<WRAP half column>
-There are three width keywords. These should not be combined with any other width.
+If you need text that is bold and italic, simply use it the other way around: ''%%**//No Headline//**%%''
 
-  * ''half'' fits two columns in a row
-  * ''third'' fits three columns in a row
-  * ''quarter'' fits four columns in a row
-</WRAP>
-
-<WRAP half column>
-This one uses
-  <WRAP half column>
-But you can also combine that with any of the boxes and notes, e.g. ''%%<WRAP half round box column>%%''.
-</WRAP>
-
-:!: Attention: This feature is **experimental** and might not always work as expected. It also doesn't work in IE8 and below.
 
 === Multi-columns ===
 
 <WRAP col3>
-For modern browsers (Firefox, Chrome and Safari) you can use multi-columns. Just use **''%%col2%%''** for 2 columns, **''%%col3%%''** for 3 columns, **''%%col4%%''** for 4 columns and **''%%col5%%''** for 5 columns.
+For modern browsers (Firefox, Chrome and Safari, IE10+) you can use multi-columns. Just use **''%%col2%%''** for 2 columns, **''%%col3%%''** for 3 columns, **''%%col4%%''** for 4 columns and **''%%col5%%''** for 5 columns.
 
 :!: Note: Multi-columns don't make sense for spans.
 </WRAP>
+
+Don't use this for bigger columns containing more than just text. Use the [[#columns and floats]] mentioned above instead.
 
 
 ==== Alignments ====
@@ -160,53 +156,53 @@ Center aligned text ...
 ==== Boxes and Notes ====
 
 <WRAP round box 500px center>
-//**__round box 500px center__**//
+=== round box 500px center ===
 
   * ''box'' creates a box around the container and uses the colours from the template's ''style.ini'' as default colours (''%%__background_alt__%%'' and ''%%__text__%%'')
   * any of the classes ''info'', ''tip'', ''important'', ''alert'', ''help'', ''download'', ''todo'' will add a special note container with a corresponding icon
   * the classes ''danger'', ''warning'', ''caution'', ''notice'', ''safety'' use safety colours (and no icons)
-  * ''round'' can be added to anything with a background colour or a border and will only work in modern browsers (no Internet Explorer)
+  * ''round'' can be added to anything with a background colour or a border and will only work in modern browsers (no IE8 and under)
 </WRAP>
 
 
 <WRAP info 300px left>
-//**Info**//
+=== Info ===
   <WRAP info></WRAP>
 </WRAP>
 
 
 <WRAP tip 300px left>
-//**Tip**//
+=== Tip ===
   <WRAP tip></WRAP>
 </WRAP>
 
 
 <WRAP important 300px left>
-//**Important**//
+=== Important ===
   <WRAP important></WRAP>
 </WRAP>
 
 
 <WRAP alert 300px left>
-//**Alert**//
+=== Alert ===
   <WRAP alert></WRAP>
 </WRAP>
 
 
 <WRAP round help 300px left>
-//**Help**//
+=== Help ===
   <WRAP round help></WRAP>
 </WRAP>
 
 
 <WRAP download 300px left>
-//**Download**//
+=== Download ===
   <WRAP download></WRAP>
 </WRAP>
 
 
 <WRAP todo 300px left>
-//**Todo**//
+=== Todo ===
   <WRAP todo></WRAP>
 </WRAP>
 
@@ -217,27 +213,27 @@ Center aligned text ...
 **Safety Notes:**
 
 <WRAP danger 30% left>
-//**Danger**//
+=== Danger ===
   <WRAP danger></WRAP>
 </WRAP>
 
 <WRAP warning 30% left>
-//**Warning**//
+=== Warning ===
   <WRAP warning></WRAP>
 </WRAP>
 
 <WRAP caution 30% left>
-//**Caution**//
+=== Caution ===
   <WRAP caution></WRAP>
 </WRAP>
 
 <WRAP round notice 30% left>
-//**Notice**//
+=== Notice ===
   <WRAP round notice></WRAP>
 </WRAP>
 
 <WRAP round safety 30% left>
-//**Safety**//
+=== Safety ===
   <WRAP round safety></WRAP>
 </WRAP>
 
@@ -275,6 +271,12 @@ You can create a row of tabs by simply wrapping a list of links in ''%%<WRAP tab
 :!: Please note, the styling of these tabs depend on the template you are using and not on the wrap plugin. If you only see a list of links and no tabs, please make sure to add "tabs" to the ''noPrefix'' config option and that your template supports at least the 2012-01-25 "Angua" DokuWiki release.
 
 ==== Miscellaneous ====
+
+=== Clear float ===
+
+After using any of the float classes, you might come across following text protruding into the space where only the floating containers should be. To prevent that, you should simply add this after your last column:
+
+  <WRAP clear></WRAP>
 
 === Indent ===
 
@@ -352,7 +354,7 @@ This also has no effect on the browser screen. It will try to [[http://reference
 You can combine and nest all classes and types of boxes, e.g.
 
 <WRAP box 350px right :en>
-//**__Outer box floats right__**//
+===Outer box floats right ===
 
 <WRAP 165px left>
 Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with a nested <wrap notice>__notice__</wrap> inside</wrap>.
@@ -371,7 +373,7 @@ Round tip box underneath, after a ''clear''.
 
 <code>
 <WRAP box 350px right :en>
-//**__Outer box floats right__**//
+=== Outer box floats right ===
 
 <WRAP 165px left>
 Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__ghlighted with a nested <wrap notice>__notice__</wrap> inside</wrap>.
