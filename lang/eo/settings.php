@@ -10,3 +10,5 @@ $lang['restrictedClasses']     = 'limigi la uzon de la kromaĵo al tiuj klasoj (
 $lang['restrictionType']       = 'tipo de limigo (ĉu la supre menciitaj klasoj estu inkludataj aŭ ekskludataj?)';
 $lang['restrictionType_o_0']   = 'permesi ĉiujn klasojn krom la menciitaj';
 $lang['restrictionType_o_1']   = 'limigi al nur tiuj grupoj, neniuj aliaj';
+$lang['syntaxDiv']             = 'Kiun sintakson uzi por blok-volvoj en la ilaro-elektilo?';
+$lang['syntaxSpan']            = 'Kiun sintakson uzi por enliniaj volvoj en la ilaro-elektilo?';
