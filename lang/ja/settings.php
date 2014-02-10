@@ -10,3 +10,5 @@ $lang['restrictedClasses'] = '有効性をチェックするクラス名（カ�
 $lang['restrictionType'] = '指定したクラスの扱い方';
   $lang['restrictionType_o_0'] = '指定クラスを無効とし、他は有効とする';
   $lang['restrictionType_o_1'] = '指定クラスのみを有効とする';
+$lang['syntaxDiv'] = 'ツールバー使用時：ブロック型構文に使用するタグ名';
+$lang['syntaxSpan'] = 'ツールバー使用時：インライン型構文に使用するタグ名';
