@@ -13,13 +13,15 @@ require_once DOKU_PLUGIN.'syntax.php';
 
 class syntax_plugin_wrap_clearfloat extends DokuWiki_Syntax_Plugin {
 
+    protected $special_pattern  = '<(?:WRAP|block|div)\b(?:\s+clear)\s*/>';
+
     function getType()  { return 'formatting';}
     function getPType() { return 'stack'; }
     function getSort()  { return 195; }
     function connectTo($mode) {
-      $this->Lexer->addSpecialPattern('<WRAP clear *?\/>',$mode,'plugin_wrap_'.$this->getPluginComponent());
-      $this->Lexer->addSpecialPattern('<block clear *?\/>',$mode,'plugin_wrap_'.$this->getPluginComponent());
-      $this->Lexer->addSpecialPattern('<div clear *?\/>',$mode,'plugin_wrap_'.$this->getPluginComponent());
+        $this->Lexer->addSpecialPattern($this->special_pattern,$mode,
+            implode('_', array('plugin',$this->getPluginName(),$this->getPluginComponent(),))
+        );
     }
 
  /**
