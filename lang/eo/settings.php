@@ -10,3 +10,5 @@ $lang['restrictedClasses']     = 'limigi la uzon de la kromaĵo al tiuj klasoj (
 $lang['restrictionType']       = 'tipo de limigo (ĉu la supre menciitaj klasoj estu inkludataj aŭ ekskludataj?)';
 $lang['restrictionType_o_0']   = 'permesi ĉiujn klasojn krom la menciitaj';
 $lang['restrictionType_o_1']   = 'limigi al nur tiuj grupoj, neniuj aliaj';
+$lang['syntaxDiv']             = 'Kiun sintakson uzi en la ilaro por alineaj skatoloj?';
+$lang['syntaxSpan']            = 'Kiun sintakson uzi en la ilaro por enliniaj skatoloj?';
