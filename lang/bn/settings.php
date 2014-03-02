@@ -4,7 +4,6 @@
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * 
  * @author Ninetailz <ninetailz1125@gmail.com>
- * @author ninetailz <ninetailz1125@gmail.com>
  */
 $lang['noPrefix']              = 'যা (কমা দিয়ে পৃথক) শ্রেণীর নাম "wrap_" সঙ্গে অগ্রে যুক্ত হওয়া থেকে বাদ দেওয়া হবে?';
 $lang['restrictedClasses']     = 'এইসব করতে প্লাগিন ব্যবহার সীমিত (কমা দিয়ে পৃথক করা) ক্লাস';
