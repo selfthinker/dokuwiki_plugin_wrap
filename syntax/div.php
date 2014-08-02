@@ -40,7 +40,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, Doku_Handler &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
         global $conf;
         switch ($state) {
             case DOKU_LEXER_ENTER:
@@ -78,7 +78,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($mode, Doku_Renderer &$renderer, $indata) {
+    function render($mode, Doku_Renderer $renderer, $indata) {
 
         if (empty($indata)) return false;
         list($state, $data) = $indata;
