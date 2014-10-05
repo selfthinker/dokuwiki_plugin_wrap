@@ -168,6 +168,10 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                     $attr['odt_style'] = $token;
                 }
             }
+
+            if ( $token == 'left' || $token == 'center' || $token == 'right' ) {
+                $attr['odt_align'] = $token;
+            }
         }
 
         //get dir
@@ -242,6 +246,9 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                     $out .= ' odt_fo_style="'.$this->odt_styles['default']['style'].'"';
                 if ( $this->odt_styles['default']['picture'] != NULL )
                     $out .= ' odt_pic="'.$this->odt_styles['default']['picture'].'"';
+            }
+            if($attr['odt_style']) {
+                $out .= ' odt_align="'.$attr['odt_align'].'"';
             }
         }
 

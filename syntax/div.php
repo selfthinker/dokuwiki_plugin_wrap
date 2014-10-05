@@ -173,19 +173,9 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                             $round=true;
                             continue;
                         }
-                        if ( strpos($value, '_left') !== false )
+                        if ( substr($value,0,10) == 'odt_align=' )
                         {
-                            $horiz_pos='left';
-                            continue;
-                        }
-                        if ( strpos($value, '_center') !== false )
-                        {
-                            $horiz_pos='center';
-                            continue;
-                        }
-                        if ( strpos($value, '_right') !== false )
-                        {
-                            $horiz_pos='right';
+                            $horiz_pos = trim(substr($value,11), '"');
                             continue;
                         }
                         if ( substr($value,0,8) == 'odt_pic=' )
