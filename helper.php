@@ -178,6 +178,17 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             if ( $token == 'round' ) {
                 $attr['odt_round'] = 'true';
             }
+
+            // get odt display setting
+            if ( $token == 'hide' ) {
+                $attr['odt_display'] = 'none';
+            }
+            if ( $token == 'noprint' ) {
+                $attr['odt_display'] = 'screen';
+            }
+            if ( $token == 'onlyprint' ) {
+                $attr['odt_display'] = 'printer';
+            }
         }
 
         //get dir
@@ -258,6 +269,9 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             }
             if($attr['odt_round']) {
                 $out .= ' odt_round="'.$attr['odt_round'].'"';
+            }
+            if($attr['odt_display']) {
+                $out .= ' odt_display="'.$attr['odt_display'].'"';
             }
         }
 

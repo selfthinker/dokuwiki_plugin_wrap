@@ -132,6 +132,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $odt_style='NOT FOUND!!!';
                     $odt_bg='#FFFFFF';
                     $odt_fo='#000000';
+                    $odt_display=NULL;
                     $picture=NULL;
                     $class=NULL;
                     $this->odt_type=NULL;
@@ -178,6 +179,11 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                             $horiz_pos = trim(substr($value,11), '"');
                             continue;
                         }
+                        if ( substr($value,0,12) == 'odt_display=' )
+                        {
+                            $odt_display = trim(substr($value,13), '"');
+                            continue;
+                        }
                         if ( substr($value,0,8) == 'odt_pic=' )
                         {
                             $picture = trim(substr($value,9), '"');
@@ -186,7 +192,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     }                
 
                     if ( $this->odt_type == 'container' || $this->odt_type == 'mark' ) {
-                        $this->_odtContainerOpen ($renderer, $odt_style, $picture, $width, $horiz_pos, $odt_bg, $odt_fo, $round);
+                        $this->_odtContainerOpen ($renderer, $odt_style, $picture, $width, $horiz_pos, $odt_bg, $odt_fo, $round, $odt_display);
                     }
                     if ( $this->odt_type == 'column' ) {
                         // FIXME columns could be implemented using tables.
@@ -218,7 +224,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         return false;
     }
 
-    function _odtContainerOpen (Doku_Renderer &$renderer, $odt_style, $picture, $width, $horiz_pos, $odt_bg, $odt_fo, $round) {
+    function _odtContainerOpen (Doku_Renderer &$renderer, $odt_style, $picture, $width, $horiz_pos, $odt_bg, $odt_fo, $round, $display) {
         if ( $picture != NULL )
         {
             $picture=DOKU_PLUGIN.'wrap/images/note/48/'.$picture;
@@ -263,7 +269,11 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
 
         // Group the frame so that they are stacked one on each other.
         $renderer->doc .= '<text:p>';
-        $renderer->doc .= '<draw:g>';
+        if ( $display == NULL ) {
+            $renderer->doc .= '<draw:g>';
+        } else {
+            $renderer->doc .= '<draw:g draw:display="' . $display . '">';
+        }
 
         // Draw a frame with the image in it, if required.
         // FIXME: the image will not be centered vertically.
