@@ -168,9 +168,9 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                             $odt_fo = trim(substr($value,8), '"');
                             continue;
                         }
-                        if ( strpos($value, '_round') !== false )
+                        if ( substr($value,0,10) == 'odt_round=' )
                         {
-                            $round=true;
+                            $round = trim(substr($value,11), '"');
                             continue;
                         }
                         if ( substr($value,0,10) == 'odt_align=' )

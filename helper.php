@@ -169,8 +169,14 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                 }
             }
 
+            // get odt alignment
             if ( $token == 'left' || $token == 'center' || $token == 'right' ) {
                 $attr['odt_align'] = $token;
+            }
+
+            // get odt round corners
+            if ( $token == 'round' ) {
+                $attr['odt_round'] = 'true';
             }
         }
 
@@ -249,6 +255,9 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             }
             if($attr['odt_style']) {
                 $out .= ' odt_align="'.$attr['odt_align'].'"';
+            }
+            if($attr['odt_round']) {
+                $out .= ' odt_round="'.$attr['odt_round'].'"';
             }
         }
 
