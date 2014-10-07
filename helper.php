@@ -11,7 +11,8 @@ if(!defined('DOKU_INC')) die();
 
 class helper_plugin_wrap extends DokuWiki_Plugin {
     public $known_odt_styles = array ("box", "info", "important", "alert", "tip", "help", "todo", "download",
-                                      "danger", "warning", "caution", "notice", "safety", "hi", "lo", "em", "column");
+                                      "danger", "warning", "caution", "notice", "safety", "hi", "lo", "em",
+                                      "column", "spoiler");
 
     // For each style list the background color and the name of the corresponding image, if any.
     // Color values like #eee do not work in odt so they need to be expanded to #e0e0e0.
@@ -102,6 +103,11 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                                                      "picture" => NULL ),
                                "column"    => array ("type"     => "column",
                                                      "fo_color" => "#000000",
+                                                     "bg_color" => "#ffffff",
+                                                     "style"    => NULL,
+                                                     "picture" => NULL ),
+                               "spoiler"   => array ("type"     => "mark",
+                                                     "fo_color" => "#ffffff",
                                                      "bg_color" => "#ffffff",
                                                      "style"    => NULL,
                                                      "picture" => NULL ),
