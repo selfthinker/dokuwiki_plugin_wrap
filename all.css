@@ -123,7 +123,8 @@ Screen and Print Styles for the Wrap Plugin
     margin-right: 4%;
 }
 
-.dokuwiki .wrap_third {
+.dokuwiki .wrap_third,
+.dokuwiki .wrap_onetwothird {
     width: 30%;
     margin-right: 5%;
 }
@@ -133,35 +134,58 @@ Screen and Print Styles for the Wrap Plugin
     margin-right: 4%;
 }
 
+.dokuwiki .wrap_twoonethird {
+    width: 65%;
+    margin-right: 5%;
+}
+.dokuwiki .wrap_onetwothird:nth-of-type(2n) {
+    width: 65%;
+}
+.dokuwiki .wrap_twoonethird:nth-of-type(2n) {
+    width: 30%;
+}
+
 [dir=rtl] .dokuwiki .wrap_half,
 [dir=rtl] .dokuwiki .wrap_third,
-[dir=rtl] .dokuwiki .wrap_quarter {
+[dir=rtl] .dokuwiki .wrap_quarter,
+[dir=rtl] .dokuwiki .wrap_onetwothird,
+[dir=rtl] .dokuwiki .wrap_twoonethird {
     margin-right: 0;
     margin-left: 4%;
 }
-[dir=rtl] .dokuwiki .wrap_third {
+[dir=rtl] .dokuwiki .wrap_third,
+[dir=rtl] .dokuwiki .wrap_onetwothird,
+[dir=rtl] .dokuwiki .wrap_twoonethird {
     margin-left: 5%;
 }
 
 .dokuwiki .wrap_half:nth-of-type(2n),
 .dokuwiki .wrap_third:nth-of-type(3n),
-.dokuwiki .wrap_quarter:nth-of-type(4n) {
+.dokuwiki .wrap_quarter:nth-of-type(4n),
+.dokuwiki .wrap_onetwothird:nth-of-type(2n),
+.dokuwiki .wrap_twoonethird:nth-of-type(2n) {
     margin-right: 0;
 }
 [dir=rtl] .dokuwiki .wrap_half:nth-of-type(2n),
 [dir=rtl] .dokuwiki .wrap_third:nth-of-type(3n),
-[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(4n) {
+[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(4n),
+[dir=rtl] .dokuwiki .wrap_onetwothird:nth-of-type(2n),
+[dir=rtl] .dokuwiki .wrap_twoonethird:nth-of-type(2n){
     margin-left: 0;
 }
 
 .dokuwiki .wrap_half:nth-of-type(2n+1),
 .dokuwiki .wrap_third:nth-of-type(3n+1),
-.dokuwiki .wrap_quarter:nth-of-type(4n+1) {
+.dokuwiki .wrap_quarter:nth-of-type(4n+1),
+.dokuwiki .wrap_onetwothird:nth-of-type(2n+1),
+.dokuwiki .wrap_twoonethird:nth-of-type(2n+1) {
     clear: left;
 }
 [dir=rtl] .dokuwiki .wrap_half:nth-of-type(2n+1),
 [dir=rtl] .dokuwiki .wrap_third:nth-of-type(3n+1),
-[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(4n+1) {
+[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(4n+1),
+[dir=rtl] .dokuwiki .wrap_onetwothird:nth-of-type(2n+1),
+[dir=rtl] .dokuwiki .wrap_twoonethird:nth-of-type(2n+1){
     clear: right;
 }
 
@@ -170,7 +194,9 @@ Screen and Print Styles for the Wrap Plugin
 
 .dokuwiki .wrap_half,
 .dokuwiki .wrap_third,
-.dokuwiki .wrap_quarter {
+.dokuwiki .wrap_quarter,
+.dokuwiki .wrap_onetwothird,
+.dokuwiki .wrap_twoonethird {
     width: auto;
     margin-right: 0;
     margin-left: 0;
