@@ -165,6 +165,27 @@ Screen and Print Styles for the Wrap Plugin
     clear: right;
 }
 
+/* show 2 instead 4 columns on medium sized screens (mobile, etc) */
+@media only screen and (max-width: 950px) {
+
+.dokuwiki .wrap_quarter {
+    width: 48%;
+}
+.dokuwiki .wrap_quarter:nth-of-type(2n) {
+    margin-right: 0;
+}
+[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(2n) {
+    margin-left: 0;
+}
+.dokuwiki .wrap_quarter:nth-of-type(2n+1) {
+    clear: left;
+}
+[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(2n) {
+    clear: right;
+}
+
+} /* /@media */
+
 /* show full width on smaller screens (mobile, etc) */
 @media only screen and (max-width: 600px) {
 
