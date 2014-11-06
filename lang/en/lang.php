@@ -2,6 +2,10 @@
 
 $lang['picker']    = 'Wrap Plugin';
 
+$lang['leftalign']    = 'Align to the left';
+$lang['centeralign']    = 'Align to the center';
+$lang['rightalign']    = 'Align to the right';
+$lang['justifyalign']    = 'Justify alignment';
 $lang['column']    = 'columns';
 $lang['box']       = 'simple centered box';
 $lang['info']      = 'info box';
