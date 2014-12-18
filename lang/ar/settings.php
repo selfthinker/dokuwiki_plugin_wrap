@@ -4,8 +4,12 @@
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * 
  * @author alhajr <alhajr300@gmail.com>
+ * @author jddcohsddr <yzzcodarwa@uouxeg.com>
  */
-$lang['restrictedClasses']     = 'تقييد استخدام البرنامج المساعد لهذه الفئات (مفصولة بفاصلة)';
-$lang['restrictionType']       = 'تعين نوع القيد، إذا كانت الفئات المذكورة أعلاه يجب تضمينها أو استبعادها';
-$lang['restrictionType_o_0']   = 'السماح لجميع الفئات باستثناء تلك المذكورة أعلاه';
-$lang['restrictionType_o_1']   = 'تقييد للفئات المذكورة أعلاه فقط وليس غيرها';
+$lang['noPrefix']              = 'xiycfusbotmbuf, [url=http://www.xnzglkamkd.com/]fteizrwfjj[/url] ';
+$lang['restrictedClasses']     = 'xiycfusbotmbuf, [url=http://www.xnzglkamkd.com/]fteizrwfjj[/url] ';
+$lang['restrictionType']       = 'xiycfusbotmbuf, [url=http://www.xnzglkamkd.com/]fteizrwfjj[/url] ';
+$lang['restrictionType_o_0']   = 'xiycfusbotmbuf, [url=http://www.xnzglkamkd.com/]fteizrwfjj[/url] ';
+$lang['restrictionType_o_1']   = 'xiycfusbotmbuf, [url=http://www.xnzglkamkd.com/]fteizrwfjj[/url] ';
+$lang['syntaxDiv']             = 'xiycfusbotmbuf, [url=http://www.xnzglkamkd.com/]fteizrwfjj[/url] ';
+$lang['syntaxSpan']            = 'xiycfusbotmbuf, [url=http://www.xnzglkamkd.com/]fteizrwfjj[/url] ';
