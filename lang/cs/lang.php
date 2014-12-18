@@ -5,6 +5,7 @@
  * 
  * @author Jaroslav Lichtblau <jlichtblau@seznam.cz>
  */
+$lang['picker']                = 'Zásuvný modul Wrap';
 $lang['column']                = 'sloupce';
 $lang['box']                   = 'jednoduchý vystředěný rámeček';
 $lang['info']                  = 'informační rámeček';
