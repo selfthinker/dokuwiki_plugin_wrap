@@ -15,6 +15,7 @@ $lang['alert']                 = 'výstražný rámeček';
 $lang['help']                  = 'pomocný rámeček';
 $lang['download']              = 'rámeček s odkazem ke stažení';
 $lang['todo']                  = 'rámeček úkolu';
+$lang['clear']                 = 'clear floats';
 $lang['em']                    = 'zvláštně zdůrazněné';
 $lang['hi']                    = 'zvýrazněné';
 $lang['lo']                    = 'méně důležité';

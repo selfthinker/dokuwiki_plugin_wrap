@@ -10,3 +10,5 @@ $lang['restrictedClasses']     = 'omezit použití zásuvného modulu na tyto (�
 $lang['restrictionType']       = 'typ omezení, rozhoduje jestli mají být výše uvedené třídy zahrnuty nebo vyřazeny';
 $lang['restrictionType_o_0']   = 'povolit všechny třídy kromě těch výše';
 $lang['restrictionType_o_1']   = 'omezit pouze na třídy výše a žádné jiné';
+$lang['syntaxDiv']             = 'Jaká syntax má být použita ve výběru pro zarovnání bloku? ';
+$lang['syntaxSpan']            = 'Jaká syntax má být použita ve výběru pro zarovnání v řádku? ';
