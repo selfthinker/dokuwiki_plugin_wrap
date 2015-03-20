@@ -12,9 +12,10 @@ if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
-
+    static protected $import = NULL;
     protected $entry_pattern = '<div.*?>(?=.*?</div>)';
     protected $exit_pattern  = '</div>';
+    protected $odt_ignore;
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
@@ -108,9 +109,58 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
             }
             return true;
         }
+        if($mode == 'odt'){
+            switch ($state) {
+                case DOKU_LEXER_ENTER:
+                    $this->odt_ignore = $this->_odtVersionToOld($renderer);
+                    if ( $this->odt_ignore == true ) {
+                        $renderer->doc .= '<text:p>WRAP: ODT plugin version 2014-10-04 or newer required!</text:p>';
+                        return false;
+                    }
+
+                    // Get attributes. Use the same mode as for XHTML.
+                    $wrap =& plugin_load('helper', 'wrap');
+                    $attr = $wrap->buildAttributes($data, 'plugin_wrap','xhtml');
+
+                    // Get class content and add 'dokuwiki' to it
+                    preg_match ('/class=".*"/', $attr, $matches);
+                    $class = substr ($matches [0], 6);
+                    $class = trim ($class, ' "');
+                    $class = 'dokuwiki '.$class;
+
+                    // Import Wrap-CSS.
+                    if ( self::$import == NULL ) {
+                        self::$import =& plugin_load('helper', 'odt_cssimport');
+                        self::$import->importFrom(DOKU_PLUGIN.'wrap/all.css');
+                        self::$import->importFrom(DOKU_PLUGIN.'wrap/style.css');
+                        self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
+                    }
+
+                    $renderer->_odtDivOpenAsFrameUseCSS (self::$import, $class, DOKU_PLUGIN.'wrap/');
+                    break;
+
+                case DOKU_LEXER_EXIT:
+                    if ( $this->odt_ignore == true ) {
+                        return false;
+                    }
+                    $renderer->_odtDivCloseAsFrame ();
+                    break;
+            }
+            return true;
+        }
         return false;
     }
 
-
+    function _odtVersionToOld (Doku_Renderer &$renderer) {
+        $info=$renderer->getInfo();
+        $date = explode('-', $info['date']);
+        if ( $date [0] < 2015 )
+            return true;
+        if ( $date [0] == 2015 && $date [1] < 3 )
+            return true;
+        if ( $date [0] == 2015 && $date [1] == 3 && $date [2] < 18 )
+            return true;
+        return false;
+    }
 }
 

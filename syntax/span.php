@@ -12,7 +12,7 @@ if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
-
+    static protected $import = NULL;
     protected $entry_pattern = '<span.*?>(?=.*?</span>)';
     protected $exit_pattern  = '</span>';
 
@@ -76,6 +76,37 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
 
                 case DOKU_LEXER_EXIT:
                     $renderer->doc .= "</span>";
+                    break;
+            }
+            return true;
+        }
+        if($mode == 'odt'){
+            switch ($state) {
+                case DOKU_LEXER_ENTER:
+                    // Get attributes.
+                    $wrap =& plugin_load('helper', 'wrap');
+                    $attr = $wrap->buildAttributes($data);
+
+                    // Get class content and add 'dokuwiki' to it
+                    preg_match ('/class=".*"/', $attr, $matches);
+                    $class = substr ($matches [0], 6);
+                    $class = trim ($class, ' "');
+                    $class = 'dokuwiki '.$class;
+
+                    // Import Wrap-CSS.
+                    if ( self::$import == NULL ) {
+                        self::$import =& plugin_load('helper', 'odt_cssimport');
+                        self::$import->importFrom(DOKU_PLUGIN.'wrap/all.css');
+                        self::$import->importFrom(DOKU_PLUGIN.'wrap/style.css');
+                        self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
+                    }
+
+                    $renderer->_odtSpanOpenUseCSS (self::$import, $class, DOKU_PLUGIN.'wrap/');
+                    break;
+
+                case DOKU_LEXER_EXIT:
+                    // Close the span.
+                    $renderer->_odtSpanClose();
                     break;
             }
             return true;
