@@ -54,7 +54,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             //restrict token (class names) characters to prevent any malicious data
             if (preg_match('/[^A-Za-z0-9_-]/',$token)) continue;
             if ($restrictedClasses) {
-                $classIsInList = in_array(trim($token), $restrictedClasses);
+                $classIsInList = in_array(strtolower(trim($token)), $restrictedClasses);
                 // either allow only certain classes
                 if ($restrictionType) {
                     if (!$classIsInList) continue;
@@ -70,6 +70,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                 continue;
             }
             
+            $token = strtolower($token);
             $prefix = in_array($token, $noPrefix) ? '' : 'wrap_';
             $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').$prefix.$token;
         }
