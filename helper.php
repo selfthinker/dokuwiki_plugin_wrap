@@ -63,6 +63,13 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                     if ($classIsInList) continue;
                 }
             }
+            
+            //get 6-digit hex color code to interpret that as background color
+            if (preg_match('/[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]/',$token)) {
+                $attr['bgcolor'] = $token;
+                continue;
+            }
+            
             $prefix = in_array($token, $noPrefix) ? '' : 'wrap_';
             $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').$prefix.$token;
         }
@@ -93,13 +100,18 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             elseif($addClass)  $out .= ' class="'.$addClass.'"';
             if($attr['id'])    $out .= ' id="'.hsc($attr['id']).'"';
             // width on spans normally doesn't make much sense, but in the case of floating elements it could be used
-            if($attr['width']) {
-                if (strpos($attr['width'],'%') !== false) {
-                    $out .= ' style="width: '.hsc($attr['width']).';"';
-                } else {
-                    // anything but % should be 100% when the screen gets smaller
-                    $out .= ' style="width: '.hsc($attr['width']).'; max-width: 100%;"';
+            if($attr['width'] || $attr['bgcolor']) {
+                $out .= ' style="';
+                if($attr['width']) {
+                    if (strpos($attr['width'],'%') !== false) {
+                        $out .= 'width: '.hsc($attr['width']).';';
+                    } else {
+                        // anything but % should be 100% when the screen gets smaller
+                        $out .= 'width: '.hsc($attr['width']).'; max-width: 100%;';
+                    }
                 }
+                if($attr['bgcolor'])    $out .= 'background-color: #"'.hsc($attr['bgcolor']).';';
+                $out .= '"';
             }
             // only write lang if it's a language in lang2dir.conf
             if($attr['dir'])   $out .= ' lang="'.$attr['lang'].'" xml:lang="'.$attr['lang'].'" dir="'.$attr['dir'].'"';
