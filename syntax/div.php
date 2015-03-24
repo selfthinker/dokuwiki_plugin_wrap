@@ -44,7 +44,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         global $conf;
         switch ($state) {
             case DOKU_LEXER_ENTER:
-                $data = strtolower(trim(substr($match,strpos($match,' '),-1)));
+                $data = trim(substr($match,strpos($match,' '),-1));
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED:
