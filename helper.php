@@ -65,7 +65,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             }
             
             //get 6-digit hex color code to interpret that as background color
-            if (preg_match('/[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]/',$token)) {
+            if (preg_match('/[\dA-F]{6}$/A',$token)) {
                 $attr['bgcolor'] = $token;
                 continue;
             }
@@ -110,7 +110,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                         $out .= 'width: '.hsc($attr['width']).'; max-width: 100%;';
                     }
                 }
-                if($attr['bgcolor'])    $out .= 'background-color: #"'.hsc($attr['bgcolor']).';';
+                if($attr['bgcolor'])    $out .= 'background-color: #'.hsc($attr['bgcolor']).';';
                 $out .= '"';
             }
             // only write lang if it's a language in lang2dir.conf
