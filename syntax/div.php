@@ -13,6 +13,9 @@ require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     static protected $import = NULL;
+    static protected $boxes = array ('wrap_box', 'wrap_danger', 'wrap_warning', 'wrap_caution', 'wrap_notice', 'wrap_safety',
+                                     'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',
+                                     'wrap_download');
     protected $entry_pattern = '<div.*?>(?=.*?</div>)';
     protected $exit_pattern  = '</div>';
     protected $odt_ignore;
@@ -41,7 +44,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, Doku_Handler $handler){
+    function handle($match, $state, $pos, Doku_Handler &$handler){
         global $conf;
         switch ($state) {
             case DOKU_LEXER_ENTER:
@@ -79,7 +82,8 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($mode, Doku_Renderer $renderer, $indata) {
+    function render($mode, Doku_Renderer &$renderer, $indata) {
+        static $type_stack = array ();
 
         if (empty($indata)) return false;
         list($state, $data) = $indata;
@@ -136,14 +140,29 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                         self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
                     }
 
-                    $renderer->_odtDivOpenAsFrameUseCSS (self::$import, $class, DOKU_PLUGIN.'wrap/');
+                    $is_box = false;
+                    foreach (self::$boxes as $box) {
+                        if ( strpos ($class, $box) !== false ) {
+                            $is_box = true;
+                            break;
+                        }
+                    }
+                    if ( $is_box === true ) {
+                        $renderer->_odtDivOpenAsFrameUseCSS (self::$import, $class, DOKU_PLUGIN.'wrap/');
+                        array_push ($type_stack, 'box');
+                    } else {
+                        array_push ($type_stack, 'other');
+                    }
                     break;
 
                 case DOKU_LEXER_EXIT:
                     if ( $this->odt_ignore == true ) {
                         return false;
                     }
-                    $renderer->_odtDivCloseAsFrame ();
+                    $type = array_pop ($type_stack);
+                    if ( $type == 'box' ) {
+                        $renderer->_odtDivCloseAsFrame ();
+                    }
                     break;
             }
             return true;
