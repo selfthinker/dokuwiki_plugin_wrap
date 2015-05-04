@@ -224,6 +224,9 @@ Screen and Print Styles for the Wrap Plugin
     color: #c00;
     font-weight: bold;
 }
+.dokuwiki .wrap__dark.wrap_em {
+    color: #f66;
+}
 
 /* see styles for highlighted text in style.css */
 

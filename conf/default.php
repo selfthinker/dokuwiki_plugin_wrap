@@ -9,3 +9,4 @@ $conf['restrictedClasses'] = ''; //restrict usage of plugin to these classes (co
 $conf['restrictionType'] = 0; //0= exclude restricted classes, 1=include restricted classes and exclude all others
 $conf['syntaxDiv'] = 'WRAP';
 $conf['syntaxSpan'] = 'wrap';
+$conf['darkTpl'] = 0;

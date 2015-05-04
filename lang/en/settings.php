@@ -11,3 +11,4 @@ $lang['restrictionType'] = 'restriction type, specifies if classes above shall b
   $lang['restrictionType_o_1'] = 'restrict to only the classes above and no others';
 $lang['syntaxDiv'] = 'Which syntax should be used in the toolbar picker for block wraps?';
 $lang['syntaxSpan'] = 'Which syntax should be used in the toolbar picker for inline wraps?';
+$lang['darkTpl'] = 'Optimise colours for dark templates?';
