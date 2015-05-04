@@ -68,7 +68,7 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
         if($mode == 'xhtml'){
             switch ($state) {
                 case DOKU_LEXER_ENTER:
-                    $wrap =& plugin_load('helper', 'wrap');
+                    $wrap = plugin_load('helper', 'wrap');
                     $attr = $wrap->buildAttributes($data);
 
                     $renderer->doc .= '<span'.$attr.'>';
