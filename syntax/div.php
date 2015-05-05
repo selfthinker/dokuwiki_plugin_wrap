@@ -15,7 +15,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     static protected $import = NULL;
     static protected $boxes = array ('wrap_box', 'wrap_danger', 'wrap_warning', 'wrap_caution', 'wrap_notice', 'wrap_safety',
                                      'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',
-                                     'wrap_download');
+                                     'wrap_download', 'wrap_hi', 'wrap_spoiler');
     protected $entry_pattern = '<div.*?>(?=.*?</div>)';
     protected $exit_pattern  = '</div>';
     protected $odt_ignore;
@@ -132,14 +132,6 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $class = trim ($class, ' "');
                     $class = 'dokuwiki '.$class;
 
-                    // Import Wrap-CSS.
-                    if ( self::$import == NULL ) {
-                        self::$import =& plugin_load('helper', 'odt_cssimport');
-                        self::$import->importFrom(DOKU_PLUGIN.'wrap/all.css');
-                        self::$import->importFrom(DOKU_PLUGIN.'wrap/style.css');
-                        self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
-                    }
-
                     $is_box = false;
                     foreach (self::$boxes as $box) {
                         if ( strpos ($class, $box) !== false ) {
@@ -147,8 +139,50 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                             break;
                         }
                     }
+
                     if ( $is_box === true ) {
-                        $renderer->_odtDivOpenAsFrameUseCSS (self::$import, $class, DOKU_PLUGIN.'wrap/');
+                        // Get style content
+                        preg_match ('/style=".*"/', $attr, $styles);
+                        $style = substr ($styles [0], 6);
+                        $style = trim ($style, ' "');
+
+                        // Import Wrap-CSS.
+                        if ( self::$import == NULL ) {
+                            self::$import =& plugin_load('helper', 'odt_cssimport');
+                            self::$import->importFrom(DOKU_PLUGIN.'wrap/all.css');
+                            self::$import->importFrom(DOKU_PLUGIN.'wrap/style.css');
+                            self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
+                        }
+
+                        // Get properties for our class/element from imported CSS
+                        self::$import->getPropertiesForElement($properties, 'div', $class);
+
+                        // Interpret and add values from style to our properties
+                        $renderer->_processCSSStyle($properties, $style);
+
+                        // Adjust values for ODT
+                        foreach ($properties as $property => $value) {
+                            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
+                        }
+                        if ( empty($properties ['background-image']) === false ) {
+                            $properties ['background-image'] =
+                                self::$import->replaceURLPrefix ($properties ['background-image'], DOKU_PLUGIN.'wrap/');
+                        }
+
+                        if ( empty($properties ['float']) === true ) {
+                            // If the float property is not set, set it to 'left' becuase the ODT plugin
+                            // would default to 'center' which is diffeent to the XHTML behaviour.
+                            $properties ['float'] = 'left';
+                        }
+
+                        if ( $properties ['display'] == 'none' ) {
+                            // Simulate onlyprint
+                            $properties ['display'] = 'printer';
+                        } else {
+                            $properties ['display'] = 'always';
+                        }
+
+                        $renderer->_odtDivOpenAsFrameUseProperties ($properties);
                         array_push ($type_stack, 'box');
                     } else {
                         array_push ($type_stack, 'other');
