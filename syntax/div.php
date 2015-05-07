@@ -132,6 +132,12 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $class = trim ($class, ' "');
                     $class = 'dokuwiki '.$class;
 
+                    $columns = 0;
+                    preg_match ('/wrap_col./', $attr, $matches);
+                    if ( empty ($matches [0]) === false ) {
+                        $columns = $matches [0] [strlen($matches [0])-1];
+                    }
+
                     $is_box = false;
                     foreach (self::$boxes as $box) {
                         if ( strpos ($class, $box) !== false ) {
@@ -140,7 +146,10 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                         }
                     }
 
-                    if ( $is_box === true ) {
+                    // Is there support for ODT?
+                    if ( $is_box === true || $columns > 0 ) {
+                        // Yes, import CSS data
+
                         // Get style content
                         preg_match ('/style=".*"/', $attr, $styles);
                         $style = substr ($styles [0], 6);
@@ -153,39 +162,19 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                             self::$import->importFrom(DOKU_PLUGIN.'wrap/style.css');
                             self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
                         }
+                    }
 
-                        // Get properties for our class/element from imported CSS
-                        self::$import->getPropertiesForElement($properties, 'div', $class);
-
-                        // Interpret and add values from style to our properties
-                        $renderer->_processCSSStyle($properties, $style);
-
-                        // Adjust values for ODT
-                        foreach ($properties as $property => $value) {
-                            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
-                        }
-                        if ( empty($properties ['background-image']) === false ) {
-                            $properties ['background-image'] =
-                                self::$import->replaceURLPrefix ($properties ['background-image'], DOKU_PLUGIN.'wrap/');
-                        }
-
-                        if ( empty($properties ['float']) === true ) {
-                            // If the float property is not set, set it to 'left' becuase the ODT plugin
-                            // would default to 'center' which is diffeent to the XHTML behaviour.
-                            $properties ['float'] = 'left';
-                        }
-
-                        if ( $properties ['display'] == 'none' ) {
-                            // Simulate onlyprint
-                            $properties ['display'] = 'printer';
-                        } else {
-                            $properties ['display'] = 'always';
-                        }
-
-                        $renderer->_odtDivOpenAsFrameUseProperties ($properties);
+                    // Call corresponding functions for current wrap class
+                    if ( $is_box === true ) {
+                        $this->renderODTOpenBox ($renderer, $class, $style);
                         array_push ($type_stack, 'box');
                     } else {
-                        array_push ($type_stack, 'other');
+                        if ( $columns > 0 ) {
+                            $this->renderODTOpenColumns ($renderer, $class, $style);
+                            array_push ($type_stack, 'multicolumn');
+                        } else {
+                            array_push ($type_stack, 'other');
+                        }
                     }
                     break;
 
@@ -195,13 +184,71 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     }
                     $type = array_pop ($type_stack);
                     if ( $type == 'box' ) {
-                        $renderer->_odtDivCloseAsFrame ();
+                        $this->renderODTCloseBox ($renderer);
+                    }
+                    if ( $type == 'multicolumn' ) {
+                        $this->renderODTCloseColumns($renderer);
                     }
                     break;
             }
             return true;
         }
         return false;
+    }
+
+    function renderODTOpenBox ($renderer, $class, $style) {
+        // Get properties for our class/element from imported CSS
+        self::$import->getPropertiesForElement($properties, 'div', $class);
+
+        // Interpret and add values from style to our properties
+        $renderer->_processCSSStyle($properties, $style);
+
+        // Adjust values for ODT
+        foreach ($properties as $property => $value) {
+            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
+        }
+        if ( empty($properties ['background-image']) === false ) {
+            $properties ['background-image'] =
+                self::$import->replaceURLPrefix ($properties ['background-image'], DOKU_PLUGIN.'wrap/');
+        }
+
+        if ( empty($properties ['float']) === true ) {
+            // If the float property is not set, set it to 'left' becuase the ODT plugin
+            // would default to 'center' which is diffeent to the XHTML behaviour.
+            $properties ['float'] = 'left';
+        }
+
+        if ( $properties ['display'] == 'none' ) {
+            // Simulate onlyprint
+            $properties ['display'] = 'printer';
+        } else {
+            $properties ['display'] = 'always';
+        }
+
+        $renderer->_odtDivOpenAsFrameUseProperties ($properties);
+    }
+
+    function renderODTCloseBox ($renderer) {
+        $renderer->_odtDivCloseAsFrame ();
+    }
+
+    function renderODTOpenColumns ($renderer, $class, $style) {
+        // Get properties for our class/element from imported CSS
+        self::$import->getPropertiesForElement($properties, 'div', $class);
+
+        // Interpret and add values from style to our properties
+        $renderer->_processCSSStyle($properties, $style);
+
+        // Adjust values for ODT
+        foreach ($properties as $property => $value) {
+            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
+        }
+
+        $renderer->_odtOpenMultiColumnFrame($properties);
+    }
+
+    function renderODTCloseColumns ($renderer) {
+        $renderer->_odtCloseMultiColumnFrame();
     }
 
     function _odtVersionToOld (Doku_Renderer &$renderer) {
