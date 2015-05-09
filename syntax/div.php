@@ -18,7 +18,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                                      'wrap_download', 'wrap_hi', 'wrap_spoiler');
     protected $entry_pattern = '<div.*?>(?=.*?</div>)';
     protected $exit_pattern  = '</div>';
-    protected $odt_ignore;
+    protected $odt_ignore = false;
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
@@ -116,9 +116,20 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         if($mode == 'odt'){
             switch ($state) {
                 case DOKU_LEXER_ENTER:
-                    $this->odt_ignore = $this->_odtVersionToOld($renderer);
-                    if ( $this->odt_ignore == true ) {
-                        $renderer->doc .= '<text:p>WRAP: ODT plugin version 2014-10-04 or newer required!</text:p>';
+                    // Does CSS-Import exist?
+                    if ( $this->odt_ignore === false && self::$import == NULL ) {
+                        self::$import =& plugin_load('helper', 'odt_cssimport');
+                        if ( self::$import != NULL ) {
+                            self::$import->importFrom(DOKU_PLUGIN.'wrap/all.css');
+                            self::$import->importFrom(DOKU_PLUGIN.'wrap/style.css');
+                            self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
+                        } else {
+                            // No specific ODT export, just plain content export.
+                            $this->odt_ignore = true;
+                        }
+                    }
+
+                    if ( $this->odt_ignore === true ) {
                         return false;
                     }
 
@@ -154,14 +165,6 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                         preg_match ('/style=".*"/', $attr, $styles);
                         $style = substr ($styles [0], 6);
                         $style = trim ($style, ' "');
-
-                        // Import Wrap-CSS.
-                        if ( self::$import == NULL ) {
-                            self::$import =& plugin_load('helper', 'odt_cssimport');
-                            self::$import->importFrom(DOKU_PLUGIN.'wrap/all.css');
-                            self::$import->importFrom(DOKU_PLUGIN.'wrap/style.css');
-                            self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
-                        }
                     }
 
                     // Call corresponding functions for current wrap class
@@ -197,6 +200,11 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     }
 
     function renderODTOpenBox ($renderer, $class, $style) {
+        if ( method_exists ($renderer, '_odtDivOpenAsFrameUseProperties') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
+
         // Get properties for our class/element from imported CSS
         self::$import->getPropertiesForElement($properties, 'div', $class);
 
@@ -229,10 +237,19 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     }
 
     function renderODTCloseBox ($renderer) {
+        if ( method_exists ($renderer, '_odtDivCloseAsFrame') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
         $renderer->_odtDivCloseAsFrame ();
     }
 
     function renderODTOpenColumns ($renderer, $class, $style) {
+        if ( method_exists ($renderer, '_odtOpenMultiColumnFrame') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
+
         // Get properties for our class/element from imported CSS
         self::$import->getPropertiesForElement($properties, 'div', $class);
 
@@ -248,19 +265,11 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     }
 
     function renderODTCloseColumns ($renderer) {
+        if ( method_exists ($renderer, '_odtCloseMultiColumnFrame') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
         $renderer->_odtCloseMultiColumnFrame();
-    }
-
-    function _odtVersionToOld (Doku_Renderer &$renderer) {
-        $info=$renderer->getInfo();
-        $date = explode('-', $info['date']);
-        if ( $date [0] < 2015 )
-            return true;
-        if ( $date [0] == 2015 && $date [1] < 3 )
-            return true;
-        if ( $date [0] == 2015 && $date [1] == 3 && $date [2] < 18 )
-            return true;
-        return false;
     }
 }
 

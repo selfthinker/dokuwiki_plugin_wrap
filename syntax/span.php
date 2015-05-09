@@ -40,7 +40,7 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, Doku_Handler $handler){
+    function handle($match, $state, $pos, Doku_Handler &$handler){
         switch ($state) {
             case DOKU_LEXER_ENTER:
                 $data = strtolower(trim(substr($match,strpos($match,' '),-1)));
@@ -60,7 +60,7 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($mode, Doku_Renderer $renderer, $indata) {
+    function render($mode, Doku_Renderer &$renderer, $indata) {
 
         if (empty($indata)) return false;
         list($state, $data) = $indata;
@@ -101,12 +101,18 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
                         self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
                     }
 
-                    $renderer->_odtSpanOpenUseCSS (self::$import, $class, DOKU_PLUGIN.'wrap/');
+                    if ( self::$import != NULL && 
+                         method_exists ($renderer, '_odtSpanOpenUseCSS') === true ) {
+                        $renderer->_odtSpanOpenUseCSS (self::$import, $class, DOKU_PLUGIN.'wrap/');
+                    }
                     break;
 
                 case DOKU_LEXER_EXIT:
                     // Close the span.
-                    $renderer->_odtSpanClose();
+                    if ( self::$import != NULL && 
+                         method_exists ($renderer, '_odtSpanClose') === true ) {
+                        $renderer->_odtSpanClose();
+                    }
                     break;
             }
             return true;
