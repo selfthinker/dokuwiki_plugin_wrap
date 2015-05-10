@@ -16,6 +16,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     static protected $boxes = array ('wrap_box', 'wrap_danger', 'wrap_warning', 'wrap_caution', 'wrap_notice', 'wrap_safety',
                                      'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',
                                      'wrap_download', 'wrap_hi', 'wrap_spoiler');
+    static protected $paragraphs = array ('wrap_leftalign', 'wrap_rightalign', 'wrap_centeralign', 'wrap_justify');
     protected $entry_pattern = '<div.*?>(?=.*?</div>)';
     protected $exit_pattern  = '</div>';
     protected $odt_ignore = false;
@@ -157,8 +158,16 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                         }
                     }
 
+                    $is_paragraph = false;
+                    foreach (self::$paragraphs as $paragraph) {
+                        if ( strpos ($class, $paragraph) !== false ) {
+                            $is_paragraph = true;
+                            break;
+                        }
+                    }
+
                     // Is there support for ODT?
-                    if ( $is_box === true || $columns > 0 ) {
+                    if ( $is_box === true || $columns > 0 || $is_paragraph === true) {
                         // Yes, import CSS data
 
                         // Get style content
@@ -176,7 +185,12 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                             $this->renderODTOpenColumns ($renderer, $class, $style);
                             array_push ($type_stack, 'multicolumn');
                         } else {
-                            array_push ($type_stack, 'other');
+                            if ( $is_paragraph === true ) {
+                                $this->renderODTOpenParagraph ($renderer, $class, $style);
+                                array_push ($type_stack, 'p');
+                            } else {
+                                array_push ($type_stack, 'other');
+                            }
                         }
                     }
                     break;
@@ -191,6 +205,9 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     }
                     if ( $type == 'multicolumn' ) {
                         $this->renderODTCloseColumns($renderer);
+                    }
+                    if ( $type == 'p' ) {
+                        $this->renderODTCloseParagraph($renderer);
                     }
                     break;
             }
@@ -270,6 +287,34 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
             return;
         }
         $renderer->_odtCloseMultiColumnFrame();
+    }
+
+    function renderODTOpenParagraph ($renderer, $class, $style) {
+        if ( method_exists ($renderer, '_odtParagraphOpenUseProperties') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
+
+        // Get properties for our class/element from imported CSS
+        self::$import->getPropertiesForElement($properties, 'p', $class);
+
+        // Interpret and add values from style to our properties
+        $renderer->_processCSSStyle($properties, $style);
+
+        // Adjust values for ODT
+        foreach ($properties as $property => $value) {
+            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
+        }
+
+        $renderer->_odtParagraphOpenUseProperties($properties);
+    }
+
+    function renderODTCloseParagraph ($renderer) {
+        if ( method_exists ($renderer, 'p_close') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
+        $renderer->p_close();
     }
 }
 
