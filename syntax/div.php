@@ -166,6 +166,11 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                         }
                     }
 
+                    $is_pagebreak = false;
+                    if ( strpos ($class, 'wrap_pagebreak') !== false ) {
+                        $is_pagebreak = true;
+                    }
+
                     // Is there support for ODT?
                     if ( $is_box === true || $columns > 0 || $is_paragraph === true) {
                         // Yes, import CSS data
@@ -189,6 +194,9 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                                 $this->renderODTOpenParagraph ($renderer, $class, $style);
                                 array_push ($type_stack, 'p');
                             } else {
+                                if ( $is_pagebreak === true ) {
+                                    $renderer->pagebreak ();
+                                } // No else here --> pagebreak has got no closing tag!
                                 array_push ($type_stack, 'other');
                             }
                         }
