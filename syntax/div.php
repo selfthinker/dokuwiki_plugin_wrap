@@ -13,8 +13,9 @@ require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
 
-    protected $entry_pattern = '<div.*?>(?=.*?</div>)';
-    protected $exit_pattern  = '</div>';
+    protected $special_pattern = '<div.*?/>';
+    protected $entry_pattern   = '<div.*?>(?=.*?</div>)';
+    protected $exit_pattern    = '</div>';
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
@@ -30,6 +31,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
      * Connect pattern to lexer
      */
     function connectTo($mode) {
+        $this->Lexer->addSpecialPattern($this->special_pattern,$mode,'plugin_wrap_'.$this->getPluginComponent());
         $this->Lexer->addEntryPattern($this->entry_pattern,$mode,'plugin_wrap_'.$this->getPluginComponent());
     }
 
@@ -45,7 +47,8 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         global $conf;
         switch ($state) {
             case DOKU_LEXER_ENTER:
-                $data = strtolower(trim(substr($match,strpos($match,' '),-1)));
+            case DOKU_LEXER_SPECIAL:
+                $data = strtolower(trim(substr($match,strpos($match,' '),-1)," \t\n/"));
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED:
@@ -93,15 +96,16 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     // from closing the last section edit so the next section button after the wrap syntax will
                     // include the whole wrap syntax
                     $renderer->startSectionEdit(0, 'plugin_wrap_end');
-
+                case DOKU_LEXER_SPECIAL:
                     $wrap = plugin_load('helper', 'wrap');
                     $attr = $wrap->buildAttributes($data, 'plugin_wrap');
 
                     $renderer->doc .= '<div'.$attr.'>';
+                    if ($state == DOKU_LEXER_SPECIAL) $renderer->doc .= '</div>';
                     break;
 
                 case DOKU_LEXER_EXIT:
-                    $renderer->doc .= "</div>";
+                    $renderer->doc .= '</div>';
                     $renderer->finishSectionEdit();
                     break;
             }
