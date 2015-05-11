@@ -97,7 +97,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     // include the whole wrap syntax
                     $renderer->startSectionEdit(0, 'plugin_wrap_end');
                 case DOKU_LEXER_SPECIAL:
-                    $wrap = plugin_load('helper', 'wrap');
+                    $wrap = $this->loadHelper('wrap');
                     $attr = $wrap->buildAttributes($data, 'plugin_wrap');
 
                     $renderer->doc .= '<div'.$attr.'>';
