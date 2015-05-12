@@ -61,6 +61,7 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
      * Create output
      */
     function render($mode, Doku_Renderer &$renderer, $indata) {
+        static $type_stack = array ();
 
         if (empty($indata)) return false;
         list($state, $data) = $indata;
@@ -93,6 +94,15 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
                     $class = trim ($class, ' "');
                     $class = 'dokuwiki '.$class;
 
+                    $is_indent = false;
+                    $is_outdent = false;
+                    if ( strpos ($class, 'wrap_indent') !== false ) {
+                        $is_indent = true;
+                    }
+                    if ( strpos ($class, 'wrap_outdent') !== false ) {
+                        $is_outdent = true;
+                    }
+
                     // Import Wrap-CSS.
                     if ( self::$import == NULL ) {
                         self::$import =& plugin_load('helper', 'odt_cssimport');
@@ -101,17 +111,33 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
                         self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
                     }
 
-                    if ( self::$import != NULL && 
-                         method_exists ($renderer, '_odtSpanOpenUseCSS') === true ) {
-                        $renderer->_odtSpanOpenUseCSS (self::$import, $class, DOKU_PLUGIN.'wrap/');
+                    if ( self::$import != NULL ) {
+                        if ( $is_indent === false && $is_outdent === false ) {
+                            if ( method_exists ($renderer, '_odtSpanOpenUseCSS') === true ) {
+                                $renderer->_odtSpanOpenUseCSS (self::$import, $class, DOKU_PLUGIN.'wrap/');
+                                array_push ($type_stack, 'span');
+                            }
+                        } else {
+                            $this->renderODTOpenParagraph ($renderer, $class, $is_indent, $is_outdent);
+                            array_push ($type_stack, 'paragraph');
+                        }
+                    } else {
+                        array_push ($type_stack, 'other');
                     }
+
                     break;
 
                 case DOKU_LEXER_EXIT:
-                    // Close the span.
-                    if ( self::$import != NULL && 
-                         method_exists ($renderer, '_odtSpanClose') === true ) {
-                        $renderer->_odtSpanClose();
+                    $type = array_pop ($type_stack);
+                    
+                    if ( $type == 'span' ) {
+                        // Close the span.
+                        if ( method_exists ($renderer, '_odtSpanClose') === true ) {
+                            $renderer->_odtSpanClose();
+                        }
+                    }
+                    if ( $type == 'paragraph' ) {
+                        $this->renderODTCloseParagraph ($renderer);
                     }
                     break;
             }
@@ -120,6 +146,46 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
         return false;
     }
 
+    function renderODTOpenParagraph ($renderer, $class, $is_indent, $is_outdent) {
+        if ( method_exists ($renderer, '_odtParagraphOpenUseProperties') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
 
+        // Get properties for our class/element from imported CSS
+        self::$import->getPropertiesForElement($properties, 'p', $class);
+
+        // Interpret and add values from style to our properties
+        $renderer->_processCSSStyle($properties, $style);
+
+        // Adjust values for ODT
+        foreach ($properties as $property => $value) {
+            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
+        }
+
+        if ( $is_indent === true ) {
+            // FIXME: Has to be adjusted if test direction will be supported.
+            // See all.css
+            $properties ['text-indent'] = $properties ['padding-left'];
+            $properties ['padding-left'] = 0;
+        }
+        if ( $is_outdent === true ) {
+            // FIXME: Has to be adjusted if text (RTL, LTR) direction will be supported.
+            // See all.css
+            $properties ['text-indent'] = $properties ['margin-left'];
+            $properties ['margin-left'] = 0;
+        }
+
+        $renderer->p_close();
+        $renderer->_odtParagraphOpenUseProperties($properties);
+    }
+
+    function renderODTCloseParagraph ($renderer) {
+        if ( method_exists ($renderer, 'p_close') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
+        $renderer->p_close();
+    }
 }
 
