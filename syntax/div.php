@@ -144,6 +144,11 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $class = trim ($class, ' "');
                     $class = 'dokuwiki '.$class;
 
+                    // Get language
+                    preg_match ('/lang="([a-zA-Z]|-)+"/', $attr, $languages);
+                    $language = substr ($languages [0], 6);
+                    $language = trim ($language, ' "');
+
                     $columns = 0;
                     preg_match ('/wrap_col./', $attr, $matches);
                     if ( empty ($matches [0]) === false ) {
@@ -159,10 +164,14 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     }
 
                     $is_paragraph = false;
-                    foreach (self::$paragraphs as $paragraph) {
-                        if ( strpos ($class, $paragraph) !== false ) {
-                            $is_paragraph = true;
-                            break;
+                    if ( empty($language) === false ) {
+                        $is_paragraph = true;
+                    } else {
+                        foreach (self::$paragraphs as $paragraph) {
+                            if ( strpos ($class, $paragraph) !== false ) {
+                                $is_paragraph = true;
+                                break;
+                            }
                         }
                     }
 
@@ -191,7 +200,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                             array_push ($type_stack, 'multicolumn');
                         } else {
                             if ( $is_paragraph === true ) {
-                                $this->renderODTOpenParagraph ($renderer, $class, $style);
+                                $this->renderODTOpenParagraph ($renderer, $class, $style, $language);
                                 array_push ($type_stack, 'p');
                             } else {
                                 if ( $is_pagebreak === true ) {
@@ -225,6 +234,8 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     }
 
     function renderODTOpenBox ($renderer, $class, $style) {
+        $properties = array ();
+
         if ( method_exists ($renderer, '_odtDivOpenAsFrameUseProperties') === false ) {
             // Function is not supported by installed ODT plugin version, return.
             return;
@@ -270,6 +281,8 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     }
 
     function renderODTOpenColumns ($renderer, $class, $style) {
+        $properties = array ();
+
         if ( method_exists ($renderer, '_odtOpenMultiColumnFrame') === false ) {
             // Function is not supported by installed ODT plugin version, return.
             return;
@@ -297,7 +310,9 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         $renderer->_odtCloseMultiColumnFrame();
     }
 
-    function renderODTOpenParagraph ($renderer, $class, $style) {
+    function renderODTOpenParagraph ($renderer, $class, $style, $language) {
+        $properties = array ();
+
         if ( method_exists ($renderer, '_odtParagraphOpenUseProperties') === false ) {
             // Function is not supported by installed ODT plugin version, return.
             return;
@@ -312,6 +327,10 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         // Adjust values for ODT
         foreach ($properties as $property => $value) {
             $properties [$property] = self::$import->adjustValueForODT ($value, 14);
+        }
+
+        if ( empty($language) === false ) {
+            $properties ['lang'] = $language;
         }
 
         $renderer->_odtParagraphOpenUseProperties($properties);
