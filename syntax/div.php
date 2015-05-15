@@ -17,6 +17,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                                      'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',
                                      'wrap_download', 'wrap_hi', 'wrap_spoiler');
     static protected $paragraphs = array ('wrap_leftalign', 'wrap_rightalign', 'wrap_centeralign', 'wrap_justify');
+    static protected $column_count = 0;
     protected $entry_pattern = '<div.*?>(?=.*?</div>)';
     protected $exit_pattern  = '</div>';
     protected $odt_ignore = false;
@@ -104,6 +105,8 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $wrap =& plugin_load('helper', 'wrap');
                     $attr = $wrap->buildAttributes($data, 'plugin_wrap');
 
+                    $renderer->doc .= 'ATTR:'.$attr.'!';
+
                     $renderer->doc .= '<div'.$attr.'>';
                     break;
 
@@ -149,12 +152,26 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $language = substr ($languages [0], 6);
                     $language = trim ($language, ' "');
 
+                    // Check for multicolumns
                     $columns = 0;
-                    preg_match ('/wrap_col./', $attr, $matches);
+                    preg_match ('/wrap_col\d/', $attr, $matches);
                     if ( empty ($matches [0]) === false ) {
                         $columns = $matches [0] [strlen($matches [0])-1];
                     }
 
+                    // Check for column (single column, part of a table)
+                    $is_column = false;
+                    if ( strpos ($class, 'wrap_column') !== false ) {
+                        $is_column = true;
+                    }
+
+                    // Check for group
+                    $is_group = false;
+                    if ( strpos ($class, 'group') !== false ) {
+                        $is_group = true;
+                    }
+
+                    // Check for boxes
                     $is_box = false;
                     foreach (self::$boxes as $box) {
                         if ( strpos ($class, $box) !== false ) {
@@ -163,6 +180,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                         }
                     }
 
+                    // Check for paragraphs
                     $is_paragraph = false;
                     if ( empty($language) === false ) {
                         $is_paragraph = true;
@@ -175,6 +193,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                         }
                     }
 
+                    // Check for pagebreak
                     $is_pagebreak = false;
                     if ( strpos ($class, 'wrap_pagebreak') !== false ) {
                         $is_pagebreak = true;
@@ -191,24 +210,40 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     }
 
                     // Call corresponding functions for current wrap class
-                    if ( $is_box === true ) {
+                    $done = false;
+                    if ( $done === false && $is_box === true ) {
                         $this->renderODTOpenBox ($renderer, $class, $style);
                         array_push ($type_stack, 'box');
-                    } else {
-                        if ( $columns > 0 ) {
-                            $this->renderODTOpenColumns ($renderer, $class, $style);
-                            array_push ($type_stack, 'multicolumn');
-                        } else {
-                            if ( $is_paragraph === true ) {
-                                $this->renderODTOpenParagraph ($renderer, $class, $style, $language);
-                                array_push ($type_stack, 'p');
-                            } else {
-                                if ( $is_pagebreak === true ) {
-                                    $renderer->pagebreak ();
-                                } // No else here --> pagebreak has got no closing tag!
-                                array_push ($type_stack, 'other');
-                            }
-                        }
+                        $done = true;
+                    }
+                    if ( $done === false && $columns > 0 ) {
+                        $this->renderODTOpenColumns ($renderer, $class, $style);
+                        array_push ($type_stack, 'multicolumn');
+                        $done = true;
+                    }
+                    if ( $done === false && $is_paragraph === true ) {
+                        $this->renderODTOpenParagraph ($renderer, $class, $style, $language);
+                        array_push ($type_stack, 'p');
+                        $done = true;
+                    }
+                    if ( $done === false && $is_pagebreak === true ) {
+                        $renderer->pagebreak ();
+                        // Pagebreak hasn't got a closing stack so we push 'other' on the stack
+                        array_push ($type_stack, 'other');
+                        $done = true;
+                    }
+                    if ( $done === false && $is_column === true ) {
+                        $this->renderODTOpenColumn ($renderer, $class, $style);
+                        array_push ($type_stack, 'column');
+                        $done = true;
+                    }
+                    if ( $done === false && $is_group === true ) {
+                        $this->renderODTOpenGroup ($renderer, $class, $style);
+                        array_push ($type_stack, 'group');
+                        $done = true;
+                    }
+                    if ( $done === false ) {
+                        array_push ($type_stack, 'other');
                     }
                     break;
 
@@ -226,6 +261,13 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     if ( $type == 'p' ) {
                         $this->renderODTCloseParagraph($renderer);
                     }
+                    if ( $type == 'column' ) {
+                        $this->renderODTCloseColumn($renderer);
+                    }
+                    if ( $type == 'group' ) {
+                        $this->renderODTCloseGroup($renderer);
+                    }
+                    // Do nothing for 'other'!
                     break;
             }
             return true;
@@ -342,6 +384,110 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
             return;
         }
         $renderer->p_close();
+    }
+
+    function renderODTOpenColumn ($renderer, $class, $style) {
+        $properties = array ();
+
+        if ( method_exists ($renderer, '_odtTableAddColumnUseProperties') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
+
+        // Get properties for our class/element from imported CSS
+        self::$import->getPropertiesForElement($properties, NULL, $class);
+
+        // Interpret and add values from style to our properties
+        $renderer->_processCSSStyle($properties, $style);
+
+        // Adjust values for ODT
+        foreach ($properties as $property => $value) {
+            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
+        }
+
+        // Frames/Textboxes still have some issues with formatting (at least in LibreOffice)
+        // So as a workaround we implement columns as a table.
+        // This is why we now use the margin of the div as the padding for the ODT table.
+        $properties ['padding-left'] = $properties ['margin-left'];
+        $properties ['padding-right'] = $properties ['margin-right'];
+        $properties ['padding-top'] = $properties ['margin-top'];
+        $properties ['padding-bottom'] = $properties ['margin-bottom'];
+        $properties ['margin-left'] = NULL;
+        $properties ['margin-right'] = NULL;
+        $properties ['margin-top'] = NULL;
+        $properties ['margin-bottom'] = NULL;
+
+        // Percentage values are not supported for the padding. Convert to absolute values.
+        $length = strlen ($properties ['padding-left']);
+        if ( $length > 0 && $properties ['padding-left'] [$length-1] == '%' ) {
+            $properties ['padding-left'] = trim ($properties ['padding-left'], '%');
+            $properties ['padding-left'] = $renderer->_getAbsWidthMindMargins ($properties ['padding-left']).'cm';
+        }
+        $length = strlen ($properties ['padding-right']);
+        if ( $length > 0 && $properties ['padding-right'] [$length-1] == '%' ) {
+            $properties ['padding-right'] = trim ($properties ['padding-right'], '%');
+            $properties ['padding-right'] = $renderer->_getAbsWidthMindMargins ($properties ['padding-right']).'cm';
+        }
+        $length = strlen ($properties ['padding-top']);
+        if ( $length > 0 && $properties ['padding-top'] [$length-1] == '%' ) {
+            $properties ['padding-top'] = trim ($properties ['padding-top'], '%');
+            $properties ['padding-top'] = $renderer->_getAbsWidthMindMargins ($properties ['padding-top']).'cm';
+        }
+        $length = strlen ($properties ['padding-bottom']);
+        if ( $length > 0 && $properties ['padding-bottom'] [$length-1] == '%' ) {
+            $properties ['padding-bottom'] = trim ($properties ['padding-bottom'], '%');
+            $properties ['padding-bottom'] = $renderer->_getAbsWidthMindMargins ($properties ['padding-bottom']).'cm';
+        }
+
+        $this->column_count++;
+        if ( $this->column_count == 1 ) {
+            // If this is the first column opened since the group was opened
+            // then we have to open the table and a (single) row first.
+            $column_width = $properties ['width'];
+            $properties ['width'] = '100%';
+            $renderer->_odtTableOpenUseProperties($properties);
+            $renderer->_odtTableRowOpenUseProperties($properties);
+            $properties ['width'] = $column_width;
+        }
+
+        // Convert rel-width to absolute width.
+        // The width in percentage works strange in LibreOffice, this is a workaround.
+        $length = strlen ($properties ['width']);
+        if ( $length > 0 && $properties ['width'] [$length-1] == '%' ) {
+            $properties ['width'] = trim ($properties ['width'], '%');
+            $properties ['width'] = $renderer->_getAbsWidthMindMargins ($properties ['width']).'cm';
+        }
+
+        // We did not specify any max column value when we opened the table.
+        // So we have to tell the renderer to add a column just now.
+        $renderer->_odtTableAddColumnUseProperties($properties);
+
+        // Open the cell.
+        $renderer->_odtTableCellOpenUseProperties($properties);
+    }
+
+    function renderODTCloseColumn ($renderer) {
+        if ( method_exists ($renderer, '_odtTableAddColumnUseProperties') === false ) {
+            // Function is not supported by installed ODT plugin version, return.
+            return;
+        }
+
+        $renderer->tablecell_close();
+    }
+
+    function renderODTOpenGroup ($renderer, $class, $style) {
+        // Nothing to do for now.
+    }
+
+    function renderODTCloseGroup ($renderer) {
+        // If a table has been opened in the group we close it now.
+        if ( $this->column_count > 0 ) {
+            // At last we need to close the row and the table!
+            $renderer->tablerow_close();
+            //$renderer->table_close();
+            $renderer->_odtTableClose();
+        }
+        $this->column_count = 0;
     }
 }
 
