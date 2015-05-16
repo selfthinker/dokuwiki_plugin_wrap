@@ -35,6 +35,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
 
     function postConnect() {
         $this->Lexer->addExitPattern($this->exit_pattern, 'plugin_wrap_'.$this->getPluginComponent());
+        $this->Lexer->addPattern('[ \t]*={2,}[^\n]+={2,}[ \t]*(?=\n)', 'plugin_wrap_'.$this->getPluginComponent());
     }
 
     /**
@@ -48,26 +49,24 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED:
-                // check if $match is a == header ==
-                $headerMatch = preg_grep('/([ \t]*={2,}[^\n]+={2,}[ \t]*(?=))/msSi', array($match));
-                if (empty($headerMatch)) {
-                    $handler->_addCall('cdata', array($match), $pos);
-                } else {
-                    // if it's a == header ==, use the core header() renderer
-                    // (copied from core header() in inc/parser/handler.php)
-                    $title = trim($match);
-                    $level = 7 - strspn($title,'=');
-                    if($level < 1) $level = 1;
-                    $title = trim($title,'=');
-                    $title = trim($title);
+                $handler->_addCall('cdata', array($match), $pos);
+                break;
 
-                    $handler->_addCall('header',array($title,$level,$pos), $pos);
-                    // close the section edit the header could open
-                    if ($title && $level <= $conf['maxseclevel']) {
-                        $handler->addPluginCall('wrap_closesection', array(), DOKU_LEXER_SPECIAL, $pos, '');
-                    }
+            case DOKU_LEXER_MATCHED:
+                // we have a == header ==, use the core header() renderer
+                // (copied from core header() in inc/parser/handler.php)
+                $title = trim($match);
+                $level = 7 - strspn($title,'=');
+                if($level < 1) $level = 1;
+                $title = trim($title,'=');
+                $title = trim($title);
+
+                $handler->_addCall('header',array($title,$level,$pos), $pos);
+                // close the section edit the header could open
+                if ($title && $level <= $conf['maxseclevel']) {
+                    $handler->addPluginCall('wrap_closesection', array(), DOKU_LEXER_SPECIAL, $pos, '');
                 }
-                return false;
+                break;
 
             case DOKU_LEXER_EXIT:
                 return array($state, '');
