@@ -12,8 +12,8 @@ require_once(dirname(__FILE__).'/div.php');
 
 class syntax_plugin_wrap_divwrap extends syntax_plugin_wrap_div {
 
-    protected $special_pattern = '<WRAP.*?/>';
-    protected $entry_pattern   = '<WRAP.*?>(?=.*?</WRAP>)';
+    protected $special_pattern = '<WRAP\b.*?/>';
+    protected $entry_pattern   = '<WRAP\b.*?>(?=.*?</WRAP>)';
     protected $exit_pattern    = '</WRAP>';
 
 }

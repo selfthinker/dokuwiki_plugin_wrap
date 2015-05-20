@@ -13,8 +13,8 @@ require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
 
-    protected $special_pattern = '<div.*?/>';
-    protected $entry_pattern   = '<div.*?>(?=.*?</div>)';
+    protected $special_pattern = '<div\b.*?/>';
+    protected $entry_pattern   = '<div\b.*?>(?=.*?</div>)';
     protected $exit_pattern    = '</div>';
 
     function getType(){ return 'formatting';}
