@@ -149,6 +149,15 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $language = substr ($languages [0], 6);
                     $language = trim ($language, ' "');
 
+                    $is_indent = false;
+                    $is_outdent = false;
+                    if ( strpos ($class, 'wrap_indent') !== false ) {
+                        $is_indent = true;
+                    }
+                    if ( strpos ($class, 'wrap_outdent') !== false ) {
+                        $is_outdent = true;
+                    }
+
                     // Check for multicolumns
                     $columns = 0;
                     preg_match ('/wrap_col\d/', $attr, $matches);
@@ -218,8 +227,9 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                         array_push ($type_stack, 'multicolumn');
                         $done = true;
                     }
-                    if ( $done === false && $is_paragraph === true ) {
-                        $this->renderODTOpenParagraph ($renderer, $class, $style, $language);
+                    if ( $done === false && 
+                         ($is_paragraph === true || $is_indent === true || $is_outdent === true) ) {
+                        $this->renderODTOpenParagraph ($renderer, $class, $style, $language, $is_indent, $is_outdent);
                         array_push ($type_stack, 'p');
                         $done = true;
                     }
@@ -351,7 +361,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         $renderer->_odtCloseMultiColumnFrame();
     }
 
-    function renderODTOpenParagraph ($renderer, $class, $style, $language) {
+    function renderODTOpenParagraph ($renderer, $class, $style, $language, $is_indent, $is_outdent) {
         $properties = array ();
 
         if ( method_exists ($renderer, '_odtParagraphOpenUseProperties') === false ) {
@@ -372,6 +382,18 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
 
         if ( empty($language) === false ) {
             $properties ['lang'] = $language;
+        }
+
+        if ( $is_indent === true ) {
+            // FIXME: Has to be adjusted if test direction will be supported.
+            // See all.css
+            $properties ['margin-left'] = $properties ['padding-left'];
+            $properties ['padding-left'] = 0;
+        }
+        if ( $is_outdent === true ) {
+            // Nothing to change: keep left margin property.
+            // FIXME: Has to be adjusted if text (RTL, LTR) direction will be supported.
+            // See all.css
         }
 
         $renderer->_odtParagraphOpenUseProperties($properties);
