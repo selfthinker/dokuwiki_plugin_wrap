@@ -12,8 +12,6 @@ if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
-    static protected $import = NULL;
-
     protected $special_pattern = '<span\b[^>\r\n]*?/>';
     protected $entry_pattern   = '<span\b.*?>(?=.*?</span>)';
     protected $exit_pattern    = '</span>';
@@ -119,30 +117,18 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
                         $is_outdent = true;
                     }
 
-                    // Import Wrap-CSS.
-                    if ( self::$import == NULL ) {
-                        self::$import = plugin_load('helper', 'odt_cssimport');
-                        self::$import->importFrom(DOKU_PLUGIN.'wrap/all.css');
-                        self::$import->importFrom(DOKU_PLUGIN.'wrap/style.css');
-                        self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
-                    }
-
-                    if ( self::$import != NULL ) {
-                        if ( $is_indent === false && $is_outdent === false ) {
-                            $this->renderODTOpenSpan ($renderer, $class, $style, $language);
-                            array_push ($type_stack, 'span');
-                        } else {
-                            $this->renderODTOpenParagraph ($renderer, $class, $style, $language, $is_indent, $is_outdent);
-                            array_push ($type_stack, 'paragraph');
-                        }
+                    if ( $is_indent === false && $is_outdent === false ) {
+                        $this->renderODTOpenSpan ($renderer, $class, $style, $language);
+                        array_push ($type_stack, 'span');
                     } else {
-                        array_push ($type_stack, 'other');
+                        $this->renderODTOpenParagraph ($renderer, $class, $style, $language, $is_indent, $is_outdent);
+                        array_push ($type_stack, 'paragraph');
                     }
                     break;
 
                 case DOKU_LEXER_EXIT:
                     $type = array_pop ($type_stack);
-                    
+
                     if ( $type == 'span' ) {
                         $this->renderODTCloseSpan($renderer);
                     }
@@ -159,24 +145,17 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
     function renderODTOpenSpan ($renderer, $class, $style, $language) {
         $properties = array ();
 
-        if ( method_exists ($renderer, '_odtSpanOpenUseProperties') === false ) {
+        if ( method_exists ($renderer, 'getODTProperties') === false ) {
             // Function is not supported by installed ODT plugin version, return.
             return;
         }
 
-        // Get properties for our class/element from imported CSS
-        self::$import->getPropertiesForElement($properties, 'span', $class);
+        // Get CSS properties for ODT export.
+        $renderer->getODTProperties ($properties, 'span', $class, $style);
 
-        // Interpret and add values from style to our properties
-        $renderer->_processCSSStyle($properties, $style);
-
-        // Adjust values for ODT
-        foreach ($properties as $property => $value) {
-            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
-        }
         if ( empty($properties ['background-image']) === false ) {
             $properties ['background-image'] =
-                self::$import->replaceURLPrefix ($properties ['background-image'], DOKU_PLUGIN.'wrap/');
+                $renderer->replaceURLPrefix ($properties ['background-image'], DOKU_INC);
         }
 
         if ( empty($language) === false ) {
@@ -197,24 +176,17 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
     function renderODTOpenParagraph ($renderer, $class, $style, $language, $is_indent, $is_outdent) {
         $properties = array ();
 
-        if ( method_exists ($renderer, '_odtParagraphOpenUseProperties') === false ) {
+        if ( method_exists ($renderer, 'getODTProperties') === false ) {
             // Function is not supported by installed ODT plugin version, return.
             return;
         }
 
-        // Get properties for our class/element from imported CSS
-        self::$import->getPropertiesForElement($properties, 'p', $class);
+        // Get CSS properties for ODT export.
+        $renderer->getODTProperties ($properties, 'p', $class, $style);
 
-        // Interpret and add values from style to our properties
-        $renderer->_processCSSStyle($properties, $style);
-
-        // Adjust values for ODT
-        foreach ($properties as $property => $value) {
-            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
-        }
         if ( empty($properties ['background-image']) === false ) {
             $properties ['background-image'] =
-                self::$import->replaceURLPrefix ($properties ['background-image'], DOKU_PLUGIN.'wrap/');
+                $renderer->replaceURLPrefix ($properties ['background-image'], DOKU_INC);
         }
 
         if ( empty($language) === false ) {
