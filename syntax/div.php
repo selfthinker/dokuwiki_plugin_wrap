@@ -12,7 +12,6 @@ if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
-    static protected $import = NULL;
     static protected $boxes = array ('wrap_box', 'wrap_danger', 'wrap_warning', 'wrap_caution', 'wrap_notice', 'wrap_safety',
                                      'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',
                                      'wrap_download', 'wrap_hi', 'wrap_spoiler');
@@ -20,7 +19,6 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     static protected $column_count = 0;
     protected $entry_pattern = '<div.*?>(?=.*?</div>)';
     protected $exit_pattern  = '</div>';
-    protected $odt_ignore = false;
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
@@ -117,23 +115,6 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         if($mode == 'odt'){
             switch ($state) {
                 case DOKU_LEXER_ENTER:
-                    // Does CSS-Import exist?
-                    if ( $this->odt_ignore === false && self::$import == NULL ) {
-                        self::$import = plugin_load('helper', 'odt_cssimport');
-                        if ( self::$import != NULL ) {
-                            self::$import->importFrom(DOKU_PLUGIN.'wrap/all.css');
-                            self::$import->importFrom(DOKU_PLUGIN.'wrap/style.css');
-                            self::$import->loadReplacements(DOKU_INC.DOKU_TPL.'style.ini');
-                        } else {
-                            // No specific ODT export, just plain content export.
-                            $this->odt_ignore = true;
-                        }
-                    }
-
-                    if ( $this->odt_ignore === true ) {
-                        return false;
-                    }
-
                     // Get attributes. Use the same mode as for XHTML.
                     $wrap = plugin_load('helper', 'wrap');
                     $attr = $wrap->buildAttributes($data, 'plugin_wrap','xhtml');
@@ -255,9 +236,6 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     break;
 
                 case DOKU_LEXER_EXIT:
-                    if ( $this->odt_ignore == true ) {
-                        return false;
-                    }
                     $type = array_pop ($type_stack);
                     if ( $type == 'box' ) {
                         $this->renderODTCloseBox ($renderer);
@@ -285,24 +263,17 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     function renderODTOpenBox ($renderer, $class, $style) {
         $properties = array ();
 
-        if ( method_exists ($renderer, '_odtDivOpenAsFrameUseProperties') === false ) {
+        if ( method_exists ($renderer, 'getODTProperties') === false ) {
             // Function is not supported by installed ODT plugin version, return.
             return;
         }
 
-        // Get properties for our class/element from imported CSS
-        self::$import->getPropertiesForElement($properties, 'div', $class);
+        // Get CSS properties for ODT export.
+        $renderer->getODTProperties ($properties, 'div', $class, $style);
 
-        // Interpret and add values from style to our properties
-        $renderer->_processCSSStyle($properties, $style);
-
-        // Adjust values for ODT
-        foreach ($properties as $property => $value) {
-            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
-        }
         if ( empty($properties ['background-image']) === false ) {
             $properties ['background-image'] =
-                self::$import->replaceURLPrefix ($properties ['background-image'], DOKU_PLUGIN.'wrap/');
+                $renderer->replaceURLPrefix ($properties ['background-image'], DOKU_INC);
         }
 
         if ( empty($properties ['float']) === true ) {
@@ -334,21 +305,13 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     function renderODTOpenColumns ($renderer, $class, $style) {
         $properties = array ();
 
-        if ( method_exists ($renderer, '_odtOpenMultiColumnFrame') === false ) {
+        if ( method_exists ($renderer, 'getODTProperties') === false ) {
             // Function is not supported by installed ODT plugin version, return.
             return;
         }
 
-        // Get properties for our class/element from imported CSS
-        self::$import->getPropertiesForElement($properties, 'div', $class);
-
-        // Interpret and add values from style to our properties
-        $renderer->_processCSSStyle($properties, $style);
-
-        // Adjust values for ODT
-        foreach ($properties as $property => $value) {
-            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
-        }
+        // Get CSS properties for ODT export.
+        $renderer->getODTProperties ($properties, 'div', $class, $style);
 
         $renderer->_odtOpenMultiColumnFrame($properties);
     }
@@ -364,21 +327,13 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     function renderODTOpenParagraph ($renderer, $class, $style, $language, $is_indent, $is_outdent) {
         $properties = array ();
 
-        if ( method_exists ($renderer, '_odtParagraphOpenUseProperties') === false ) {
+        if ( method_exists ($renderer, 'getODTProperties') === false ) {
             // Function is not supported by installed ODT plugin version, return.
             return;
         }
 
-        // Get properties for our class/element from imported CSS
-        self::$import->getPropertiesForElement($properties, 'p', $class);
-
-        // Interpret and add values from style to our properties
-        $renderer->_processCSSStyle($properties, $style);
-
-        // Adjust values for ODT
-        foreach ($properties as $property => $value) {
-            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
-        }
+        // Get CSS properties for ODT export.
+        $renderer->getODTProperties ($properties, 'p', $class, $style);
 
         if ( empty($language) === false ) {
             $properties ['lang'] = $language;
@@ -410,21 +365,14 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     function renderODTOpenColumn ($renderer, $class, $style) {
         $properties = array ();
 
-        if ( method_exists ($renderer, '_odtTableAddColumnUseProperties') === false ) {
+        if ( method_exists ($renderer, 'getODTProperties') === false ) {
             // Function is not supported by installed ODT plugin version, return.
             return;
         }
 
-        // Get properties for our class/element from imported CSS
-        self::$import->getPropertiesForElement($properties, NULL, $class);
+        // Get CSS properties for ODT export.
+        $renderer->getODTProperties ($properties, NULL, $class, $style);
 
-        // Interpret and add values from style to our properties
-        $renderer->_processCSSStyle($properties, $style);
-
-        // Adjust values for ODT
-        foreach ($properties as $property => $value) {
-            $properties [$property] = self::$import->adjustValueForODT ($value, 14);
-        }
 
         // Frames/Textboxes still have some issues with formatting (at least in LibreOffice)
         // So as a workaround we implement columns as a table.
