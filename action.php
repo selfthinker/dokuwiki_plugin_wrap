@@ -100,7 +100,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                     'type'   => 'insert',
                     'title'  => $this->getLang('clear'),
                     'icon'   => '../../plugins/wrap/images/toolbar/clear.png',
-                    'insert' => '<'.$syntaxDiv.' clear></'.$syntaxDiv.'>\n',
+                    'insert' => '<'.$syntaxDiv.' clear/>\n',
                 ),
                 array(
                     'type'   => 'format',
