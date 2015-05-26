@@ -34,6 +34,17 @@ A lowercase **%%<wrap>%%** (or alternatively **%%<inline>%%** or **%%<span>%%**)
   * and **widths**
 if the according wrap isn't floated as well.
 
+A shorthand of uppercase **%%<WRAP />%%** and lowercase **%%<wrap />%%** are available if the container is empty or unnecessary.
+
+  <WRAP classes #id />  or <block classes #id />  or <div classes #id />
+
+  <wrap classes #id />  or <inline classes #id />  or <span classes #id />
+
+These shorthand syntax are useful typically for layout purpose:
+  * to prevent elements from wrapping around a floating element -- ''%%<WRAP clear />%%''
+  * to specify page break behavior after an element when printing -- ''%%<WRAP pagebreak />%%''
+  * to put an invisible anchor with specific id -- ''%%<span #pragraph12 />%%''
+
 
 ===== Classes and Styles =====
 
@@ -276,7 +287,7 @@ You can create a row of tabs by simply wrapping a list of links in ''%%<WRAP tab
 
 After using any of the float classes, you might come across following text protruding into the space where only the floating containers should be. To prevent that, you should simply add this after your last column:
 
-  <WRAP clear></WRAP>
+  <WRAP clear />
 
 === Indent ===
 
@@ -322,9 +333,9 @@ The following text is hidden: <wrap hide>John, please revise that sentence.</wra
 
 === Pagebreak ===
 
-The following will add a pagebreak: <WRAP pagebreak></WRAP>
+The following will add a pagebreak: <WRAP pagebreak />
 
-  The following will add a pagebreak: <WRAP pagebreak></WRAP>
+  The following will add a pagebreak: <WRAP pagebreak />
 
 This has no effect on the browser screen. A [[http://reference.sitepoint.com/css/page-break-after|pagebreak]] will force a new page in printouts.
 
