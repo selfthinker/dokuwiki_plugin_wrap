@@ -88,134 +88,18 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
         if($mode == 'odt'){
             switch ($state) {
                 case DOKU_LEXER_ENTER:
-                    // Get attributes.
                     $wrap = plugin_load('helper', 'wrap');
-                    $attr = $wrap->buildAttributes($data);
-
-                    // Get class content and add 'dokuwiki' to it
-                    preg_match ('/class=".*"/', $attr, $matches);
-                    $class = substr ($matches [0], 6);
-                    $class = trim ($class, ' "');
-                    $class = 'dokuwiki '.$class;
-
-                    // Get style content
-                    preg_match ('/style=".*"/', $attr, $styles);
-                    $style = substr ($styles [0], 6);
-                    $style = trim ($style, ' "');
-
-                    // Get language
-                    preg_match ('/lang="([a-zA-Z]|-)+"/', $attr, $languages);
-                    $language = substr ($languages [0], 6);
-                    $language = trim ($language, ' "');
-
-                    $is_indent = false;
-                    $is_outdent = false;
-                    if ( strpos ($class, 'wrap_indent') !== false ) {
-                        $is_indent = true;
-                    }
-                    if ( strpos ($class, 'wrap_outdent') !== false ) {
-                        $is_outdent = true;
-                    }
-
-                    if ( $is_indent === false && $is_outdent === false ) {
-                        $this->renderODTOpenSpan ($renderer, $class, $style, $language);
-                        array_push ($type_stack, 'span');
-                    } else {
-                        $this->renderODTOpenParagraph ($renderer, $class, $style, $language, $is_indent, $is_outdent);
-                        array_push ($type_stack, 'paragraph');
-                    }
+                    array_push ($type_stack, $wrap->renderODTElementOpen($renderer, 'span', $data));
                     break;
 
                 case DOKU_LEXER_EXIT:
-                    $type = array_pop ($type_stack);
-
-                    if ( $type == 'span' ) {
-                        $this->renderODTCloseSpan($renderer);
-                    }
-                    if ( $type == 'paragraph' ) {
-                        $this->renderODTCloseParagraph ($renderer);
-                    }
+                    $element = array_pop ($type_stack);
+                    $wrap = plugin_load('helper', 'wrap');
+                    $wrap->renderODTElementClose ($renderer, $element);
                     break;
             }
             return true;
         }
         return false;
     }
-
-    function renderODTOpenSpan ($renderer, $class, $style, $language) {
-        $properties = array ();
-
-        if ( method_exists ($renderer, 'getODTProperties') === false ) {
-            // Function is not supported by installed ODT plugin version, return.
-            return;
-        }
-
-        // Get CSS properties for ODT export.
-        $renderer->getODTProperties ($properties, 'span', $class, $style);
-
-        if ( empty($properties ['background-image']) === false ) {
-            $properties ['background-image'] =
-                $renderer->replaceURLPrefix ($properties ['background-image'], DOKU_INC);
-        }
-
-        if ( empty($language) === false ) {
-            $properties ['lang'] = $language;
-        }
-
-        $renderer->_odtSpanOpenUseProperties($properties);
-    }
-
-    function renderODTCloseSpan ($renderer) {
-        if ( method_exists ($renderer, '_odtSpanClose') === false ) {
-            // Function is not supported by installed ODT plugin version, return.
-            return;
-        }
-        $renderer->_odtSpanClose();
-    }
-
-    function renderODTOpenParagraph ($renderer, $class, $style, $language, $is_indent, $is_outdent) {
-        $properties = array ();
-
-        if ( method_exists ($renderer, 'getODTProperties') === false ) {
-            // Function is not supported by installed ODT plugin version, return.
-            return;
-        }
-
-        // Get CSS properties for ODT export.
-        $renderer->getODTProperties ($properties, 'p', $class, $style);
-
-        if ( empty($properties ['background-image']) === false ) {
-            $properties ['background-image'] =
-                $renderer->replaceURLPrefix ($properties ['background-image'], DOKU_INC);
-        }
-
-        if ( empty($language) === false ) {
-            $properties ['lang'] = $language;
-        }
-
-        if ( $is_indent === true ) {
-            // FIXME: Has to be adjusted if test direction will be supported.
-            // See all.css
-            $properties ['text-indent'] = $properties ['padding-left'];
-            $properties ['padding-left'] = 0;
-        }
-        if ( $is_outdent === true ) {
-            // FIXME: Has to be adjusted if text (RTL, LTR) direction will be supported.
-            // See all.css
-            $properties ['text-indent'] = $properties ['margin-left'];
-            $properties ['margin-left'] = 0;
-        }
-
-        $renderer->p_close();
-        $renderer->_odtParagraphOpenUseProperties($properties);
-    }
-
-    function renderODTCloseParagraph ($renderer) {
-        if ( method_exists ($renderer, 'p_close') === false ) {
-            // Function is not supported by installed ODT plugin version, return.
-            return;
-        }
-        $renderer->p_close();
-    }
 }
-
