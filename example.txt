@@ -218,7 +218,7 @@ Center aligned text ...
 </WRAP>
 
 
-<WRAP clear></WRAP>
+<WRAP clear />
 
 
 **Safety Notes:**
@@ -248,7 +248,7 @@ Center aligned text ...
   <WRAP round safety></WRAP>
 </WRAP>
 
-<WRAP clear></WRAP>
+<WRAP clear />
 
 
 You can use notes and boxes also inside text with spans like this:
@@ -373,7 +373,7 @@ Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__
 
 Text inside outer right box, but beneath inner left box.
 
-<WRAP clear></WRAP>
+<WRAP clear />
 
 <WRAP round tip>
 Round tip box underneath, after a ''clear''.
@@ -392,7 +392,7 @@ Inner nested box floats left and is partly <wrap em hi>__em__phasized and __hi__
 
 Text inside outer right box, but beneath inner left box.
 
-<WRAP clear></WRAP>
+<WRAP clear />
 
 <WRAP round tip>
 Round tip box underneath, after a ''clear''.
