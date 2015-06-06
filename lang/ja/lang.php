@@ -17,7 +17,7 @@ $lang['help']      = 'ヘルプ枠';
 $lang['download']  = 'ダウンロード枠';
 $lang['todo']      = 'TODO枠';
 
-$lang['clear']     = '初期化';
+$lang['clear']     = '回り込み解除';
 
 $lang['em']        = '特に強調';
 $lang['hi']        = 'ハイライト表示';
