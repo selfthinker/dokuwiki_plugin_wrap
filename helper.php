@@ -58,7 +58,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                 continue;
             }
 
-            //get id ('#' must be first char to avoid confusion with font and bgcolors)
+            //get id ('#' must be first char to avoid confusion with font and bg colors)
             if (preg_match('/^#([A-Za-z0-9_-]+)/', $token)) {
                 $attr['id'] = trim($token,'#');
                 continue;
