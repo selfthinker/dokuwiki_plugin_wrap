@@ -12,8 +12,9 @@ require_once(dirname(__FILE__).'/div.php');
 
 class syntax_plugin_wrap_divblock extends syntax_plugin_wrap_div {
 
-    protected $entry_pattern = '<block.*?>(?=.*?</block>)';
-    protected $exit_pattern  = '</block>';
+    protected $special_pattern = '<block\b[^>\r\n]*?/>';
+    protected $entry_pattern   = '<block\b.*?>(?=.*?</block>)';
+    protected $exit_pattern    = '</block>';
 
 
 }

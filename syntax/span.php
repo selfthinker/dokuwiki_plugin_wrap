@@ -12,8 +12,9 @@ if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
-    protected $entry_pattern = '<span.*?>(?=.*?</span>)';
-    protected $exit_pattern  = '</span>';
+    protected $special_pattern = '<span\b[^>\r\n]*?/>';
+    protected $entry_pattern   = '<span\b.*?>(?=.*?</span>)';
+    protected $exit_pattern    = '</span>';
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('formatting', 'substition', 'disabled'); }
@@ -29,6 +30,7 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
      * Connect pattern to lexer
      */
     function connectTo($mode) {
+        $this->Lexer->addSpecialPattern($this->special_pattern,$mode,'plugin_wrap_'.$this->getPluginComponent());
         $this->Lexer->addEntryPattern($this->entry_pattern,$mode,'plugin_wrap_'.$this->getPluginComponent());
     }
 
@@ -42,7 +44,8 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
     function handle($match, $state, $pos, Doku_Handler $handler){
         switch ($state) {
             case DOKU_LEXER_ENTER:
-                $data = strtolower(trim(substr($match,strpos($match,' '),-1)));
+            case DOKU_LEXER_SPECIAL:
+                $data = strtolower(trim(substr($match,strpos($match,' '),-1)," \t\n/"));
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED :
@@ -68,14 +71,16 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
         if($mode == 'xhtml'){
             switch ($state) {
                 case DOKU_LEXER_ENTER:
-                    $wrap = plugin_load('helper', 'wrap');
+                case DOKU_LEXER_SPECIAL:
+                    $wrap = $this->loadHelper('wrap');
                     $attr = $wrap->buildAttributes($data);
 
                     $renderer->doc .= '<span'.$attr.'>';
+                    if ($state == DOKU_LEXER_SPECIAL) $renderer->doc .= '</span>';
                     break;
 
                 case DOKU_LEXER_EXIT:
-                    $renderer->doc .= "</span>";
+                    $renderer->doc .= '</span>';
                     break;
             }
             return true;

@@ -12,13 +12,9 @@ if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
-    /*static protected $boxes = array ('wrap_box', 'wrap_danger', 'wrap_warning', 'wrap_caution', 'wrap_notice', 'wrap_safety',
-                                     'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',
-                                     'wrap_download', 'wrap_hi', 'wrap_spoiler');
-    static protected $paragraphs = array ('wrap_leftalign', 'wrap_rightalign', 'wrap_centeralign', 'wrap_justify');
-    static protected $column_count = 0;*/
-    protected $entry_pattern = '<div.*?>(?=.*?</div>)';
-    protected $exit_pattern  = '</div>';
+    protected $special_pattern = '<div\b[^>\r\n]*?/>';
+    protected $entry_pattern   = '<div\b.*?>(?=.*?</div>)';
+    protected $exit_pattern    = '</div>';
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
@@ -34,6 +30,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
      * Connect pattern to lexer
      */
     function connectTo($mode) {
+        $this->Lexer->addSpecialPattern($this->special_pattern,$mode,'plugin_wrap_'.$this->getPluginComponent());
         $this->Lexer->addEntryPattern($this->entry_pattern,$mode,'plugin_wrap_'.$this->getPluginComponent());
     }
 
@@ -49,7 +46,8 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
         global $conf;
         switch ($state) {
             case DOKU_LEXER_ENTER:
-                $data = strtolower(trim(substr($match,strpos($match,' '),-1)));
+            case DOKU_LEXER_SPECIAL:
+                $data = strtolower(trim(substr($match,strpos($match,' '),-1)," \t\n/"));
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED:
@@ -99,14 +97,16 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     // include the whole wrap syntax
                     $renderer->startSectionEdit(0, 'plugin_wrap_end');
 
-                    $wrap = plugin_load('helper', 'wrap');
+                case DOKU_LEXER_SPECIAL:
+                    $wrap = $this->loadHelper('wrap');
                     $attr = $wrap->buildAttributes($data, 'plugin_wrap');
 
                     $renderer->doc .= '<div'.$attr.'>';
+                    if ($state == DOKU_LEXER_SPECIAL) $renderer->doc .= '</div>';
                     break;
 
                 case DOKU_LEXER_EXIT:
-                    $renderer->doc .= "</div>";
+                    $renderer->doc .= '</div>';
                     $renderer->finishSectionEdit();
                     break;
             }
