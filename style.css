@@ -186,3 +186,18 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 .dokuwiki .plugin_wrap.tabs {
     margin-bottom: 1.4em;
 }
+
+/*____________ button-style link ____________*/
+
+.dokuwiki .wrap_button a:link,
+.dokuwiki .wrap_button a:visited {
+    background-color: __background_alt__;
+}
+.dokuwiki .wrap_button a:link:hover,
+.dokuwiki .wrap_button a:visited:hover,
+.dokuwiki .wrap_button a:link:focus,
+.dokuwiki .wrap_button a:visited:focus,
+.dokuwiki .wrap_button a:link:active,
+.dokuwiki .wrap_button a:visited:active {
+    background-color: __background_neu__;
+}

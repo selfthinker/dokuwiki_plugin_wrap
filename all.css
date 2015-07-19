@@ -306,3 +306,16 @@ Screen and Print Styles for the Wrap Plugin
 .dokuwiki .wrap_hide {
     display: none;
 }
+
+
+/*____________ button-style link ____________*/
+
+.dokuwiki .wrap_button a:link,
+.dokuwiki .wrap_button a:visited {
+    background-image: none;
+    border: 1px solid __border__;
+    border-radius: .3em;
+    padding: .5em .7em;
+    text-decoration: none;
+}
+/* see rest of button link styles in style.css */

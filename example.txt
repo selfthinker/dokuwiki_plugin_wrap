@@ -334,6 +334,12 @@ Here follows a spoiler: <wrap spoiler>Darth Vader is Luke's father.</wrap>
 
 Just select the text in the spoiler box to be able to read its content.
 
+=== Button links ===
+
+A link that looks like a button: <wrap button>[[wiki:Syntax]]</wrap>
+
+  A link that looks like a button: <wrap button>[[wiki:Syntax]]</wrap>
+
 === Hide ===
 
 The following text is hidden: <wrap hide>John, please revise that sentence.</wrap>
