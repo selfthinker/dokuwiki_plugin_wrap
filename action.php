@@ -27,6 +27,10 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
     function handle_toolbar(Doku_Event $event, $param) {
         $syntaxDiv = $this->getConf('syntaxDiv');
         $syntaxSpan = $this->getConf('syntaxSpan');
+        $pickerBoxesAlignment = $this->getConf('pickerBoxesAlignment');
+        $pickerBoxesCorners = $this->getConf('pickerBoxesCorners');
+        $pickerBoxesWidth = $this->getConf('pickerBoxesWidth');
+        
 
         $event->data[] = array (
             'type' => 'picker',
