@@ -19,6 +19,13 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     margin-bottom: 1.5em;
     overflow: hidden;
 }
+.dokuwiki div.wrap_box {
+	border-radius: 1.4em;
+	width: 60%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 .dokuwiki span.wrap_box,
 .dokuwiki span.wrap_danger,
 .dokuwiki span.wrap_warning,
@@ -26,6 +33,9 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 .dokuwiki span.wrap_notice,
 .dokuwiki span.wrap_safety {
     padding: 0 .3em;
+}
+.dokuwiki span.wrap_box {
+	border-radius: 0.14em;
 }
 
 /*____________ notes with icons ____________*/
@@ -45,6 +55,11 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     background-repeat: no-repeat;
     color: inherit;
     overflow: hidden;
+    border-radius: 1.4em;
+    width: 60%;
+    display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 /* general styles for all note spans */
 .dokuwiki span.wrap_info,
@@ -59,6 +74,7 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     background-position: 2px 50%;
     background-repeat: no-repeat;
     color: inherit;
+    border-radius: 0.14em;
 }
 
 /* sorry for icons glued to the right side, but there is currently no way

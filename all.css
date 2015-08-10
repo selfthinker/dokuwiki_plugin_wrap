@@ -233,6 +233,12 @@ Screen and Print Styles for the Wrap Plugin
     border-radius: .14em;
 }
 
+.dokuwiki div.wrap_square {
+    border-radius: 0;
+}
+.dokuwiki span.wrap_square {
+    border-radius: 0;
+}
 
 /* mark
 ********************************************************************/

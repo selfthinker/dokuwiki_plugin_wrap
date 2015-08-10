@@ -27,10 +27,6 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
     function handle_toolbar(Doku_Event $event, $param) {
         $syntaxDiv = $this->getConf('syntaxDiv');
         $syntaxSpan = $this->getConf('syntaxSpan');
-        $pickerBoxesAlignment = $this->getConf('pickerBoxesAlignment');
-        $pickerBoxesCorners = $this->getConf('pickerBoxesCorners');
-        $pickerBoxesWidth = $this->getConf('pickerBoxesWidth');
-        
 
         $event->data[] = array (
             'type' => 'picker',
@@ -48,56 +44,56 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                     'type'   => 'format',
                     'title'  => $this->getLang('box'),
                     'icon'   => '../../plugins/wrap/images/toolbar/box.png',
-                    'open'   => '<'.$syntaxDiv.' center round box 60%>\n',
+                    'open'   => '<'.$syntaxDiv.' box>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
                 array(
                     'type'   => 'format',
                     'title'  => $this->getLang('info'),
                     'icon'   => '../../plugins/wrap/images/note/16/info.png',
-                    'open'   => '<'.$syntaxDiv.' center round info 60%>\n',
+                    'open'   => '<'.$syntaxDiv.' info>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
                 array(
                     'type'   => 'format',
                     'title'  => $this->getLang('tip'),
                     'icon'   => '../../plugins/wrap/images/note/16/tip.png',
-                    'open'   => '<'.$syntaxDiv.' center round tip 60%>\n',
+                    'open'   => '<'.$syntaxDiv.' tip>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
                 array(
                     'type'   => 'format',
                     'title'  => $this->getLang('important'),
                     'icon'   => '../../plugins/wrap/images/note/16/important.png',
-                    'open'   => '<'.$syntaxDiv.' center round important 60%>\n',
+                    'open'   => '<'.$syntaxDiv.' important>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
                 array(
                     'type'   => 'format',
                     'title'  => $this->getLang('alert'),
                     'icon'   => '../../plugins/wrap/images/note/16/alert.png',
-                    'open'   => '<'.$syntaxDiv.' center round alert 60%>\n',
+                    'open'   => '<'.$syntaxDiv.' alert>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
                 array(
                     'type'   => 'format',
                     'title'  => $this->getLang('help'),
                     'icon'   => '../../plugins/wrap/images/note/16/help.png',
-                    'open'   => '<'.$syntaxDiv.' center round help 60%>\n',
+                    'open'   => '<'.$syntaxDiv.' help>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
                 array(
                     'type'   => 'format',
                     'title'  => $this->getLang('download'),
                     'icon'   => '../../plugins/wrap/images/note/16/download.png',
-                    'open'   => '<'.$syntaxDiv.' center round download 60%>\n',
+                    'open'   => '<'.$syntaxDiv.' download>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
                 array(
                     'type'   => 'format',
                     'title'  => $this->getLang('todo'),
                     'icon'   => '../../plugins/wrap/images/note/16/todo.png',
-                    'open'   => '<'.$syntaxDiv.' center round todo 60%>\n',
+                    'open'   => '<'.$syntaxDiv.' todo>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
                 array(
