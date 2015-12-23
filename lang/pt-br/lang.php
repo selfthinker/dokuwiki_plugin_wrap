@@ -4,9 +4,10 @@
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * 
  * @author Sérgio Motta <sergio@cisne.com.br>
+ * @author Fábio Nogueira <fnogueira@gnome.org>
  */
 $lang['picker']                = 'Plugin Wrap';
-$lang['column']                = 'coluna';
+$lang['column']                = 'colunas';
 $lang['box']                   = 'caixa centralizada simples';
 $lang['info']                  = 'caixa de informação';
 $lang['tip']                   = 'caixa de sugestão';
