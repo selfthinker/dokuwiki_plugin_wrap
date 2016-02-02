@@ -12,8 +12,9 @@ require_once(dirname(__FILE__).'/span.php');
 
 class syntax_plugin_wrap_spaninline extends syntax_plugin_wrap_span {
 
-    protected $entry_pattern = '<inline.*?>(?=.*?</inline>)';
-    protected $exit_pattern  = '</inline>';
+    protected $special_pattern = '<inline\b[^>\r\n]*?/>';
+    protected $entry_pattern   = '<inline\b.*?>(?=.*?</inline>)';
+    protected $exit_pattern    = '</inline>';
 
 }
 

@@ -24,7 +24,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
         $controller->register_hook('HTML_SECEDIT_BUTTON', 'BEFORE', $this, 'handle_secedit_button');
     }
 
-    function handle_toolbar(&$event, $param) {
+    function handle_toolbar(Doku_Event $event, $param) {
         $syntaxDiv = $this->getConf('syntaxDiv');
         $syntaxSpan = $this->getConf('syntaxSpan');
 
@@ -100,7 +100,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                     'type'   => 'insert',
                     'title'  => $this->getLang('clear'),
                     'icon'   => '../../plugins/wrap/images/toolbar/clear.png',
-                    'insert' => '<'.$syntaxDiv.' clear></'.$syntaxDiv.'>\n',
+                    'insert' => '<'.$syntaxDiv.' clear/>\n',
                 ),
                 array(
                     'type'   => 'format',
@@ -131,9 +131,9 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
      * Handle section edit buttons, prevents section buttons inside the wrap plugin from being rendered
      *
      * @param Doku_Event $event The event object
-     * @param array      $args Parameters for the event
+     * @param array      $param Parameters for the event
      */
-    public function handle_secedit_button($event, $args) {
+    public function handle_secedit_button(Doku_Event $event, $param) {
         // counter of the number of currently opened wraps
         static $wraps = 0;
         $data = $event->data;

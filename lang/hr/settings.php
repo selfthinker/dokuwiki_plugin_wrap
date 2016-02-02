@@ -12,3 +12,4 @@ $lang['restrictionType_o_0']   = 'dozvoli sve klase osim gore navedenih';
 $lang['restrictionType_o_1']   = 'dozvoli samo gore navedene klase';
 $lang['syntaxDiv']             = 'Koja sintaksa treba biti korištena u alatnoj traci za omeđivanje bloka?';
 $lang['syntaxSpan']            = 'Koja sintaksa treba biti korištena u alatnoj traci za omeđivanje teksta u liniji?';
+$lang['darkTpl']               = 'Prilagoditi boje za tamne predloške?';
