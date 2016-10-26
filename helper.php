@@ -42,6 +42,36 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                 $attr['width'] = $token;
                 continue;
             }
+            
+            //get background color
+			if (strpos($token,'bgcolor')!==false){
+                $attr['bgcolor'] = trim($token,'bgcolor:');
+                continue;
+            }
+			
+			//get shadow
+			if (strpos($token,'shadow')!==false){
+                $attr['shadow'] = trim($token,'shadow:');
+                continue;
+            }
+			
+			//get border color
+			if (strpos($token,'border')!==false){
+                $attr['border'] = trim($token,'border:');
+                continue;
+            }
+			
+			//get text color
+			if (strpos($token,'color')!==false){
+                $attr['color'] = trim($token,'color:');
+                continue;
+            }
+			
+			//get background image from media
+			if (strpos($token,'bg:')!==false){
+                $attr['bg'] = trim($token,'bg').'g';
+                continue;
+            }
 
             //get lang
             if (preg_match('/\:([a-z\-]+)/', $token)) {
@@ -99,6 +129,17 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             if($attr['class']) $out .= ' class="'.hsc($attr['class']).' '.$addClass.'"';
             // if used in other plugins, they might want to add their own class(es)
             elseif($addClass)  $out .= ' class="'.$addClass.'"';
+            
+            $out .= ' style="';
+				if($attr['bgcolor']) $out .= 'background-color:'.$attr['bgcolor'].';';
+				if($attr['color']) $out .= 'color:'.$attr['color'].';';
+				if($attr['bg'])  $out .= 'background-size:100% 100%;background-image:url(\'/lib/exe/fetch.php?w=&h=&cache=cache&media='.hsc($attr['bg']).'\');';
+				if($attr['width']) $out .= 'width:'.hsc($attr['width']).';';
+				if($attr['border']) $out .= 'border-style:solid;border-width:2px;border-color:'.hsc($attr['border']).';';
+				if($attr['shadow']) $out .= 'box-shadow: 0 0 .5em '.hsc($attr['shadow']).';';
+
+			$out .= '"';
+			
             if($attr['id'])    $out .= ' id="'.hsc($attr['id']).'"';
             // width on spans normally doesn't make much sense, but in the case of floating elements it could be used
             if($attr['width']) {
