@@ -2,9 +2,11 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author reza_khn <reza_khn@yahoo.com>
+ * @author Vahid <v.naserinia@yahoo.com>
  */
+$lang['picker']                = 'قرار دادن پلاگین';
 $lang['column']                = 'ستون';
 $lang['box']                   = 'کادر ساده';
 $lang['info']                  = 'کادر اطلاعات';
