@@ -15,6 +15,10 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                                      'wrap_download', 'wrap_hi', 'wrap_spoiler');
     static protected $paragraphs = array ('wrap_leftalign', 'wrap_rightalign', 'wrap_centeralign', 'wrap_justify');
     static protected $column_count = 0;
+    static $box_left_pos = 0;
+    static $box_right_pos = 0;
+    static $box_first = true;
+    static $table_entr = 0;
 
     /**
      * get attributes (pull apart the string between '<wrap' and '>')
@@ -205,6 +209,14 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             } else if ( $is_group === true ) {
                 $this->renderODTOpenGroup ($renderer, $attr ['class'], $style);
                 return 'group';
+            } else if (strpos ($attr ['class'], 'wrap_clear') !== false ) {
+                $renderer->linebreak();
+                $renderer->p_close();
+                $renderer->p_open();
+
+                self::$box_left_pos = 0;
+                self::$box_right_pos = 0;
+                self::$box_first = true;
             }
         }
         return 'other';
@@ -599,8 +611,10 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
     }
 
     function renderODTOpenTable ($renderer, $attr, $style, $attr_string) {
+        self::$table_entr += 1;
+
         $class = $attr ['class'];
-        $properties = array ();
+        $css_properties = array ();
 
         if ( method_exists ($renderer, 'getODTPropertiesFromElement') === false ) {
             // Function is not supported by installed ODT plugin version, return.
@@ -608,44 +622,105 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         }
 
         // Get CSS properties for ODT export.
-        $renderer->getODTPropertiesNew ($properties, 'div', $attr_string, NULL, true);
+        $renderer->getODTPropertiesNew ($css_properties, 'div', $attr_string, NULL, true);
 
-        if ( empty($properties ['float']) === true ) {
+        if ( empty($css_properties ['float']) === true ) {
             // If the float property is not set, set it to 'left' becuase the ODT plugin
             // would default to 'center' which is diffeent to the XHTML behaviour.
-            if ( strpos ($class, 'wrap_center') === false ) {
-                $properties ['float'] = 'left';
-            } else {
-                $properties ['float'] = 'center';
+            //$css_properties ['float'] = 'left';
+            if (strpos ($class, 'wrap_left') !== false ) {
+                $css_properties ['float'] = 'left';
+            } else if (strpos ($class, 'wrap_center') !== false ) {
+                $css_properties ['float'] = 'center';
+            } else if (strpos ($class, 'wrap_right') !== false) {
+                $css_properties ['float'] = 'right';
             }
         }
 
         // The display property has differing usage in CSS. So we better overwrite it.
-        $properties ['display'] = 'always';
+        $css_properties ['display'] = 'always';
         if ( stripos ($class, 'wrap_noprint') !== false ) {
-            $properties ['display'] = 'screen';
+            $css_properties ['display'] = 'screen';
         }
         if ( stripos ($class, 'wrap_onlyprint') !== false ) {
-            $properties ['display'] = 'printer';
+            $css_properties ['display'] = 'printer';
         }
                 
-        $background_color = $properties ['background-color'];
-        $image = $properties ['background-image'];
-        $margin_top = $properties ['margin-top'];
-        $margin_right = $properties ['margin-right'];
-        $margin_bottom = $properties ['margin-bottom'];
-        $margin_left = $properties ['margin-left'];
+        $background_color = $css_properties ['background-color'];
+        $image = $css_properties ['background-image'];
+        $margin_top = $css_properties ['margin-top'];
+        $margin_right = $css_properties ['margin-right'];
+        $margin_bottom = $css_properties ['margin-bottom'];
+        $margin_left = $css_properties ['margin-left'];
         $width = $attr ['width'];
         
         // Open 2x1 table if image is present
         // otherwise only a 1x1 table
         $properties = array();
-        $properties ['width'] = $attr ['width'];
+        $properties ['width'] = '100%';
         $properties ['align'] = 'center';
         $properties ['margin-top'] = $margin_top;
         $properties ['margin-right'] = $margin_right;
         $properties ['margin-bottom'] = $margin_bottom;
         $properties ['margin-left'] = $margin_left;
+
+        $frame_props = array();
+        if (!empty($css_properties ['border'])) {
+            $frame_props ['border'] = $css_properties ['border'];
+        } else {
+            $frame_props ['border'] = 'none';
+        }
+        $frame_props ['min-height'] = '1cm';
+        $frame_props ['width'] = $attr ['width'];
+        $frame_props ['float'] = $css_properties ['float'];
+        if ( self::$table_entr > 1 ) {
+            $frame_props ['anchor-type'] = 'as-char';
+        } else {
+            $frame_props ['anchor-type'] = 'paragraph';
+        }
+        $frame_props ['textarea-horizontal-align'] = 'left';
+        $frame_props ['run-through'] = 'foreground';
+        $frame_props ['vertical-pos'] = 'from-top';
+        $frame_props ['vertical-rel'] = 'paragraph';
+        $frame_props ['horizontal-pos'] = 'from-left';
+        $frame_props ['horizontal-rel'] = 'paragraph';
+        $frame_props ['wrap'] = 'parallel';
+        $frame_props ['number-wrapped-paragraphs'] = 'no-limit';
+        if (!empty($frame_props ['float']) &&
+            $frame_props ['float'] != 'center') {
+            $frame_props ['margin-top'] = '0cm';
+            $frame_props ['margin-right'] = '0cm';
+            $frame_props ['margin-bottom'] = '0cm';
+            $frame_props ['margin-left'] = '0cm';
+            $frame_props ['padding-top'] = '0cm';
+            $frame_props ['padding-bottom'] = '0cm';
+        } else {
+            // No wrapping on not floating divs
+            $frame_props ['wrap'] = 'none';
+        }
+        
+        switch ($frame_props ['float']) {
+            case 'left':
+                if ( self::$table_entr == 1 ) {
+                    $frame_props ['y'] = '0cm';
+                    $frame_props ['x'] = self::$box_left_pos.'cm';
+                    self::$box_left_pos += trim($frame_props ['width'], 'cm');
+                }
+                $frame_props ['padding-left'] = '0cm';
+            break;
+            case 'right':
+                $frame_props ['horizontal-rel'] = 'paragraph';
+                $frame_props ['horizontal-pos'] = 'right';
+                $frame_props ['padding-right'] = '0cm';
+            break;
+            case 'center':
+                $frame_props ['horizontal-pos'] = 'center';
+            break;
+            default:
+                $frame_props ['padding-left'] = '0cm';
+            break;
+        }
+        $renderer->_odtOpenTextBoxUseProperties($frame_props);
 
         $renderer->_odtTableOpenUseProperties($properties);
 
@@ -684,8 +759,9 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         $renderer->tablecell_close();
         $renderer->tablerow_close();
         $renderer->_odtTableClose();
+        $renderer->_odtCloseTextBox ();
 
-        $renderer->p_open();
+        self::$table_entr -= 1;
     }
 
     protected function getODTCommonStyleName ($class_string) {
