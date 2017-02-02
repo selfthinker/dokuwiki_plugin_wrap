@@ -68,7 +68,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                     if ($classIsInList) continue;
                 }
             }
-            $prefix = in_array($token, $noPrefix) ? '' : 'wrap_';
+            $prefix = !$this->getConf('doPrefix') || in_array($token, $noPrefix) ? '' : 'wrap_';
             $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').$prefix.$token;
         }
         if ($this->getConf('darkTpl')) {
