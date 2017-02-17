@@ -43,14 +43,28 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                 continue;
             }
 
+            //get background color
+            if (preg_match('/^bgcolor=#[a-fA-F0-9]{6}$/i', $token)) {
+                $substr = explode('=', $token);
+                $attr['bgcolor'] = $substr[1];
+                continue;
+            }
+            
+            //get font color
+            if (preg_match('/^fontcolor=#[a-fA-F0-9]{6}$/i', $token)) {
+                $substr = explode('=', $token);
+                $attr['fontcolor'] = $substr[1];
+                continue;
+            }
+            
             //get lang
             if (preg_match('/\:([a-z\-]+)/', $token)) {
                 $attr['lang'] = trim($token,':');
                 continue;
             }
 
-            //get id
-            if (preg_match('/#([A-Za-z0-9_-]+)/', $token)) {
+            //get id ('#' must be first char to avoid confusion with font and bg colors)
+            if (preg_match('/^#([A-Za-z0-9_-]+)/', $token)) {
                 $attr['id'] = trim($token,'#');
                 continue;
             }
@@ -100,15 +114,23 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             // if used in other plugins, they might want to add their own class(es)
             elseif($addClass)  $out .= ' class="'.$addClass.'"';
             if($attr['id'])    $out .= ' id="'.hsc($attr['id']).'"';
+            $style = '';
             // width on spans normally doesn't make much sense, but in the case of floating elements it could be used
             if($attr['width']) {
                 if (strpos($attr['width'],'%') !== false) {
-                    $out .= ' style="width: '.hsc($attr['width']).';"';
+                    $style .= 'width: '.hsc($attr['width']).'; ';
                 } else {
                     // anything but % should be 100% when the screen gets smaller
-                    $out .= ' style="width: '.hsc($attr['width']).'; max-width: 100%;"';
+                    $style .= 'width: '.hsc($attr['width']).'; max-width: 100%; ';
                 }
             }
+            if($attr['bgcolor']) {
+                $style .= 'background-color: '.hsc($attr['bgcolor']).'; ';
+            }
+            if($attr['fontcolor']) {
+                $style .= 'color: '.hsc($attr['fontcolor']).'; ';
+            }
+            if(strlen($style)) $out .= ' style="'.$style.'"';
             // only write lang if it's a language in lang2dir.conf
             if($attr['dir'])   $out .= ' lang="'.$attr['lang'].'" xml:lang="'.$attr['lang'].'" dir="'.$attr['dir'].'"';
         }
