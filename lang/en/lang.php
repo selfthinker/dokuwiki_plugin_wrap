@@ -1,19 +1,24 @@
 <?php
 
-$lang['picker']    = 'Wrap Plugin';
-
-$lang['column']    = 'columns';
-$lang['box']       = 'simple centered box';
-$lang['info']      = 'info box';
-$lang['tip']       = 'tip box';
-$lang['important'] = 'important box';
-$lang['alert']     = 'alert box';
-$lang['help']      = 'help box';
-$lang['download']  = 'download box';
-$lang['todo']      = 'todo box';
-
-$lang['clear']     = 'clear floats';
-
-$lang['em']        = 'especially emphasised';
-$lang['hi']        = 'highlighted';
-$lang['lo']        = 'less significant';
+/**
+ * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * 
+ * @author Aurora Voje <aurora.voje@jbv.no>
+ */
+$lang['picker']                = 'Omkransningsplugin
+Omhylningsplugin';
+$lang['column']                = 'kolonner';
+$lang['box']                   = 'enkel sentrert boks';
+$lang['info']                  = 'infoboks';
+$lang['tip']                   = 'tipsboks';
+$lang['important']             = 'viktig boks';
+$lang['alert']                 = 'alarmboks';
+$lang['help']                  = 'hjelpeboks';
+$lang['download']              = 'nedlastningsboks';
+$lang['todo']                  = 'gjøremålsboks';
+$lang['clear']                 = 'tøm floats';
+$lang['em']                    = 'spesiellt uthevet (singular)
+spesiellt uthevede (plural)';
+$lang['hi']                    = 'markert (singular)
+markerte (plural)';
+$lang['lo']                    = 'mindre viktig';
