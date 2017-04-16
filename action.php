@@ -35,6 +35,34 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
             'list' => array(
                 array(
                     'type'   => 'format',
+                    'title'  => $this->getLang('leftalign'),
+                    'icon'   => '../../plugins/wrap/images/toolbar/leftalign.png',
+                    'open'   => '<'.$syntaxDiv.' leftalign>\n',
+                    'close'  => '\n</'.$syntaxDiv.'>\n',
+                ),
+                array(
+                    'type'   => 'format',
+                    'title'  => $this->getLang('centeralign'),
+                    'icon'   => '../../plugins/wrap/images/toolbar/centeralign.png',
+                    'open'   => '<'.$syntaxDiv.' centeralign>\n',
+                    'close'  => '\n</'.$syntaxDiv.'>\n',
+                ),
+                array(
+                    'type'   => 'format',
+                    'title'  => $this->getLang('rightalign'),
+                    'icon'   => '../../plugins/wrap/images/toolbar/rightalign.png',
+                    'open'   => '<'.$syntaxDiv.' rightalign>\n',
+                    'close'  => '\n</'.$syntaxDiv.'>\n',
+                ),
+                array(
+                    'type'   => 'format',
+                    'title'  => $this->getLang('justifyalign'),
+                    'icon'   => '../../plugins/wrap/images/toolbar/justifyalign.png',
+                    'open'   => '<'.$syntaxDiv.' justifyalign>\n',
+                    'close'  => '\n</'.$syntaxDiv.'>\n',
+                ),
+                array(
+                    'type'   => 'format',
                     'title'  => $this->getLang('column'),
                     'icon'   => '../../plugins/wrap/images/toolbar/column.png',
                     'open'   => '<'.$syntaxDiv.' group>\n<'.$syntaxDiv.' half column>\n',
