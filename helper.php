@@ -32,7 +32,18 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
 
         $attr = array();
         $tokens = preg_split('/\s+/', $data, 9);
-        $noPrefix = array_map('trim', explode(',', $this->getConf('noPrefix')));
+
+        // anonymous function to convert inclusive comma separated items to regex pattern
+        $pattern = function ($csv) {
+            return '/^(?:'. str_replace(['?','*',' ',','],
+                                        ['.','.*','','|'], $csv) .')$/';
+        };
+
+        // noPrefix: comma separated class names that should be excluded from
+        //   being prefixed with "wrap_",
+        //   each item may contain wildcard (*, ?)
+        $noPrefix = ($this->getConf('noPrefix')) ? $pattern($this->getConf('noPrefix')) : '';
+
         $restrictedClasses = $this->getConf('restrictedClasses');
         if ($restrictedClasses) {
             $restrictedClasses = array_map('trim', explode(',', $this->getConf('restrictedClasses')));
@@ -72,7 +83,8 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                     if ($classIsInList) continue;
                 }
             }
-            $prefix = in_array($token, $noPrefix) ? '' : 'wrap_';
+            // prefix adjustment of class name
+            $prefix = (preg_match($noPrefix, $token)) ? '' : 'wrap_';
             $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').$prefix.$token;
         }
         if ($this->getConf('darkTpl')) {
