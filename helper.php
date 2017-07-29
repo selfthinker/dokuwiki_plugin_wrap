@@ -40,10 +40,11 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         //   each item may contain wildcard (*, ?)
         $noPrefix = ($this->getConf('noPrefix')) ? $pattern($this->getConf('noPrefix')) : '';
 
-        $restrictedClasses = $this->getConf('restrictedClasses');
-        if ($restrictedClasses) {
-            $restrictedClasses = array_map('trim', explode(',', $this->getConf('restrictedClasses')));
-        }
+        // restrictedClasses : comma separated class names that should be checked
+        //   based on restriction type (whitelist or blacklist),
+        //   each item may contain wildcard (*, ?)
+        $restrictedClasses = ($this->getConf('restrictedClasses')) ?
+                            $pattern($this->getConf('restrictedClasses')) : '';
         $restrictionType = $this->getConf('restrictionType');
 
         foreach ($tokens as $token) {
@@ -70,7 +71,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             //restrict token (class names) characters to prevent any malicious data
             if (preg_match('/[^A-Za-z0-9_-]/',$token)) continue;
             if ($restrictedClasses) {
-                $classIsInList = in_array(trim($token), $restrictedClasses);
+                $classIsInList = preg_match($restrictedClasses, $token);
                 // either allow only certain classes
                 if ($restrictionType) {
                     if (!$classIsInList) continue;
