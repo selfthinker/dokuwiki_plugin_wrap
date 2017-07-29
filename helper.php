@@ -72,13 +72,8 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             if (preg_match('/[^A-Za-z0-9_-]/',$token)) continue;
             if ($restrictedClasses) {
                 $classIsInList = preg_match($restrictedClasses, $token);
-                // either allow only certain classes
-                if ($restrictionType) {
-                    if (!$classIsInList) continue;
-                // or disallow certain classes
-                } else {
-                    if ($classIsInList) continue;
-                }
+                // either allow only certain classes or disallow certain classes
+                if ($restrictionType xor $classIsInList) continue;
             }
             // prefix adjustment of class name
             $prefix = (preg_match($noPrefix, $token)) ? '' : 'wrap_';
