@@ -2,10 +2,11 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
+ * @author Domingo Redal <docxml@gmail.com>
  */
 $lang['picker']                = 'Wrap Plugin';
-$lang['column']                = 'columna';
+$lang['column']                = 'columnas';
 $lang['box']                   = 'caja simple centrada';
 $lang['info']                  = 'caja de información';
 $lang['tip']                   = 'caja de consejo';
