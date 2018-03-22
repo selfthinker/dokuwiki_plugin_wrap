@@ -89,13 +89,20 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
             /** @var Doku_Renderer_xhtml $renderer */
             switch ($state) {
                 case DOKU_LEXER_ENTER:
+                    $sectionEditStartData = ['target' => 'plugin_wrap_start'];
+                    $sectionEditEndData = ['target' => 'plugin_wrap_end'];
+                    if (!defined('SEC_EDIT_PATTERN')) {
+                        // backwards-compatibility for Frusterick Manners (2017-02-19)
+                        $sectionEditStartData = 'plugin_wrap_start';
+                        $sectionEditEndData = 'plugin_wrap_end';
+                    }
                     // add a section edit right at the beginning of the wrap output
-                    $renderer->startSectionEdit(0, 'plugin_wrap_start');
+                    $renderer->startSectionEdit(0, $sectionEditStartData);
                     $renderer->finishSectionEdit();
                     // add a section edit for the end of the wrap output. This prevents the renderer
                     // from closing the last section edit so the next section button after the wrap syntax will
                     // include the whole wrap syntax
-                    $renderer->startSectionEdit(0, 'plugin_wrap_end');
+                    $renderer->startSectionEdit(0,  $sectionEditEndData);
 
                 case DOKU_LEXER_SPECIAL:
                     $wrap = $this->loadHelper('wrap');
