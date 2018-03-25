@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Juan Asensio Sánchez <okelet@gmail.com>
  * @author Óscar M. Lage <info@oscarmlage.com>
  * @author Domingo Redal <docxml@gmail.com>
