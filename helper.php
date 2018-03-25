@@ -483,23 +483,14 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         if ( $this->column_count == 1 ) {
             // If this is the first column opened since the group was opened
             // then we have to open the table and a (single) row first.
-            $column_width = $properties ['width'];
             $properties ['width'] = '100%';
             $renderer->_odtTableOpenUseProperties($properties);
             $renderer->_odtTableRowOpenUseProperties($properties);
-            $properties ['width'] = $column_width;
-        }
-
-        // Convert rel-width to absolute width.
-        // The width in percentage works strange in LibreOffice, this is a workaround.
-        $length = strlen ($properties ['width']);
-        if ( $length > 0 && $properties ['width'] [$length-1] == '%' ) {
-            $properties ['width'] = trim ($properties ['width'], '%');
-            $properties ['width'] = $renderer->_getAbsWidthMindMargins ($properties ['width']).'cm';
         }
 
         // We did not specify any max column value when we opened the table.
         // So we have to tell the renderer to add a column just now.
+        unset($properties ['width']);
         $renderer->_odtTableAddColumnUseProperties($properties);
 
         // Open the cell.
