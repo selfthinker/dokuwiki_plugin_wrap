@@ -114,6 +114,8 @@ There are three width keywords. These should not be combined with any other widt
   * **''half''** fits two columns in a row
   * **''third''** fits three columns in a row
   * **''quarter''** fits four columns in a row
+  * **''twoonethird''** fits first a two-third column, next a one-third in a row
+  * **''onetwothird''** fits first a one-third column, next a two-third in a row
 
 :!: Attention: In order to work properly, wraps with width keywords need an **additional ''%%<WRAP group>%%'' around a set** of them.
 
