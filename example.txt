@@ -96,7 +96,7 @@ A **table** inside a column or box will always be **100% wide**. This makes posi
 <WRAP third column>
 === Widths ===
 
-You can set any valid widths (but only on divs): ''%, px, em, ex, pt, pc, cm, mm, in'', but most of the time you'd only want either
+You can set any valid widths (but only on divs): ''%, px, em, rem, ex, ch, vw, vh, pt, pc, cm, mm, in'', but most of the time you'd only want either
 
 ^type^e.g.^note^
 ^''%''|''30%''|makes sense in most cases|

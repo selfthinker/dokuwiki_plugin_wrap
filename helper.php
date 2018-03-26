@@ -42,7 +42,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         foreach ($tokens as $token) {
 
             //get width
-            if (preg_match('/^\d*\.?\d+(%|px|em|ex|pt|pc|cm|mm|in)$/', $token)) {
+            if (preg_match('/^\d*\.?\d+(%|px|em|rem|ex|ch|vw|vh|pt|pc|cm|mm|in)$/', $token)) {
                 $attr['width'] = $token;
                 continue;
             }
