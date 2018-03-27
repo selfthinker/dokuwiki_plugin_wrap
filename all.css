@@ -85,7 +85,8 @@ Screen and Print Styles for the Wrap Plugin
 
 /*____________ CSS3 columns  ____________*/
 
-.dokuwiki .wrap_col2, .dokuwiki .wrap_col3, .dokuwiki .wrap_col4, .dokuwiki .wrap_col5 {
+.dokuwiki .wrap_col2, .dokuwiki .wrap_col3, .dokuwiki .wrap_col4, .dokuwiki .wrap_col5,
+.dokuwiki .wrap_colsmall, .dokuwiki .wrap_colmedium, .dokuwiki .wrap_collarge {
     -moz-column-gap: 1.5em;
     -webkit-column-gap: 1.5em;
     column-gap: 1.5em;
@@ -112,6 +113,22 @@ Screen and Print Styles for the Wrap Plugin
     -moz-column-count: 5;
     -webkit-column-count: 5;
     column-count: 5;
+}
+
+.dokuwiki .wrap_colsmall {
+    -moz-column-width: 10em;
+    -webkit-column-width: 10em;
+    column-width: 10em;
+}
+.dokuwiki .wrap_colmedium {
+    -moz-column-width: 20em;
+    -webkit-column-width: 20em;
+    column-width: 20em;
+}
+.dokuwiki .wrap_collarge {
+    -moz-column-width: 30em;
+    -webkit-column-width: 30em;
+    column-width: 30em;
 }
 
 
