@@ -32,11 +32,23 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
 
         $attr = array();
         $tokens = preg_split('/\s+/', $data, 9);
-        $noPrefix = array_map('trim', explode(',', $this->getConf('noPrefix')));
-        $restrictedClasses = $this->getConf('restrictedClasses');
-        if ($restrictedClasses) {
-            $restrictedClasses = array_map('trim', explode(',', $this->getConf('restrictedClasses')));
-        }
+
+        // anonymous function to convert inclusive comma separated items to regex pattern
+        $pattern = function ($csv) {
+            return '/^(?:'. str_replace(['?','*',' ',','],
+                                        ['.','.*','','|'], $csv) .')$/';
+        };
+
+        // noPrefix: comma separated class names that should be excluded from
+        //   being prefixed with "wrap_",
+        //   each item may contain wildcard (*, ?)
+        $noPrefix = ($this->getConf('noPrefix')) ? $pattern($this->getConf('noPrefix')) : '';
+
+        // restrictedClasses : comma separated class names that should be checked
+        //   based on restriction type (whitelist or blacklist),
+        //   each item may contain wildcard (*, ?)
+        $restrictedClasses = ($this->getConf('restrictedClasses')) ?
+                            $pattern($this->getConf('restrictedClasses')) : '';
         $restrictionType = $this->getConf('restrictionType');
 
         foreach ($tokens as $token) {
@@ -63,16 +75,12 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             //restrict token (class names) characters to prevent any malicious data
             if (preg_match('/[^A-Za-z0-9_-]/',$token)) continue;
             if ($restrictedClasses) {
-                $classIsInList = in_array(trim($token), $restrictedClasses);
-                // either allow only certain classes
-                if ($restrictionType) {
-                    if (!$classIsInList) continue;
-                // or disallow certain classes
-                } else {
-                    if ($classIsInList) continue;
-                }
+                $classIsInList = preg_match($restrictedClasses, $token);
+                // either allow only certain classes or disallow certain classes
+                if ($restrictionType xor $classIsInList) continue;
             }
-            $prefix = in_array($token, $noPrefix) ? '' : 'wrap_';
+            // prefix adjustment of class name
+            $prefix = (preg_match($noPrefix, $token)) ? '' : 'wrap_';
             $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').$prefix.$token;
         }
         if ($this->getConf('darkTpl')) {
