@@ -2,19 +2,21 @@
 Print Styles for the Wrap Plugin (additional to all.css)
 ********************************************************************/
 
+.dokuwiki {
+
 /* boxes and notes with icons
 ********************************************************************/
 
-.dokuwiki div.wrap_box,
-.dokuwiki div.wrap_danger, .dokuwiki div.wrap_warning, .dokuwiki div.wrap_caution, .dokuwiki div.wrap_notice, .dokuwiki div.wrap_safety,
-.dokuwiki div.wrap_info, .dokuwiki div.wrap_important, .dokuwiki div.wrap_alert, .dokuwiki div.wrap_tip, .dokuwiki div.wrap_help, .dokuwiki div.wrap_todo, .dokuwiki div.wrap_download {
+div.wrap_box,
+div.wrap_danger, div.wrap_warning, div.wrap_caution, div.wrap_notice, div.wrap_safety,
+div.wrap_info, div.wrap_important, div.wrap_alert, div.wrap_tip, div.wrap_help, div.wrap_todo, div.wrap_download {
     border: 2px solid #999;
     padding: 1em 1em .5em;
     margin-bottom: 1.5em;
 }
-.dokuwiki span.wrap_box,
-.dokuwiki span.wrap_danger, .dokuwiki span.wrap_warning, .dokuwiki span.wrap_caution, .dokuwiki span.wrap_notice, .dokuwiki span.wrap_safety,
-.dokuwiki span.wrap_info, .dokuwiki span.wrap_important, .dokuwiki span.wrap_alert, .dokuwiki span.wrap_tip, .dokuwiki span.wrap_help, .dokuwiki span.wrap_todo, .dokuwiki span.wrap_download {
+span.wrap_box,
+span.wrap_danger, span.wrap_warning, span.wrap_caution, span.wrap_notice, span.wrap_safety,
+span.wrap_info, span.wrap_important, span.wrap_alert, span.wrap_tip, span.wrap_help, span.wrap_todo, span.wrap_download {
     border: 1px solid #999;
     padding: 0 .3em;
 }
@@ -23,7 +25,7 @@ Print Styles for the Wrap Plugin (additional to all.css)
 /* mark
 ********************************************************************/
 
-.dokuwiki .wrap_hi {
+.wrap_hi {
     border: 1px solid #999;
 }
 
@@ -33,25 +35,27 @@ Print Styles for the Wrap Plugin (additional to all.css)
 
 /*____________ spoiler ____________*/
 
-.dokuwiki .wrap_spoiler {
+.wrap_spoiler {
     visibility: hidden;
 }
 
 /*____________ pagebreak ____________*/
 
-.dokuwiki .wrap_pagebreak {
+.wrap_pagebreak {
     page-break-after: always;
 }
 
 /*____________ avoid page break ____________*/
 /* not yet supported by most browsers */
 
-.dokuwiki .wrap_nopagebreak {
+.wrap_nopagebreak {
     page-break-inside: avoid;
 }
 
 /*____________ no print ____________*/
 
-.dokuwiki .wrap_noprint {
+.wrap_noprint {
     display: none;
 }
+
+} /* /.dokuwiki */

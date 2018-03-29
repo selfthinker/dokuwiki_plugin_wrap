@@ -2,42 +2,44 @@
 Screen Styles for the Wrap Plugin (additional to all.css)
 ********************************************************************/
 
+.dokuwiki {
+
 /* box
 ********************************************************************/
 
-.dokuwiki .wrap_box {
+.wrap_box {
     background: __background_alt__;
     color: __text__;
 }
-.dokuwiki div.wrap_box,
-.dokuwiki div.wrap_danger,
-.dokuwiki div.wrap_warning,
-.dokuwiki div.wrap_caution,
-.dokuwiki div.wrap_notice,
-.dokuwiki div.wrap_safety {
+div.wrap_box,
+div.wrap_danger,
+div.wrap_warning,
+div.wrap_caution,
+div.wrap_notice,
+div.wrap_safety {
     padding: 1em 1em .5em;
     margin-bottom: 1.5em;
     overflow: hidden;
 }
-.dokuwiki span.wrap_box,
-.dokuwiki span.wrap_danger,
-.dokuwiki span.wrap_warning,
-.dokuwiki span.wrap_caution,
-.dokuwiki span.wrap_notice,
-.dokuwiki span.wrap_safety {
+span.wrap_box,
+span.wrap_danger,
+span.wrap_warning,
+span.wrap_caution,
+span.wrap_notice,
+span.wrap_safety {
     padding: 0 .3em;
 }
 
 /*____________ notes with icons ____________*/
 
 /* general styles for all note divs */
-.dokuwiki div.wrap_info,
-.dokuwiki div.wrap_important,
-.dokuwiki div.wrap_alert,
-.dokuwiki div.wrap_tip,
-.dokuwiki div.wrap_help,
-.dokuwiki div.wrap_todo,
-.dokuwiki div.wrap_download {
+div.wrap_info,
+div.wrap_important,
+div.wrap_alert,
+div.wrap_tip,
+div.wrap_help,
+div.wrap_todo,
+div.wrap_download {
     padding: 1em 1em .5em 70px;
     margin-bottom: 1.5em;
     min-height: 68px;
@@ -47,13 +49,13 @@ Screen Styles for the Wrap Plugin (additional to all.css)
     overflow: hidden;
 }
 /* general styles for all note spans */
-.dokuwiki span.wrap_info,
-.dokuwiki span.wrap_important,
-.dokuwiki span.wrap_alert,
-.dokuwiki span.wrap_tip,
-.dokuwiki span.wrap_help,
-.dokuwiki span.wrap_todo,
-.dokuwiki span.wrap_download {
+span.wrap_info,
+span.wrap_important,
+span.wrap_alert,
+span.wrap_tip,
+span.wrap_help,
+span.wrap_todo,
+span.wrap_download {
     padding: 0 2px 0 20px;
     min-height: 20px;
     background-position: 2px 50%;
@@ -63,89 +65,89 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 
 /* sorry for icons glued to the right side, but there is currently no way
      to make this look good without adjusting the images themselves */
-[dir=rtl] .dokuwiki div.wrap_info,
-[dir=rtl] .dokuwiki div.wrap_important,
-[dir=rtl] .dokuwiki div.wrap_alert,
-[dir=rtl] .dokuwiki div.wrap_tip,
-[dir=rtl] .dokuwiki div.wrap_help,
-[dir=rtl] .dokuwiki div.wrap_todo,
-[dir=rtl] .dokuwiki div.wrap_download {
+[dir=rtl] div.wrap_info,
+[dir=rtl] div.wrap_important,
+[dir=rtl] div.wrap_alert,
+[dir=rtl] div.wrap_tip,
+[dir=rtl] div.wrap_help,
+[dir=rtl] div.wrap_todo,
+[dir=rtl] div.wrap_download {
     padding: 1em 60px .5em 1em;
     background-position: right 50%;
 }
-[dir=rtl] .dokuwiki span.wrap_info,
-[dir=rtl] .dokuwiki span.wrap_important,
-[dir=rtl] .dokuwiki span.wrap_alert,
-[dir=rtl] .dokuwiki span.wrap_tip,
-[dir=rtl] .dokuwiki span.wrap_help,
-[dir=rtl] .dokuwiki span.wrap_todo,
-[dir=rtl] .dokuwiki span.wrap_download {
+[dir=rtl] span.wrap_info,
+[dir=rtl] span.wrap_important,
+[dir=rtl] span.wrap_alert,
+[dir=rtl] span.wrap_tip,
+[dir=rtl] span.wrap_help,
+[dir=rtl] span.wrap_todo,
+[dir=rtl] span.wrap_download {
     padding: 0 18px 0 2px;
     background-position: right 50%;
 }
 
 /*____________ info ____________*/
-.dokuwiki .wrap_info { background-color: #d1d7df; }
-.dokuwiki .wrap__dark.wrap_info { background-color: #343e4a; }
-.dokuwiki div.wrap_info { background-image: url(images/note/48/info.png); }
-.dokuwiki span.wrap_info { background-image: url(images/note/16/info.png); }
+.wrap_info { background-color: #d1d7df; }
+.wrap__dark.wrap_info { background-color: #343e4a; }
+div.wrap_info { background-image: url(images/note/48/info.png); }
+span.wrap_info { background-image: url(images/note/16/info.png); }
 
 /*____________ important ____________*/
-.dokuwiki .wrap_important { background-color: #ffd39f; }
-.dokuwiki .wrap__dark.wrap_important { background-color: #6c3b00; }
-.dokuwiki div.wrap_important { background-image: url(images/note/48/important.png); }
-.dokuwiki span.wrap_important { background-image: url(images/note/16/important.png); }
+.wrap_important { background-color: #ffd39f; }
+.wrap__dark.wrap_important { background-color: #6c3b00; }
+div.wrap_important { background-image: url(images/note/48/important.png); }
+span.wrap_important { background-image: url(images/note/16/important.png); }
 
 /*____________ alert ____________*/
-.dokuwiki .wrap_alert { background-color: #ffbcaf; }
-.dokuwiki .wrap__dark.wrap_alert { background-color: #6b1100; }
-.dokuwiki div.wrap_alert { background-image: url(images/note/48/alert.png); }
-.dokuwiki span.wrap_alert { background-image: url(images/note/16/alert.png); }
+.wrap_alert { background-color: #ffbcaf; }
+.wrap__dark.wrap_alert { background-color: #6b1100; }
+div.wrap_alert { background-image: url(images/note/48/alert.png); }
+span.wrap_alert { background-image: url(images/note/16/alert.png); }
 
 /*____________ tip ____________*/
-.dokuwiki .wrap_tip { background-color: #fff79f; }
-.dokuwiki .wrap__dark.wrap_tip { background-color: #4a4400; }
-.dokuwiki div.wrap_tip { background-image: url(images/note/48/tip.png); }
-.dokuwiki span.wrap_tip { background-image: url(images/note/16/tip.png); }
+.wrap_tip { background-color: #fff79f; }
+.wrap__dark.wrap_tip { background-color: #4a4400; }
+div.wrap_tip { background-image: url(images/note/48/tip.png); }
+span.wrap_tip { background-image: url(images/note/16/tip.png); }
 
 /*____________ help ____________*/
-.dokuwiki .wrap_help { background-color: #dcc2ef; }
-.dokuwiki .wrap__dark.wrap_help { background-color: #3c1757; }
-.dokuwiki div.wrap_help { background-image: url(images/note/48/help.png); }
-.dokuwiki span.wrap_help { background-image: url(images/note/16/help.png); }
+.wrap_help { background-color: #dcc2ef; }
+.wrap__dark.wrap_help { background-color: #3c1757; }
+div.wrap_help { background-image: url(images/note/48/help.png); }
+span.wrap_help { background-image: url(images/note/16/help.png); }
 
 /*____________ todo ____________*/
-.dokuwiki .wrap_todo { background-color: #c2efdd; }
-.dokuwiki .wrap__dark.wrap_todo { background-color: #17573e; }
-.dokuwiki div.wrap_todo { background-image: url(images/note/48/todo.png); }
-.dokuwiki span.wrap_todo { background-image: url(images/note/16/todo.png); }
+.wrap_todo { background-color: #c2efdd; }
+.wrap__dark.wrap_todo { background-color: #17573e; }
+div.wrap_todo { background-image: url(images/note/48/todo.png); }
+span.wrap_todo { background-image: url(images/note/16/todo.png); }
 
 /*____________ download ____________*/
-.dokuwiki .wrap_download { background-color: #d6efc2; }
-.dokuwiki .wrap__dark.wrap_download { background-color: #345717; }
-.dokuwiki div.wrap_download { background-image: url(images/note/48/download.png); }
-.dokuwiki span.wrap_download { background-image: url(images/note/16/download.png); }
+.wrap_download { background-color: #d6efc2; }
+.wrap__dark.wrap_download { background-color: #345717; }
+div.wrap_download { background-image: url(images/note/48/download.png); }
+span.wrap_download { background-image: url(images/note/16/download.png); }
 
 
 /*____________ safety notes ____________*/
 
-.dokuwiki .wrap_danger {
+.wrap_danger {
     background-color: #c00;
     color: #fff;
 }
-.dokuwiki .wrap_warning {
+.wrap_warning {
     background-color: #f60;
     color: #000;
 }
-.dokuwiki .wrap_caution {
+.wrap_caution {
     background-color: #ff0;
     color: #000;
 }
-.dokuwiki .wrap_notice {
+.wrap_notice {
     background-color: #06f;
     color: #fff;
 }
-.dokuwiki .wrap_safety {
+.wrap_safety {
     background-color: #090;
     color: #fff;
 }
@@ -154,11 +156,11 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 /* mark
 ********************************************************************/
 
-.dokuwiki .wrap_hi {
+.wrap_hi {
     background-color: #ff9;
     overflow: hidden;
 }
-.dokuwiki .wrap__dark.wrap_hi {
+.wrap__dark.wrap_hi {
     background-color: #4e4e0d;
 }
 
@@ -168,7 +170,7 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 
 /*____________ spoiler ____________*/
 
-.dokuwiki .wrap_spoiler {
+.wrap_spoiler {
     background-color: __background__ !important;
     color: __background__ !important;
     border: 1px dotted red;
@@ -176,28 +178,30 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 
 /*____________ only print ____________*/
 
-.dokuwiki .wrap_onlyprint {
+.wrap_onlyprint {
     display: none;
 }
 
 /*____________ tabs ____________*/
 /* in addition to template styles */
 
-.dokuwiki .plugin_wrap.tabs {
+.plugin_wrap.tabs {
     margin-bottom: 1.4em;
 }
 
 /*____________ button-style link ____________*/
 
-.dokuwiki .wrap_button a:link,
-.dokuwiki .wrap_button a:visited {
+.wrap_button a:link,
+.wrap_button a:visited {
     background-color: __background_alt__;
 }
-.dokuwiki .wrap_button a:link:hover,
-.dokuwiki .wrap_button a:visited:hover,
-.dokuwiki .wrap_button a:link:focus,
-.dokuwiki .wrap_button a:visited:focus,
-.dokuwiki .wrap_button a:link:active,
-.dokuwiki .wrap_button a:visited:active {
+.wrap_button a:link:hover,
+.wrap_button a:visited:hover,
+.wrap_button a:link:focus,
+.wrap_button a:visited:focus,
+.wrap_button a:link:active,
+.wrap_button a:visited:active {
     background-color: __background_neu__;
 }
+
+} /* /.dokuwiki */
