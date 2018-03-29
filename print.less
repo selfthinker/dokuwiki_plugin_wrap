@@ -4,6 +4,8 @@ Print Styles for the Wrap Plugin (additional to all.css)
 
 .dokuwiki {
 
+@import 'print_or_pdf.less';
+
 /* boxes and notes with icons
 ********************************************************************/
 
@@ -39,23 +41,5 @@ span.wrap_info, span.wrap_important, span.wrap_alert, span.wrap_tip, span.wrap_h
     visibility: hidden;
 }
 
-/*____________ pagebreak ____________*/
-
-.wrap_pagebreak {
-    page-break-after: always;
-}
-
-/*____________ avoid page break ____________*/
-/* not yet supported by most browsers */
-
-.wrap_nopagebreak {
-    page-break-inside: avoid;
-}
-
-/*____________ no print ____________*/
-
-.wrap_noprint {
-    display: none;
-}
 
 } /* /.dokuwiki */
