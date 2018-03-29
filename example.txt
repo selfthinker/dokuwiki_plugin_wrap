@@ -136,8 +136,12 @@ If you need text that is bold and italic, simply use it the other way around: ''
 
 === Multi-columns ===
 
-<WRAP col3>
-For modern browsers (Firefox, Chrome and Safari, IE10+) you can use multi-columns. Just use **''%%col2%%''** for 2 columns, **''%%col3%%''** for 3 columns, **''%%col4%%''** for 4 columns and **''%%col5%%''** for 5 columns.
+<WRAP colmedium>
+Multi-columns work best in modern browsers (no IE9 and below) but should still be considered experimental as some browser behaviour is still inconsistent and buggy.
+
+Just use **''%%colsmall%%''** for small width columns, **''%%colmedium%%''** for medium width columns and **''%%collarge%%''** for large width columns.
+Or you can use **''%%col2%%''** for 2 columns, **''%%col3%%''** for 3 columns, **''%%col4%%''** for 4 columns and **''%%col5%%''** for 5 columns.
+The former type of column is determined by its width, the latter by its amount. The width-based columns are ideal for different layouts and device widths.
 
 :!: Note: Multi-columns don't make sense for spans.
 </WRAP>
