@@ -2,26 +2,28 @@
 Screen and Print Styles for the Wrap Plugin
 ********************************************************************/
 
+.dokuwiki {
+
 /* resetting the box model to something more sane makes life a whole lot easier */
-.dokuwiki .plugin_wrap {
+.plugin_wrap {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 /* tables in columns and boxes should span the whole width */
-.dokuwiki .plugin_wrap table {
+.plugin_wrap table {
     width: 100%;
 }
 /* emulate a headline */
-.dokuwiki .plugin_wrap em strong {
+.plugin_wrap em strong {
     font-size: 130%;
     font-weight: bold;
     font-style: normal;
     display: block;
 }
 /* emulate a bigger headline with a bottom border */
-.dokuwiki .plugin_wrap em strong em.u {
+.plugin_wrap em strong em.u {
     font-size: 115%;
     border-bottom: 1px solid __border__;
     font-style: normal;
@@ -29,33 +31,33 @@ Screen and Print Styles for the Wrap Plugin
     display: block;
 }
 /* different bigger headline for safety notes */
-.dokuwiki .wrap_danger em strong em.u,
-.dokuwiki .wrap_warning em strong em.u,
-.dokuwiki .wrap_caution em strong em.u,
-.dokuwiki .wrap_notice em strong em.u,
-.dokuwiki .wrap_safety em strong em.u {
+.wrap_danger em strong em.u,
+.wrap_warning em strong em.u,
+.wrap_caution em strong em.u,
+.wrap_notice em strong em.u,
+.wrap_safety em strong em.u {
     text-transform: uppercase;
     border-bottom-width: 0;
 }
 /* change border colour of emulated headlines inside boxes to something more neutral
    (to match all the different background colours) */
-.dokuwiki .wrap_box em strong em.u,
-.dokuwiki .wrap_info em strong em.u,
-.dokuwiki .wrap_important em strong em.u,
-.dokuwiki .wrap_alert em strong em.u,
-.dokuwiki .wrap_tip em strong em.u,
-.dokuwiki .wrap_help em strong em.u,
-.dokuwiki .wrap_todo em strong em.u,
-.dokuwiki .wrap_download em strong em.u {
+.wrap_box em strong em.u,
+.wrap_info em strong em.u,
+.wrap_important em strong em.u,
+.wrap_alert em strong em.u,
+.wrap_tip em strong em.u,
+.wrap_help em strong em.u,
+.wrap_todo em strong em.u,
+.wrap_download em strong em.u {
     border-bottom-color: #999;
 }
 
 /* real headlines should not be indented inside a wrap */
-.dokuwiki .plugin_wrap h1,
-.dokuwiki .plugin_wrap h2,
-.dokuwiki .plugin_wrap h3,
-.dokuwiki .plugin_wrap h4,
-.dokuwiki .plugin_wrap h5 {
+.plugin_wrap h1,
+.plugin_wrap h2,
+.plugin_wrap h3,
+.plugin_wrap h4,
+.plugin_wrap h5 {
     margin-left: 0;
     margin-right: 0;
 }
@@ -63,21 +65,21 @@ Screen and Print Styles for the Wrap Plugin
 /* columns
 ********************************************************************/
 
-.dokuwiki .wrap_left,
-.dokuwiki .wrap_column {
+.wrap_left,
+.wrap_column {
     float: left;
     margin-right: 1.5em;
 }
-[dir=rtl] .dokuwiki .wrap_column {
+[dir=rtl] .wrap_column {
     float: right;
     margin-left: 1.5em;
     margin-right: 0;
 }
-.dokuwiki .wrap_right {
+.wrap_right {
     float: right;
     margin-left: 1.5em;
 }
-.dokuwiki .wrap_center {
+.wrap_center {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -85,8 +87,8 @@ Screen and Print Styles for the Wrap Plugin
 
 /*____________ CSS3 columns  ____________*/
 
-.dokuwiki .wrap_col2, .dokuwiki .wrap_col3, .dokuwiki .wrap_col4, .dokuwiki .wrap_col5,
-.dokuwiki .wrap_colsmall, .dokuwiki .wrap_colmedium, .dokuwiki .wrap_collarge {
+.wrap_col2, .wrap_col3, .wrap_col4, .wrap_col5,
+.wrap_colsmall, .wrap_colmedium, .wrap_collarge {
     -moz-column-gap: 1.5em;
     -webkit-column-gap: 1.5em;
     column-gap: 1.5em;
@@ -94,38 +96,38 @@ Screen and Print Styles for the Wrap Plugin
     -webkit-column-rule: 1px dotted #666;
     column-rule: 1px dotted #666;
 }
-.dokuwiki .wrap_col2 {
+.wrap_col2 {
     -moz-column-count: 2;
     -webkit-column-count: 2;
     column-count: 2;
 }
-.dokuwiki .wrap_col3 {
+.wrap_col3 {
     -moz-column-count: 3;
     -webkit-column-count: 3;
     column-count: 3;
 }
-.dokuwiki .wrap_col4 {
+.wrap_col4 {
     -moz-column-count: 4;
     -webkit-column-count: 4;
     column-count: 4;
 }
-.dokuwiki .wrap_col5 {
+.wrap_col5 {
     -moz-column-count: 5;
     -webkit-column-count: 5;
     column-count: 5;
 }
 
-.dokuwiki .wrap_colsmall {
+.wrap_colsmall {
     -moz-column-width: 10em;
     -webkit-column-width: 10em;
     column-width: 10em;
 }
-.dokuwiki .wrap_colmedium {
+.wrap_colmedium {
     -moz-column-width: 20em;
     -webkit-column-width: 20em;
     column-width: 20em;
 }
-.dokuwiki .wrap_collarge {
+.wrap_collarge {
     -moz-column-width: 30em;
     -webkit-column-width: 30em;
     column-width: 30em;
@@ -135,69 +137,69 @@ Screen and Print Styles for the Wrap Plugin
 /* widths
 ********************************************************************/
 
-.dokuwiki .wrap_half {
+.wrap_half {
     width: 48%;
     margin-right: 4%;
 }
 
-.dokuwiki .wrap_third {
+.wrap_third {
     width: 30%;
     margin-right: 5%;
 }
 
-.dokuwiki .wrap_quarter {
+.wrap_quarter {
     width: 22%;
     margin-right: 4%;
 }
 
-[dir=rtl] .dokuwiki .wrap_half,
-[dir=rtl] .dokuwiki .wrap_third,
-[dir=rtl] .dokuwiki .wrap_quarter {
+[dir=rtl] .wrap_half,
+[dir=rtl] .wrap_third,
+[dir=rtl] .wrap_quarter {
     margin-right: 0;
     margin-left: 4%;
 }
-[dir=rtl] .dokuwiki .wrap_third {
+[dir=rtl] .wrap_third {
     margin-left: 5%;
 }
 
-.dokuwiki .wrap_half:nth-of-type(2n),
-.dokuwiki .wrap_third:nth-of-type(3n),
-.dokuwiki .wrap_quarter:nth-of-type(4n) {
+.wrap_half:nth-of-type(2n),
+.wrap_third:nth-of-type(3n),
+.wrap_quarter:nth-of-type(4n) {
     margin-right: 0;
 }
-[dir=rtl] .dokuwiki .wrap_half:nth-of-type(2n),
-[dir=rtl] .dokuwiki .wrap_third:nth-of-type(3n),
-[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(4n) {
+[dir=rtl] .wrap_half:nth-of-type(2n),
+[dir=rtl] .wrap_third:nth-of-type(3n),
+[dir=rtl] .wrap_quarter:nth-of-type(4n) {
     margin-left: 0;
 }
 
-.dokuwiki .wrap_half:nth-of-type(2n+1),
-.dokuwiki .wrap_third:nth-of-type(3n+1),
-.dokuwiki .wrap_quarter:nth-of-type(4n+1) {
+.wrap_half:nth-of-type(2n+1),
+.wrap_third:nth-of-type(3n+1),
+.wrap_quarter:nth-of-type(4n+1) {
     clear: left;
 }
-[dir=rtl] .dokuwiki .wrap_half:nth-of-type(2n+1),
-[dir=rtl] .dokuwiki .wrap_third:nth-of-type(3n+1),
-[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(4n+1) {
+[dir=rtl] .wrap_half:nth-of-type(2n+1),
+[dir=rtl] .wrap_third:nth-of-type(3n+1),
+[dir=rtl] .wrap_quarter:nth-of-type(4n+1) {
     clear: right;
 }
 
 /* show 2 instead 4 columns on medium sized screens (mobile, etc) */
 @media only screen and (max-width: 950px) {
 
-.dokuwiki .wrap_quarter {
+.wrap_quarter {
     width: 48%;
 }
-.dokuwiki .wrap_quarter:nth-of-type(2n) {
+.wrap_quarter:nth-of-type(2n) {
     margin-right: 0;
 }
-[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(2n) {
+[dir=rtl] .wrap_quarter:nth-of-type(2n) {
     margin-left: 0;
 }
-.dokuwiki .wrap_quarter:nth-of-type(2n+1) {
+.wrap_quarter:nth-of-type(2n+1) {
     clear: left;
 }
-[dir=rtl] .dokuwiki .wrap_quarter:nth-of-type(2n) {
+[dir=rtl] .wrap_quarter:nth-of-type(2n) {
     clear: right;
 }
 
@@ -206,9 +208,9 @@ Screen and Print Styles for the Wrap Plugin
 /* show full width on smaller screens (mobile, etc) */
 @media only screen and (max-width: 600px) {
 
-.dokuwiki .wrap_half,
-.dokuwiki .wrap_third,
-.dokuwiki .wrap_quarter {
+.wrap_half,
+.wrap_third,
+.wrap_quarter {
     width: auto;
     margin-right: 0;
     margin-left: 0;
@@ -221,16 +223,16 @@ Screen and Print Styles for the Wrap Plugin
 /* alignments
 ********************************************************************/
 
-.dokuwiki .wrap_leftalign {
+.wrap_leftalign {
     text-align: left;
 }
-.dokuwiki .wrap_centeralign {
+.wrap_centeralign {
     text-align: center;
 }
-.dokuwiki .wrap_rightalign {
+.wrap_rightalign {
     text-align: right;
 }
-.dokuwiki .wrap_justify {
+.wrap_justify {
     text-align: justify;
 }
 
@@ -243,10 +245,10 @@ Screen and Print Styles for the Wrap Plugin
 /*____________ rounded corners ____________*/
 /* (only for modern browsers) */
 
-.dokuwiki div.wrap_round {
+div.wrap_round {
     border-radius: 1.4em;
 }
-.dokuwiki span.wrap_round {
+span.wrap_round {
     border-radius: .14em;
 }
 
@@ -254,15 +256,15 @@ Screen and Print Styles for the Wrap Plugin
 /* mark
 ********************************************************************/
 
-.dokuwiki .wrap_lo {
+.wrap_lo {
     color: __text_neu__;
     font-size: 85%;
 }
-.dokuwiki .wrap_em {
+.wrap_em {
     color: #c00;
     font-weight: bold;
 }
-.dokuwiki .wrap__dark.wrap_em {
+.wrap__dark.wrap_em {
     color: #f66;
 }
 
@@ -274,10 +276,10 @@ Screen and Print Styles for the Wrap Plugin
 
 /*____________ indent ____________*/
 
-.dokuwiki .wrap_indent {
+.wrap_indent {
     padding-left: 1.5em;
 }
-[dir=rtl] .dokuwiki .wrap_indent {
+[dir=rtl] .wrap_indent {
     padding-right: 1.5em;
     padding-left: 0;
 }
@@ -285,31 +287,31 @@ Screen and Print Styles for the Wrap Plugin
 
 /*____________ outdent ____________*/
 
-.dokuwiki .wrap_outdent {
+.wrap_outdent {
     margin-left: -1.5em;
 }
-[dir=rtl] .dokuwiki .wrap_outdent {
+[dir=rtl] .wrap_outdent {
     margin-right: -1.5em;
     margin-left: 0;
 }
 
 /*____________ word wrapping in pre ____________*/
 
-.dokuwiki div.wrap_prewrap pre {
+div.wrap_prewrap pre {
     white-space: pre-wrap;
     word-wrap: break-word;/* for IE < 8 */
 }
 
 /*____________ spoiler ____________*/
 
-.dokuwiki div.wrap_spoiler {
+div.wrap_spoiler {
     margin-bottom: 1.5em;
 }
 /* see rest of spoiler styles in style.css */
 
 /*____________ clear float ____________*/
 
-.dokuwiki .wrap_clear {
+.wrap_clear {
     clear: both;
     line-height: 0;
     height: 0;
@@ -320,15 +322,15 @@ Screen and Print Styles for the Wrap Plugin
 
 /*____________ hide ____________*/
 
-.dokuwiki .wrap_hide {
+.wrap_hide {
     display: none;
 }
 
 
 /*____________ button-style link ____________*/
 
-.dokuwiki .wrap_button a:link,
-.dokuwiki .wrap_button a:visited {
+.wrap_button a:link,
+.wrap_button a:visited {
     background-image: none;
     border: 1px solid __border__;
     border-radius: .3em;
@@ -336,3 +338,5 @@ Screen and Print Styles for the Wrap Plugin
     text-decoration: none;
 }
 /* see rest of button link styles in style.css */
+
+} /* /.dokuwiki */
