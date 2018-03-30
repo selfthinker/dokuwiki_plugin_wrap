@@ -28,7 +28,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
      * @author Christopher Smith <chris@jalakai.co.uk>
      *   (parts taken from http://www.dokuwiki.org/plugin:box)
      */
-    function getAttributes($data) {
+    function getAttributes($data, $ignoreNoPrefix=false) {
 
         $attr = array();
         $tokens = preg_split('/\s+/', $data, 9);
@@ -79,9 +79,13 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                 // either allow only certain classes or disallow certain classes
                 if ($restrictionType xor $classIsInList) continue;
             }
-            // prefix adjustment of class name
-            $prefix = (preg_match($noPrefix, $token)) ? '' : 'wrap_';
-            $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').$prefix.$token;
+            if ($ignoreNoPrefix === false) {
+                // prefix adjustment of class name
+                $prefix = (preg_match($noPrefix, $token)) ? '' : 'wrap_';
+                $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').$prefix.$token;
+            } else {
+                $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').'wrap_'.$token;
+            }
         }
         if ($this->getConf('darkTpl')) {
             $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').'wrap__dark';
@@ -133,7 +137,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
      * (get Attributes, select ODT element that fits, render it, return element name)
      */
     function renderODTElementOpen($renderer, $HTMLelement, $data) {
-        $attr = $this->getAttributes($data);
+        $attr = $this->getAttributes($data, true);
         $attr_string = $this->buildAttributes($data);
         $classes = explode (' ', $attr['class']);
 
@@ -143,7 +147,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         $is_indent    = in_array ('wrap_indent', $classes);
         $is_outdent   = in_array ('wrap_outdent', $classes);
         $is_column    = in_array ('wrap_column', $classes);
-        $is_group     = in_array ('group', $classes);
+        $is_group     = in_array ('wrap_group', $classes);
         $is_pagebreak = in_array ('wrap_pagebreak', $classes);
 
         // Check for multicolumns
