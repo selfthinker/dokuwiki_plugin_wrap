@@ -127,11 +127,11 @@ You can use the same options with spans (as each element that floats is automati
 
 All of those options will also work in the [[#boxes and notes]] wraps (see below).
 
-=== Old Emulated Headlines ===
+=== Old Emulated Headline (deprecated) ===
 
-Every ''%%//**__text like this__**//%%'' or ''%%//**like that**//%%'' will create an "emulated headline" when used within a box or a column. Now that headlines within wraps are supported, they are not needed anymore, but are still supported for backwards-compatibility.
+When the ''emulatedHeadlines'' config option is enabled, every ''%%//**__text like this__**//%%'' or ''%%//**like that**//%%'' will create an "emulated headline" within a wrap. This feature is deprecated and will be removed at some point as standard headlines within wraps are supported for a while now.
 
-If you need text that is bold and italic, simply use it the other way around: ''%%**//No Headline//**%%''
+If that config options is enabled and you need text that is bold and italic, simply use it the other way around: ''%%**//No Headline//**%%''.
 
 
 === Multi-columns ===

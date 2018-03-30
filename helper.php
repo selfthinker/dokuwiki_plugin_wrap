@@ -86,6 +86,9 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         if ($this->getConf('darkTpl')) {
             $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').'wrap__dark';
         }
+        if ($this->getConf('emulatedHeadings')) {
+            $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').'wrap__emuhead';
+        }
 
         //get dir
         if($attr['lang']) {

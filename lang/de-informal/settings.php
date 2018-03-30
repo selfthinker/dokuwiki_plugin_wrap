@@ -12,3 +12,4 @@ $lang['restrictionType'] = 'Beschränkungsart, setzt fest ob obige Klassen ein- 
 $lang['syntaxDiv'] = 'Welche Syntax soll die Werkzeugleiste für Block-Wraps verwenden?';
 $lang['syntaxSpan'] = 'Welche Syntax soll die Werkzeugleiste für Inline-Wraps verwenden?';
 $lang['darkTpl'] = 'Optimiere Farben für dunkle Templates?';
+$lang['emulatedHeadlines'] = 'Nutze nachgeahmte Überschriften? (veraltet)';
