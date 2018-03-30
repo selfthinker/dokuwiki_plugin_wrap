@@ -1,0 +1,25 @@
+/********************************************************************
+Styles shared between print.css and pdf.css
+********************************************************************/
+
+/* miscellaneous
+********************************************************************/
+
+/*____________ pagebreak ____________*/
+
+.wrap_pagebreak {
+    page-break-after: always;
+}
+
+/*____________ avoid page break ____________*/
+/* not yet supported by most browsers */
+
+.wrap_nopagebreak {
+    page-break-inside: avoid;
+}
+
+/*____________ no print ____________*/
+
+.wrap_noprint {
+    display: none;
+}
