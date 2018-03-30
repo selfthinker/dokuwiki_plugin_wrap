@@ -28,7 +28,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
      * @author Christopher Smith <chris@jalakai.co.uk>
      *   (parts taken from http://www.dokuwiki.org/plugin:box)
      */
-    function getAttributes($data) {
+    function getAttributes($data, $useNoPrefix=true) {
 
         $attr = array();
         $tokens = preg_split('/\s+/', $data, 9);
@@ -42,7 +42,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         // noPrefix: comma separated class names that should be excluded from
         //   being prefixed with "wrap_",
         //   each item may contain wildcard (*, ?)
-        $noPrefix = ($this->getConf('noPrefix')) ? $pattern($this->getConf('noPrefix')) : '';
+        $noPrefix = ($this->getConf('noPrefix') && $useNoPrefix) ? $pattern($this->getConf('noPrefix')) : '';
 
         // restrictedClasses : comma separated class names that should be checked
         //   based on restriction type (whitelist or blacklist),
@@ -133,7 +133,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
      * (get Attributes, select ODT element that fits, render it, return element name)
      */
     function renderODTElementOpen($renderer, $HTMLelement, $data) {
-        $attr = $this->getAttributes($data);
+        $attr = $this->getAttributes($data, false);
         $attr_string = $this->buildAttributes($data);
         $classes = explode (' ', $attr['class']);
 
@@ -143,7 +143,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         $is_indent    = in_array ('wrap_indent', $classes);
         $is_outdent   = in_array ('wrap_outdent', $classes);
         $is_column    = in_array ('wrap_column', $classes);
-        $is_group     = in_array ('group', $classes);
+        $is_group     = in_array ('wrap_group', $classes);
         $is_pagebreak = in_array ('wrap_pagebreak', $classes);
 
         // Check for multicolumns
@@ -406,8 +406,8 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             $renderer->_odtParagraphOpenUseProperties($properties);
         } else {
             // Newer version create our own common styles.
-            
-            // Create parent style to group the others beneath it        
+
+            // Create parent style to group the others beneath it
             if (!$renderer->styleExists('Plugin_Wrap_Paragraphs')) {
                 $parent_properties = array();
                 $parent_properties ['style-parent'] = NULL;
@@ -561,8 +561,8 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         } else {
             // Newer version create our own common styles.
             $properties ['font-size'] = NULL;
-            
-            // Create parent style to group the others beneath it        
+
+            // Create parent style to group the others beneath it
             if (!$renderer->styleExists('Plugin_Wrap_Spans')) {
                 $parent_properties = array();
                 $parent_properties ['style-parent'] = NULL;
@@ -644,7 +644,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         if ( stripos ($class, 'wrap_onlyprint') !== false ) {
             $css_properties ['display'] = 'printer';
         }
-                
+
         $background_color = $css_properties ['background-color'];
         $image = $css_properties ['background-image'];
         $margin_top = $css_properties ['margin-top'];
@@ -652,7 +652,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         $margin_bottom = $css_properties ['margin-bottom'];
         $margin_left = $css_properties ['margin-left'];
         $width = $attr ['width'];
-        
+
         // Open 2x1 table if image is present
         // otherwise only a 1x1 table
         $properties = array();
@@ -697,7 +697,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             // No wrapping on not floating divs
             $frame_props ['wrap'] = 'none';
         }
-        
+
         switch ($frame_props ['float']) {
             case 'left':
                 if ( self::$table_entr == 1 ) {
