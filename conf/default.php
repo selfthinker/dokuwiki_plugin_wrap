@@ -10,3 +10,4 @@ $conf['restrictionType'] = 0; //0= exclude restricted classes, 1=include restric
 $conf['syntaxDiv'] = 'WRAP';
 $conf['syntaxSpan'] = 'wrap';
 $conf['darkTpl'] = 0;
+$conf['emulatedHeadlines'] = 0;

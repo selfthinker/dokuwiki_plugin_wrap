@@ -15,15 +15,18 @@ Screen and Print Styles for the Wrap Plugin
 .plugin_wrap table {
     width: 100%;
 }
-/* emulate a headline */
-.plugin_wrap em strong {
+
+/* emulate a headline
+   (only with 'emulatedHeadlines' config option set)
+   @deprecated 2018-03-20 */
+.plugin_wrap.wrap__emuhead em strong {
     font-size: 130%;
     font-weight: bold;
     font-style: normal;
     display: block;
 }
 /* emulate a bigger headline with a bottom border */
-.plugin_wrap em strong em.u {
+.plugin_wrap.wrap__emuhead em strong em.u {
     font-size: 115%;
     border-bottom: 1px solid __border__;
     font-style: normal;
@@ -31,24 +34,24 @@ Screen and Print Styles for the Wrap Plugin
     display: block;
 }
 /* different bigger headline for safety notes */
-.wrap_danger em strong em.u,
-.wrap_warning em strong em.u,
-.wrap_caution em strong em.u,
-.wrap_notice em strong em.u,
-.wrap_safety em strong em.u {
+.wrap_danger.wrap__emuhead em strong em.u,
+.wrap_warning.wrap__emuhead em strong em.u,
+.wrap_caution.wrap__emuhead em strong em.u,
+.wrap_notice.wrap__emuhead em strong em.u,
+.wrap_safety.wrap__emuhead em strong em.u {
     text-transform: uppercase;
     border-bottom-width: 0;
 }
 /* change border colour of emulated headlines inside boxes to something more neutral
    (to match all the different background colours) */
-.wrap_box em strong em.u,
-.wrap_info em strong em.u,
-.wrap_important em strong em.u,
-.wrap_alert em strong em.u,
-.wrap_tip em strong em.u,
-.wrap_help em strong em.u,
-.wrap_todo em strong em.u,
-.wrap_download em strong em.u {
+.wrap_box.wrap__emuhead em strong em.u,
+.wrap_info.wrap__emuhead em strong em.u,
+.wrap_important.wrap__emuhead em strong em.u,
+.wrap_alert.wrap__emuhead em strong em.u,
+.wrap_tip.wrap__emuhead em strong em.u,
+.wrap_help.wrap__emuhead em strong em.u,
+.wrap_todo.wrap__emuhead em strong em.u,
+.wrap_download.wrap__emuhead em strong em.u {
     border-bottom-color: #999;
 }
 
