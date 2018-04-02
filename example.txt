@@ -109,13 +109,14 @@ You can set any valid widths (but only on divs): ''%, px, em, rem, ex, ch, vw, v
 
 With certain width keywords you can fit your columns automatically to fill the available horizontal space. Those columns will also react to the screen size, so will be responsive and wrap underneath each other on mobile devices.
 
-There are three width keywords. These should not be combined with any other width.
+There are four width keywords. These should not be combined with any other width, only ''third'' can be combined with ''twothirds''.
 
   * **''half''** fits two columns in a row
   * **''third''** fits three columns in a row
   * **''quarter''** fits four columns in a row
+  * **''twothirds''** together with ''third'' fits a 2/3 and a 1/3 column in a row
 
-:!: Attention: In order to work properly, wraps with width keywords need an **additional ''%%<WRAP group>%%'' around a set** of them.
+:!: Attention: In order to work properly, wraps with width keywords need an **additional ''%%<WRAP group>%%'' around a set** of them. If you mix several types in one group, you might need a ''%%<WRAP clear/>%%'' after a row.
 
 </WRAP>
 
