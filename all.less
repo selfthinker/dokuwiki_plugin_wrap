@@ -140,6 +140,11 @@ Screen and Print Styles for the Wrap Plugin
 /* widths
 ********************************************************************/
 
+.wrap_twothirds {
+    width: 65%;
+    margin-right: 5%;
+}
+
 .wrap_half {
     width: 48%;
     margin-right: 4%;
@@ -156,35 +161,35 @@ Screen and Print Styles for the Wrap Plugin
 }
 
 [dir=rtl] .wrap_half,
-[dir=rtl] .wrap_third,
 [dir=rtl] .wrap_quarter {
     margin-right: 0;
     margin-left: 4%;
 }
+[dir=rtl] .wrap_twothirds,
 [dir=rtl] .wrap_third {
+    margin-right: 0;
     margin-left: 5%;
 }
 
-.wrap_half:nth-of-type(2n),
-.wrap_third:nth-of-type(3n),
-.wrap_quarter:nth-of-type(4n) {
+/* this doesn't always work when third and twothirds are mixed across rows
+   but can be fixed by adding any div (e.g. <WRAP clear/>) after a row */
+.wrap_half + .wrap_half,
+.wrap_third + .wrap_twothirds,
+.wrap_twothirds + .wrap_third,
+.wrap_third + .wrap_third + .wrap_third,
+.wrap_quarter + .wrap_quarter + .wrap_quarter + .wrap_quarter {
     margin-right: 0;
-}
-[dir=rtl] .wrap_half:nth-of-type(2n),
-[dir=rtl] .wrap_third:nth-of-type(3n),
-[dir=rtl] .wrap_quarter:nth-of-type(4n) {
-    margin-left: 0;
-}
 
-.wrap_half:nth-of-type(2n+1),
-.wrap_third:nth-of-type(3n+1),
-.wrap_quarter:nth-of-type(4n+1) {
-    clear: left;
-}
-[dir=rtl] .wrap_half:nth-of-type(2n+1),
-[dir=rtl] .wrap_third:nth-of-type(3n+1),
-[dir=rtl] .wrap_quarter:nth-of-type(4n+1) {
-    clear: right;
+    [dir=rtl] & {
+        margin-left: 0;
+    }
+
+    + * {
+        clear: left;
+        [dir=rtl] & {
+            clear: right;
+        }
+    }
 }
 
 /* show 2 instead 4 columns on medium sized screens (mobile, etc) */
@@ -211,6 +216,7 @@ Screen and Print Styles for the Wrap Plugin
 /* show full width on smaller screens (mobile, etc) */
 @media only screen and (max-width: 600px) {
 
+.wrap_twothirds,
 .wrap_half,
 .wrap_third,
 .wrap_quarter {
