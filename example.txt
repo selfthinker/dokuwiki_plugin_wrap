@@ -88,9 +88,6 @@ Normally you would only need the class ''column'', but for more sophisticated us
   * **''left''** will let you float your wrap on the left
   * **''right''** will let the wrap float right
   * **''center''** will position the wrap in the horizontal center of the page
-
-A **table** inside a column or box will always be **100% wide**. This makes positioning and sizing tables possible.
-
 </WRAP>
 
 <WRAP third column>
@@ -304,6 +301,20 @@ You can create a row of tabs by simply wrapping a list of links in ''%%<WRAP tab
 After using any of the float classes, you might come across following text protruding into the space where only the floating containers should be. To prevent that, you should simply add this after your last column:
 
   <WRAP clear />
+
+=== Table width ===
+
+You can set the width of a table via ''tablewidth'' as every table inside that wrap will always be 100% wide. This makes it possible to give tables any width by adding an additional width to the wrap (or none for 100%).
+
+<WRAP tablewidth 80%>
+^ Table ^ is ^
+| 80% | wide |
+</WRAP>
+
+  <WRAP tablewidth 80%>
+  ^ Table ^ is ^
+  | 80% | wide |
+  </WRAP>
 
 === Indent ===
 
