@@ -8,8 +8,8 @@ Screen Styles for the Wrap Plugin (additional to all.css)
 ********************************************************************/
 
 .wrap_box {
-    background: __background_alt__;
-    color: __text__;
+    background: @ini_background_alt;
+    color: @ini_text;
 }
 div.wrap_box,
 div.wrap_danger,
@@ -179,8 +179,8 @@ span.wrap_download { background-image: url(images/note/16/download.png); }
 /*____________ spoiler ____________*/
 
 .wrap_spoiler {
-    background-color: __background__ !important;
-    color: __background__ !important;
+    background-color: @ini_background !important;
+    color: @ini_background !important;
     border: 1px dotted red;
 }
 
@@ -201,7 +201,7 @@ span.wrap_download { background-image: url(images/note/16/download.png); }
 
 .wrap_button a:link,
 .wrap_button a:visited {
-    background-color: __background_alt__;
+    background-color: @ini_background_alt;
 }
 .wrap_button a:link:hover,
 .wrap_button a:visited:hover,
@@ -209,7 +209,7 @@ span.wrap_download { background-image: url(images/note/16/download.png); }
 .wrap_button a:visited:focus,
 .wrap_button a:link:active,
 .wrap_button a:visited:active {
-    background-color: __background_neu__;
+    background-color: @ini_background_neu;
 }
 
 } /* /.dokuwiki */
