@@ -191,43 +191,43 @@ Center aligned text ...
 
 <WRAP info 300px left>
 === Info ===
-  <WRAP info></WRAP>
+%%<WRAP info></WRAP>%%
 </WRAP>
 
 
 <WRAP tip 300px left>
 === Tip ===
-  <WRAP tip></WRAP>
+%%<WRAP tip></WRAP>%%
 </WRAP>
 
 
 <WRAP important 300px left>
 === Important ===
-  <WRAP important></WRAP>
+%%<WRAP important></WRAP>%%
 </WRAP>
 
 
 <WRAP alert 300px left>
 === Alert ===
-  <WRAP alert></WRAP>
+%%<WRAP alert></WRAP>%%
 </WRAP>
 
 
 <WRAP round help 300px left>
 === Help ===
-  <WRAP round help></WRAP>
+%%<WRAP round help></WRAP>%%
 </WRAP>
 
 
 <WRAP download 300px left>
 === Download ===
-  <WRAP download></WRAP>
+%%<WRAP download></WRAP>%%
 </WRAP>
 
 
 <WRAP todo 300px left>
 === Todo ===
-  <WRAP todo></WRAP>
+%%<WRAP todo></WRAP>%%
 </WRAP>
 
 
@@ -236,29 +236,31 @@ Center aligned text ...
 
 **Safety Notes:**
 
+Best only use simple markup in safety notes.
+
 <WRAP danger 30% left>
 === Danger ===
-  <WRAP danger></WRAP>
+%%<WRAP danger></WRAP>%%
 </WRAP>
 
 <WRAP warning 30% left>
 === Warning ===
-  <WRAP warning></WRAP>
+%%<WRAP warning></WRAP>%%
 </WRAP>
 
 <WRAP caution 30% left>
 === Caution ===
-  <WRAP caution></WRAP>
+%%<WRAP caution></WRAP>%%
 </WRAP>
 
 <WRAP round notice 30% left>
 === Notice ===
-  <WRAP round notice></WRAP>
+%%<WRAP round notice></WRAP>%%
 </WRAP>
 
 <WRAP round safety 30% left>
 === Safety ===
-  <WRAP round safety></WRAP>
+%%<WRAP round safety></WRAP>%%
 </WRAP>
 
 <WRAP clear />
