@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Davor Turkalj <turki.bsc@gmail.com>
  */
 $lang['noPrefix']              = 'Koja (zarezom odvojene) imena klasa trebaju ne trebaju biti s prefiksom "wrap_"? ';
@@ -13,3 +13,4 @@ $lang['restrictionType_o_1']   = 'dozvoli samo gore navedene klase';
 $lang['syntaxDiv']             = 'Koja sintaksa treba biti korištena u alatnoj traci za omeđivanje bloka?';
 $lang['syntaxSpan']            = 'Koja sintaksa treba biti korištena u alatnoj traci za omeđivanje teksta u liniji?';
 $lang['darkTpl']               = 'Prilagoditi boje za tamne predloške?';
+$lang['emulatedHeadlines']     = 'Koristi imitirana zaglavlja? (Obustavljeno)';
