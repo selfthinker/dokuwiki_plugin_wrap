@@ -2,10 +2,9 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Aleksandr Selivanov <alexgearbox@gmail.com>
  * @author Ilya Rozhkov <impeck@ya.ru>
- * @author Aleksandr Selivanov <alexgearbox@yandex.ru>
  */
 $lang['picker']                = 'Wrap';
 $lang['column']                = 'колонки';
