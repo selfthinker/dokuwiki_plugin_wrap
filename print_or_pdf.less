@@ -10,14 +10,16 @@ Styles shared between print.css and pdf.css
 /*____________ pagebreak ____________*/
 
 .wrap_pagebreak {
-    page-break-after: always;
+    break-after: page; /* CSS 3 */
+    page-break-after: always; /* CSS 2.1 */
 }
 
 /*____________ avoid page break ____________*/
 /* not yet supported by most browsers */
 
 .wrap_nopagebreak {
-    page-break-inside: avoid;
+    break-inside: avoid; /* CSS 3 */
+    page-break-inside: avoid; /* CSS 2.1 */
 }
 
 /*____________ no print ____________*/
