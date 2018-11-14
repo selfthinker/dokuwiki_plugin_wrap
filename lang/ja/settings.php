@@ -2,7 +2,8 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
+ * @author HokkaidoPerson <dosankomali@yahoo.co.jp>
  * @author Satoshi Sahara <sahara.satoshi@gmail.com>
  * @author Hideaki SAWADA <chuno@live.jp>
  */
@@ -14,3 +15,4 @@ $lang['restrictionType_o_1']   = '指定クラスのみを有効とする';
 $lang['syntaxDiv']             = 'ツールバー使用時：ブロック型構文に使用するタグ名';
 $lang['syntaxSpan']            = 'ツールバー使用時：インライン型構文に使用するタグ名';
 $lang['darkTpl']               = '色の濃いテンプレート用に最適化しますか？';
+$lang['emulatedHeadlines']     = 'エミュレートされた見出しを使う（非推奨）';
