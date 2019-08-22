@@ -71,7 +71,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
 				array(
                     'type'   => 'format',
                     'title'  => $this->getLang('explosive'),
-                    'icon'   => '../../plugins/wrap/images/note/16/important.png',
+                    'icon'   => '../../plugins/wrap/images/note/16/explosive.png',
                     'open'   => '<'.$syntaxDiv.' center round explosive 60%>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
