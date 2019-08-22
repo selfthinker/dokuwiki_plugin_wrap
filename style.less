@@ -35,6 +35,7 @@ span.wrap_safety {
 /* general styles for all note divs */
 div.wrap_info,
 div.wrap_important,
+div.wrap_explosive,
 div.wrap_alert,
 div.wrap_tip,
 div.wrap_help,
@@ -51,6 +52,7 @@ div.wrap_download {
 /* general styles for all note spans */
 span.wrap_info,
 span.wrap_important,
+span.wrap_explosive,
 span.wrap_alert,
 span.wrap_tip,
 span.wrap_help,
@@ -67,6 +69,7 @@ span.wrap_download {
      to make this look good without adjusting the images themselves */
 [dir=rtl] div.wrap_info,
 [dir=rtl] div.wrap_important,
+[dir=rtl] div.wrap_explosive,
 [dir=rtl] div.wrap_alert,
 [dir=rtl] div.wrap_tip,
 [dir=rtl] div.wrap_help,
@@ -77,6 +80,7 @@ span.wrap_download {
 }
 [dir=rtl] span.wrap_info,
 [dir=rtl] span.wrap_important,
+[dir=rtl] span.wrap_explosive,
 [dir=rtl] span.wrap_alert,
 [dir=rtl] span.wrap_tip,
 [dir=rtl] span.wrap_help,
@@ -97,6 +101,12 @@ span.wrap_info { background-image: url(images/note/16/info.png); }
 .wrap__dark.wrap_important { background-color: #6c3b00; }
 div.wrap_important { background-image: url(images/note/48/important.png); }
 span.wrap_important { background-image: url(images/note/16/important.png); }
+
+/*____________ explosive ____________*/
+.wrap_explosive { background-color: #ffd39f; }
+.wrap__dark.wrap_important { background-color: #6c3b00; }
+div.wrap_explosive { background-image: url(images/note/48/explosive.png); }
+span.wrap_explosive { background-image: url(images/note/16/explosive.png); }
 
 /*____________ alert ____________*/
 .wrap_alert { background-color: #ffbcaf; }
@@ -119,7 +129,7 @@ span.wrap_help { background-image: url(images/note/16/help.png); }
 /*____________ todo ____________*/
 .wrap_todo { background-color: #c2efdd; }
 .wrap__dark.wrap_todo { background-color: #17573e; }
-div.wrap_todo { background-image: url(images/note/48/todo.png); }
+div.wrap_todo { background-image: url(images/note/48/explosive.png); }
 span.wrap_todo { background-image: url(images/note/16/todo.png); }
 
 /*____________ download ____________*/
