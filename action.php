@@ -68,6 +68,13 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                     'open'   => '<'.$syntaxDiv.' center round important 60%>\n',
                     'close'  => '\n</'.$syntaxDiv.'>\n',
                 ),
+				array(
+                    'type'   => 'format',
+                    'title'  => $this->getLang('explosive'),
+                    'icon'   => '../../plugins/wrap/images/note/16/important.png',
+                    'open'   => '<'.$syntaxDiv.' center round explosive 60%>\n',
+                    'close'  => '\n</'.$syntaxDiv.'>\n',
+                ),
                 array(
                     'type'   => 'format',
                     'title'  => $this->getLang('alert'),
