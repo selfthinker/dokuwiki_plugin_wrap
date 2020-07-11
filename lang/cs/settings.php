@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Jaroslav Lichtblau <jlichtblau@seznam.cz>
  */
 $lang['noPrefix']              = 'Která (čárkou oddělená) jména tříd nemají být označována předponou "wrap_"?';
@@ -13,3 +13,4 @@ $lang['restrictionType_o_1']   = 'omezit pouze na třídy výše a žádné jin�
 $lang['syntaxDiv']             = 'Jaká syntax má být použita ve výběru pro zarovnání bloku? ';
 $lang['syntaxSpan']            = 'Jaká syntax má být použita ve výběru pro zarovnání v řádku? ';
 $lang['darkTpl']               = 'Optimalizovat barvy pro tmavý vzhled?';
+$lang['emulatedHeadlines']     = 'Použít emulované hlavičky? (zastaralé)';
