@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  */
 $lang['picker']                = 'Wrap 插件';
 $lang['column']                = '分栏';
