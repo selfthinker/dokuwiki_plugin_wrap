@@ -178,7 +178,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             }
         }
 
-        $style = NULL;
+        $style = null;
         if ( empty($attr['width']) === false ) {
             $style = 'width: '.$attr['width'].';';
         }
@@ -332,13 +332,13 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         $renderer->_odtCloseMultiColumnFrame();
     }
 
-    function renderODTOpenParagraph ($renderer, $class, $style, $dir, $language, $is_indent, $is_outdent, $indent_first, $attr=NULL) {
+    function renderODTOpenParagraph ($renderer, $class, $style, $dir, $language, $is_indent, $is_outdent, $indent_first, $attr=null) {
         $properties = array ();
 
         if ( method_exists ($renderer, 'getODTPropertiesFromElement') === true ) {
             // Get CSS properties for ODT export.
             // Set parameter $inherit=false to prevent changiung the font-size and family!
-            $renderer->getODTPropertiesNew ($properties, 'p', $attr, NULL, false);
+            $renderer->getODTPropertiesNew ($properties, 'p', $attr, null, false);
         } else if ( method_exists ($renderer, 'getODTProperties') === true ) {
             // Get CSS properties for ODT export (deprecated version).
             $renderer->getODTProperties ($properties, 'p', $class, $style);
@@ -413,7 +413,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             // Create parent style to group the others beneath it
             if (!$renderer->styleExists('Plugin_Wrap_Paragraphs')) {
                 $parent_properties = array();
-                $parent_properties ['style-parent'] = NULL;
+                $parent_properties ['style-parent'] = null;
                 $parent_properties ['style-class'] = 'Plugin Wrap Paragraphs';
                 $parent_properties ['style-name'] = 'Plugin_Wrap_Paragraphs';
                 $parent_properties ['style-display-name'] = 'Plugin Wrap';
@@ -424,7 +424,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             $style_name = 'Plugin_Wrap_Paragraph_'.$name;
             if (!$renderer->styleExists($style_name)) {
                 $properties ['style-parent'] = 'Plugin_Wrap_Paragraphs';
-                $properties ['style-class'] = NULL;
+                $properties ['style-class'] = null;
                 $properties ['style-name'] = $style_name;
                 $properties ['style-display-name'] = $name;
                 $renderer->createParagraphStyle($properties);
@@ -450,7 +450,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             $renderer->getODTPropertiesNew ($properties, 'div', $attr);
         } else if ( method_exists ($renderer, 'getODTProperties') === true ) {
             // Get CSS properties for ODT export (deprecated version).
-            $renderer->getODTProperties ($properties, NULL, $class, $style);
+            $renderer->getODTProperties ($properties, null, $class, $style);
         } else {
             // To old ODT plugin version.
             return;
@@ -463,10 +463,10 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         $properties ['padding-right'] = $properties ['margin-right'];
         $properties ['padding-top'] = $properties ['margin-top'];
         $properties ['padding-bottom'] = $properties ['margin-bottom'];
-        $properties ['margin-left'] = NULL;
-        $properties ['margin-right'] = NULL;
-        $properties ['margin-top'] = NULL;
-        $properties ['margin-bottom'] = NULL;
+        $properties ['margin-left'] = null;
+        $properties ['margin-right'] = null;
+        $properties ['margin-top'] = null;
+        $properties ['margin-bottom'] = null;
 
         // Percentage values are not supported for the padding. Convert to absolute values.
         $length = strlen ($properties ['padding-left']);
@@ -538,7 +538,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         if ( method_exists ($renderer, 'getODTPropertiesFromElement') === true ) {
             // Get CSS properties for ODT export.
             // Set parameter $inherit=false to prevent changiung the font-size and family!
-            $renderer->getODTPropertiesNew ($properties, 'span', $attr, NULL, false);
+            $renderer->getODTPropertiesNew ($properties, 'span', $attr, null, false);
         } else if ( method_exists ($renderer, 'getODTProperties') === true ) {
             // Get CSS properties for ODT export (deprecated version).
             $renderer->getODTProperties ($properties, 'span', $class, $style);
@@ -563,12 +563,12 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             $renderer->_odtSpanOpenUseProperties($properties);
         } else {
             // Newer version create our own common styles.
-            $properties ['font-size'] = NULL;
+            $properties ['font-size'] = null;
 
             // Create parent style to group the others beneath it
             if (!$renderer->styleExists('Plugin_Wrap_Spans')) {
                 $parent_properties = array();
-                $parent_properties ['style-parent'] = NULL;
+                $parent_properties ['style-parent'] = null;
                 $parent_properties ['style-class'] = 'Plugin Wrap Spans';
                 $parent_properties ['style-name'] = 'Plugin_Wrap_Spans';
                 $parent_properties ['style-display-name'] = 'Plugin Wrap';
@@ -579,7 +579,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             $style_name = 'Plugin_Wrap_Span_'.$name;
             if (!$renderer->styleExists($style_name)) {
                 $properties ['style-parent'] = 'Plugin_Wrap_Spans';
-                $properties ['style-class'] = NULL;
+                $properties ['style-class'] = null;
                 $properties ['style-name'] = $style_name;
                 $properties ['style-display-name'] = $name;
                 $renderer->createTextStyle($properties);
@@ -587,17 +587,17 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
 
             if (!empty($properties ['background-image'])) {
                 if (method_exists ($renderer, '_odtAddImageUseProperties') === true) {
-                    $size = NULL;
+                    $size = null;
                     if (!empty($properties ['font-size'])) {
                         $size = $properties ['font-size'];
                         $size = $renderer->addToValue($size, '2pt');
                     }
                     $properties ['width'] = $size;
                     $properties ['height'] = $size;
-                    $properties ['title'] = NULL;
+                    $properties ['title'] = null;
                     $renderer->_odtAddImageUseProperties ($properties ['background-image'],$properties);
                 } else {
-                    $renderer->_odtAddImage ($properties ['background-image'],NULL,NULL,NULL,NULL,NULL);
+                    $renderer->_odtAddImage ($properties ['background-image'],null,null,null,null,null);
                 }
             }
             $renderer->_odtSpanOpen($style_name);
@@ -624,7 +624,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         }
 
         // Get CSS properties for ODT export.
-        $renderer->getODTPropertiesNew ($css_properties, 'div', $attr_string, NULL, true);
+        $renderer->getODTPropertiesNew ($css_properties, 'div', $attr_string, null, true);
 
         if ( empty($css_properties ['float']) === true ) {
             // If the float property is not set, set it to 'left' becuase the ODT plugin
