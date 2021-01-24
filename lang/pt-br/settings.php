@@ -2,7 +2,8 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
+ * @author Frederico Gonçalves Guimarães <frederico@teia.bio.br>
  * @author Sérgio Motta <sergio@cisne.com.br>
  * @author Juliano Marconi Lanigra <juliano.marconi@gmail.com>
  * @author Flaudísio Tolentino <flaudisio@gmail.com>
@@ -16,3 +17,4 @@ $lang['restrictionType_o_1']   = 'restrita somente às classes acima e nenhuma o
 $lang['syntaxDiv']             = 'Qual a sintaxe que deve ser utilizada no selecionador de barra de ferramentas para wraps em bloco?';
 $lang['syntaxSpan']            = 'Qual a sintaxe que deve ser utilizada no selecionador de barra de ferramentas para wraps em linha?';
 $lang['darkTpl']               = 'Otimizar cores para templates escuros?';
+$lang['emulatedHeadlines']     = 'Usar cabeçalhos emulados? (descontinuado)';

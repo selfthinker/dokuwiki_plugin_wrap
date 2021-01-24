@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Sérgio Motta <sergio@cisne.com.br>
  * @author Fábio Nogueira <fnogueira@gnome.org>
  */
