@@ -2,7 +2,7 @@
 
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * 
+ *
  * @author Myeongjin <aranet100@gmail.com>
  */
 $lang['picker']                = 'Wrap 플러그인';
