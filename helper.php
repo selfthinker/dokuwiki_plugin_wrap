@@ -30,7 +30,14 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
      */
     function getAttributes($data, $useNoPrefix=true) {
 
-        $attr = array();
+        // initialize with possible keys
+        $attr = array(
+          'width' => NULL,
+          'lang' => NULL,
+          'id' => NULL,
+          'class' => NULL,
+          'dir' => NULL,
+        );
         $tokens = preg_split('/\s+/', $data, 9);
 
         // anonymous function to convert inclusive comma separated items to regex pattern
