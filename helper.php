@@ -53,9 +53,13 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
 
         foreach ($tokens as $token) {
 
-            //get width
+            //get width or/and height
             if (preg_match('/^\d*\.?\d+(%|px|em|rem|ex|ch|vw|vh|pt|pc|cm|mm|in)$/', $token)) {
-                $attr['width'] = $token;
+                if (strlen($attr['width']) > 0){
+					$attr['height'] = $token;
+				} else {
+					$attr['width'] = $token;
+				}
                 continue;
             }
 
@@ -118,10 +122,18 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             // width on spans normally doesn't make much sense, but in the case of floating elements it could be used
             if($attr['width']) {
                 if (strpos($attr['width'],'%') !== false) {
-                    $out .= ' style="width: '.hsc($attr['width']).';"';
+                    if($attr['height']){
+						$out .= ' style="width: '.hsc($attr['width']).'; height: '.hsc($attr['height']).'; overflow: auto;"';
+					}else {
+						$out .= ' style="width: '.hsc($attr['width']).';"';
+					}
                 } else {
                     // anything but % should be 100% when the screen gets smaller
-                    $out .= ' style="width: '.hsc($attr['width']).'; max-width: 100%;"';
+                    if($attr['height']){
+						$out .= ' style="width: '.hsc($attr['width']).'; height: '.hsc($attr['height']).'; overflow: auto; max-width: 100%;"';
+					}else {
+						$out .= ' style="width: '.hsc($attr['width']).'; max-width: 100%;"';
+				    }
                 }
             }
             // only write lang if it's a language in lang2dir.conf
