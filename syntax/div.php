@@ -89,8 +89,8 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
             /** @var Doku_Renderer_xhtml $renderer */
             switch ($state) {
                 case DOKU_LEXER_ENTER:
-                    $sectionEditStartData = ['target' => 'plugin_wrap_start'];
-                    $sectionEditEndData = ['target' => 'plugin_wrap_end'];
+                    $sectionEditStartData = ['target' => 'plugin_wrap_start', 'hid' => ''];
+                    $sectionEditEndData = ['target' =>'plugin_wrap_end', 'hid' => ''];
                     if (!defined('SEC_EDIT_PATTERN')) {
                         // backwards-compatibility for Frusterick Manners (2017-02-19)
                         $sectionEditStartData = 'plugin_wrap_start';
