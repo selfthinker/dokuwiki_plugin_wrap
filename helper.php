@@ -11,11 +11,12 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                                      'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',
                                      'wrap_download', 'wrap_hi', 'wrap_spoiler');
     static protected $paragraphs = array ('wrap_leftalign', 'wrap_rightalign', 'wrap_centeralign', 'wrap_justify');
-    static protected $column_count = 0;
     static $box_left_pos = 0;
     static $box_right_pos = 0;
     static $box_first = true;
     static $table_entr = 0;
+
+    protected $column_count = 0;
 
     /**
      * get attributes (pull apart the string between '<wrap' and '>')
