@@ -6,19 +6,17 @@
  * @author     Anika Henke <anika@selfthinker.org>
  */
 
-// must be run within Dokuwiki
-if(!defined('DOKU_INC')) die();
-
 class helper_plugin_wrap extends DokuWiki_Plugin {
     static protected $boxes = array ('wrap_box', 'wrap_danger', 'wrap_warning', 'wrap_caution', 'wrap_notice', 'wrap_safety',
                                      'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',
                                      'wrap_download', 'wrap_hi', 'wrap_spoiler');
     static protected $paragraphs = array ('wrap_leftalign', 'wrap_rightalign', 'wrap_centeralign', 'wrap_justify');
-    static protected $column_count = 0;
     static $box_left_pos = 0;
     static $box_right_pos = 0;
     static $box_first = true;
     static $table_entr = 0;
+
+    protected $column_count = 0;
 
     /**
      * get attributes (pull apart the string between '<wrap' and '>')
@@ -66,7 +64,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             }
 
             //get lang
-            if (preg_match('/\:([a-z\-]+)/', $token)) {
+            if (preg_match('/:([a-z\-]+)/', $token)) {
                 $attr['lang'] = trim($token,':');
                 continue;
             }

@@ -6,11 +6,6 @@
  * @author     Michael Hamann <michael@content-space.de>
  */
 
-if(!defined('DOKU_INC')) die();
-
-if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once(DOKU_PLUGIN.'syntax.php');
-
 class syntax_plugin_wrap_closesection extends DokuWiki_Syntax_Plugin {
 
     function getType(){ return 'substition';}
@@ -26,8 +21,8 @@ class syntax_plugin_wrap_closesection extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($mode, Doku_Renderer $renderer, $indata) {
-        if($mode == 'xhtml'){
+    function render($format, Doku_Renderer $renderer, $data) {
+        if($format == 'xhtml'){
             /** @var Doku_Renderer_xhtml $renderer */
             $renderer->finishSectionEdit();
             return true;
