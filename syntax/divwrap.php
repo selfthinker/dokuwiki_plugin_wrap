@@ -8,8 +8,6 @@
  * @author     Anika Henke <anika@selfthinker.org>
  */
 
-require_once(dirname(__FILE__).'/div.php');
-
 class syntax_plugin_wrap_divwrap extends syntax_plugin_wrap_div {
 
     protected $special_pattern = '<WRAP\b[^>\r\n]*?/>';

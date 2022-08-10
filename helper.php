@@ -6,9 +6,6 @@
  * @author     Anika Henke <anika@selfthinker.org>
  */
 
-// must be run within Dokuwiki
-if(!defined('DOKU_INC')) die();
-
 class helper_plugin_wrap extends DokuWiki_Plugin {
     static protected $boxes = array ('wrap_box', 'wrap_danger', 'wrap_warning', 'wrap_caution', 'wrap_notice', 'wrap_safety',
                                      'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',

@@ -6,11 +6,6 @@
  * @author     Anika Henke <anika@selfthinker.org>
  */
 
-if(!defined('DOKU_INC')) die();
-
-if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
-require_once(DOKU_PLUGIN.'syntax.php');
-
 class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
     protected $special_pattern = '<span\b[^>\r\n]*?/>';
     protected $entry_pattern   = '<span\b.*?>(?=.*?</span>)';
@@ -62,13 +57,13 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($mode, Doku_Renderer $renderer, $indata) {
+    function render($format, Doku_Renderer $renderer, $indata) {
         static $type_stack = array ();
 
         if (empty($indata)) return false;
         list($state, $data) = $indata;
 
-        if($mode == 'xhtml'){
+        if($format == 'xhtml'){
             switch ($state) {
                 case DOKU_LEXER_ENTER:
                 case DOKU_LEXER_SPECIAL:
@@ -85,7 +80,7 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
             }
             return true;
         }
-        if($mode == 'odt'){
+        if($format == 'odt'){
             switch ($state) {
                 case DOKU_LEXER_ENTER:
                     $wrap = plugin_load('helper', 'wrap');

@@ -8,8 +8,6 @@
  * @author     Anika Henke <anika@selfthinker.org>
  */
 
-require_once(dirname(__FILE__).'/span.php');
-
 class syntax_plugin_wrap_spaninline extends syntax_plugin_wrap_span {
 
     protected $special_pattern = '<inline\b[^>\r\n]*?/>';
