@@ -64,7 +64,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             }
 
             //get lang
-            if (preg_match('/\:([a-z\-]+)/', $token)) {
+            if (preg_match('/:([a-z\-]+)/', $token)) {
                 $attr['lang'] = trim($token,':');
                 continue;
             }
