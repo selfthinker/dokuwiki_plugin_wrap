@@ -58,7 +58,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                 $title = trim($title,'=');
                 $title = trim($title);
 
-                $handler->_addCall('header',array($title,$level,$pos), $pos);
+                $handler->addCall('header',array($title,$level,$pos), $pos);
                 // close the section edit the header could open
                 if ($title && $level <= $conf['maxseclevel']) {
                     $handler->addPluginCall('wrap_closesection', array(), DOKU_LEXER_SPECIAL, $pos, '');
