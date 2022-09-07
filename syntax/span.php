@@ -44,7 +44,7 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED :
-                $handler->_addCall('cdata', array($match), $pos);
+                $handler->addCall('cdata', array($match), $pos);
                 return false;
 
             case DOKU_LEXER_EXIT :
