@@ -6,10 +6,8 @@
  * @group plugins
  */
 class plugin_wrap_test extends DokuWikiTest {
-    public function setUp() {
-        $this->pluginsEnabled[] = 'wrap';
-        parent::setUp();
-    }
+
+    protected $pluginsEnabled = ['wrap'];
 
     public function test_nestedheading() {
         $instructions = p_get_instructions("<WRAP>\n==== Heading ====\n\nSome text\n</WRAP>");
