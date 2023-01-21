@@ -46,7 +46,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                 return array($state, $data);
 
             case DOKU_LEXER_UNMATCHED:
-                $handler->_addCall('cdata', array($match), $pos);
+                $handler->addCall('cdata', array($match), $pos);
                 break;
 
             case DOKU_LEXER_MATCHED:
