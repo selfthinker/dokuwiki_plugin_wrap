@@ -3,8 +3,10 @@
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  *
+ * @author Minh <phandinhminh@protonmail.ch>
  * @author Thien Hau <thienhausoftware@gmail.com>
  */
+$lang['picker']                = 'Tiện ích plugin cho Wrap';
 $lang['column']                = 'cột';
 $lang['box']                   = 'hộp đơn giản căn giữa';
 $lang['info']                  = 'hộp thông tin';
