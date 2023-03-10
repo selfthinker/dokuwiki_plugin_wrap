@@ -107,8 +107,8 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                     'type'   => 'format',
                     'title'  => $this->getLang('hi'),
                     'icon'   => '../../plugins/wrap/images/toolbar/hi.png',
-                    'open'   => '<'.$syntaxSpan.' hi>',
-                    'close'  => '</'.$syntaxSpan.'>',
+                    'open'   => '<mark>',
+                    'close'  => '</mark>' /* use more semantic markup here! */
                 ),
                 array(
                     'type'   => 'format',
