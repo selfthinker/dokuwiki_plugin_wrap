@@ -13,5 +13,5 @@ $lang['important']             = 'viktigt-box';
 $lang['help']                  = 'hjälp-box';
 $lang['download']              = 'nedladdningsbox';
 $lang['todo']                  = 'att böra-box';
-$lang['hi']                    = 'förstärkt';
+$lang['hi']                    = 'markerad'; /* updated for new markers */
 $lang['lo']                    = 'mindre betydelsefullt';

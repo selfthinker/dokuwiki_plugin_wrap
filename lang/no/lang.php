@@ -17,8 +17,6 @@ $lang['help']                  = 'hjelpeboks';
 $lang['download']              = 'nedlastningsboks';
 $lang['todo']                  = 'gjøremålsboks';
 $lang['clear']                 = 'tøm floats';
-$lang['em']                    = 'spesielt fremhevet (singular)
-spesielt fremhevede (plural)';
-$lang['hi']                    = 'markert (singular)
-markerte (plural)';
+$lang['em']                    = 'spesielt fremhevet';
+$lang['hi']                    = 'markert';  /* updated for new markers */
 $lang['lo']                    = 'mindre viktig';

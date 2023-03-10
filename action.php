@@ -26,6 +26,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
             'type' => 'picker',
             'title' => $this->getLang('picker'),
             'icon' => '../../plugins/wrap/images/toolbar/picker.png',
+			'id' => 'edtb_wrapmenu',
             'list' => array(
                 array(
                     'type'   => 'format',
@@ -108,7 +109,7 @@ class action_plugin_wrap extends DokuWiki_Action_Plugin {
                     'title'  => $this->getLang('hi'),
                     'icon'   => '../../plugins/wrap/images/toolbar/hi.png',
                     'open'   => '<mark>',
-                    'close'  => '</mark>', /* use more semantic markup here! */
+                    'close'  => '</mark>' /* use more semantic markup here! */
                 ),
                 array(
                     'type'   => 'format',

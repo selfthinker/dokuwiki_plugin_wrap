@@ -17,5 +17,5 @@ $lang['download']              = 'caja de descarga';
 $lang['todo']                  = 'caja de TODO';
 $lang['clear']                 = 'limpiar float';
 $lang['em']                    = 'especialmente enfatizado';
-$lang['hi']                    = 'destacado';
+$lang['hi']                    = 'marcado';   /* updated for new markers */
 $lang['lo']                    = 'menos significativo';
