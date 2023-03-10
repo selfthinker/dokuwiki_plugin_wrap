@@ -11,6 +11,14 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                                      'wrap_info', 'wrap_important', 'wrap_alert', 'wrap_tip', 'wrap_help', 'wrap_todo',
                                      'wrap_download', 'wrap_hi', 'wrap_spoiler');
     static protected $paragraphs = array ('wrap_leftalign', 'wrap_rightalign', 'wrap_centeralign', 'wrap_justify');
+
+	/* list of languages which normally use RTL scripts */
+	static protected $rtllangs = array('ar','dv','fa','ha','he','ks','ku','ps','ur','yi','arc');
+	/* list of right-to-left scripts (may override the language defaults to rtl) */
+	static protected $rtlscripts = array('arab','thaa','hebr','deva','shrd');
+	/* selection of left-to-right scripts (may override the language defaults to ltr) */
+	static protected $ltrscripts = array('latn','cyrl','grek','hebr','cyrs','armn');
+
     static $box_left_pos = 0;
     static $box_right_pos = 0;
     static $box_first = true;
@@ -65,6 +73,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
 
             //get lang
             if (preg_match('/:([a-z\-]+)/', $token)) {
+				// trim the colon, but also whitespaces and other unwanted characters
                 $attr['lang'] = trim($token,':');
                 continue;
             }
@@ -94,14 +103,20 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             $attr['class'] = (isset($attr['class']) ? $attr['class'].' ' : '').'wrap__emuhead';
         }
 
-        //get dir
-        if($attr['lang']) {
-            $lang2dirFile = dirname(__FILE__).'/conf/lang2dir.conf';
-            if (@file_exists($lang2dirFile)) {
-                $lang2dir = confToHash($lang2dirFile);
-                $attr['dir'] = strtr($attr['lang'],$lang2dir);
-            }
-        }
+        /* improved RTL detection to make sure it covers more cases: */
+		if($attr['lang'] && $attr['lang'] !== '') {
+
+			// turn the language code into an array of components:
+			$arr = explode('-', $attr['lang']);
+			
+			// is the language iso code (first field) in the list of RTL languages?
+			$rtl = in_array($arr[0], self::$rtllangs);
+
+			// is there a Script specified somewhere which overrides the text direction?
+			$rtl = ($rtl xor (bool) array_intersect( $rtl ? self::$ltrscripts : self::$rtlscripts, $arr));
+			
+			$attr['dir'] = ( $rtl ? 'rtl' : 'ltr' );
+		}
 
         return $attr;
     }
