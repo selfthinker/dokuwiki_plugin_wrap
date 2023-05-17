@@ -653,7 +653,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         }
 
         $background_color = $css_properties ['background-color'];
-        $image = $css_properties ['background-image'];
+        $image = $css_properties ['background-image'] ?? null;
         $margin_top = $css_properties ['margin-top'];
         $margin_right = $css_properties ['margin-right'];
         $margin_bottom = $css_properties ['margin-bottom'];
