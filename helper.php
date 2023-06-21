@@ -766,6 +766,8 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         $renderer->tablerow_close();
         $renderer->_odtTableClose();
         $renderer->_odtCloseTextBox ();
+        $renderer->p_open();
+        $renderer->p_close();
 
         self::$table_entr -= 1;
     }
