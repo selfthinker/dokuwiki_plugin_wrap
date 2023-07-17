@@ -395,7 +395,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             if ( $is_indent === true ) {
                 // FIXME: Has to be adjusted if test direction will be supported.
                 // See all.css
-                $properties ['margin-left'] = $properties ['padding-left'];
+                $properties ['margin-left'] = $properties ['padding-left'] ?? null;
                 $properties ['padding-left'] = 0;
                 $name .= 'Indent';
             }
