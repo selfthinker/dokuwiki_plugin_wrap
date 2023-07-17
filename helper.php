@@ -463,10 +463,10 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         // Frames/Textboxes still have some issues with formatting (at least in LibreOffice)
         // So as a workaround we implement columns as a table.
         // This is why we now use the margin of the div as the padding for the ODT table.
-        $properties ['padding-left'] = $properties ['margin-left'];
-        $properties ['padding-right'] = $properties ['margin-right'];
-        $properties ['padding-top'] = $properties ['margin-top'];
-        $properties ['padding-bottom'] = $properties ['margin-bottom'];
+        $properties ['padding-left'] = $properties ['margin-left'] ?? null;
+        $properties ['padding-right'] = $properties ['margin-right'] ?? null;
+        $properties ['padding-top'] = $properties ['margin-top'] ?? null;
+        $properties ['padding-bottom'] = $properties ['margin-bottom'] ?? null;
         $properties ['margin-left'] = null;
         $properties ['margin-right'] = null;
         $properties ['margin-top'] = null;
