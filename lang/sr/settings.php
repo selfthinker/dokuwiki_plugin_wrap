@@ -3,6 +3,7 @@
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  *
+ * @author Бојан Макссимовић <bojanmaksimovic@gmail.com>
  * @author Марко М. Костић <marko.m.kostic@gmail.com>
  */
 $lang['noPrefix']              = 'Која (зарезима одвојена) имена класа треба изузети од додавања префикса "wrap_"?';
@@ -13,3 +14,4 @@ $lang['restrictionType_o_1']   = 'ограничи само на класе из
 $lang['syntaxDiv']             = 'Коју синтаксу користити у бирачу алатне траке за преламања блокова?';
 $lang['syntaxSpan']            = 'Коју синтаксу користити у бирачу алатне траке за преламања у линији?';
 $lang['darkTpl']               = 'Оптимизовати боје за тамне шаблоне?';
+$lang['emulatedHeadlines']     = 'Користи емулирана заглавља? (застарело)';
