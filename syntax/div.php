@@ -10,6 +10,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
     protected $special_pattern = '<div\b[^>\r\n]*?/>';
     protected $entry_pattern   = '<div\b.*?>(?=.*?</div>)';
     protected $exit_pattern    = '</div>';
+	protected $output_tag      = 'div';
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('container', 'formatting', 'substition', 'protected', 'disabled', 'paragraphs'); }
@@ -103,12 +104,12 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
                     $wrap = $this->loadHelper('wrap');
                     $attr = $wrap->buildAttributes($data, 'plugin_wrap');
 
-                    $renderer->doc .= '<div'.$attr.'>';
-                    if ($state == DOKU_LEXER_SPECIAL) $renderer->doc .= '</div>';
+                    $renderer->doc .= '<'.$this->output_tag.$attr.'>';
+                    if ($state == DOKU_LEXER_SPECIAL) $renderer->doc .= '</'.$this->output_tag.'>';
                     break;
 
                 case DOKU_LEXER_EXIT:
-                    $renderer->doc .= '</div>';
+                    $renderer->doc .= '</'.$this->output_tag.'>';
                     $renderer->finishSectionEdit();
                     break;
             }
@@ -118,7 +119,7 @@ class syntax_plugin_wrap_div extends DokuWiki_Syntax_Plugin {
             switch ($state) {
                 case DOKU_LEXER_ENTER:
                     $wrap = plugin_load('helper', 'wrap');
-                    array_push ($type_stack, $wrap->renderODTElementOpen($renderer, 'div', $data));
+                    array_push ($type_stack, $wrap->renderODTElementOpen($renderer, $this->output_tag, $data));
                     break;
 
                 case DOKU_LEXER_EXIT:
