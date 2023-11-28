@@ -668,10 +668,10 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
 
         $background_color = $css_properties ['background-color'];
         $image = $css_properties ['background-image'] ?? null;
-        $margin_top = $css_properties ['margin-top'];
-        $margin_right = $css_properties ['margin-right'];
-        $margin_bottom = $css_properties ['margin-bottom'];
-        $margin_left = $css_properties ['margin-left'];
+        $margin_top = $css_properties ['margin-top'] ?? null;
+        $margin_right = $css_properties ['margin-right'] ?? null;
+        $margin_bottom = $css_properties ['margin-bottom'] ?? null;
+        $margin_left = $css_properties ['margin-left'] ?? null;
         $width = $attr ['width'];
 
         // Open 2x1 table if image is present
@@ -692,7 +692,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
         }
         $frame_props ['min-height'] = '1cm';
         $frame_props ['width'] = $attr ['width'];
-        $frame_props ['float'] = $css_properties ['float'];
+        $frame_props ['float'] = $css_properties ['float'] ?? null;
         if ( self::$table_entr > 1 ) {
             $frame_props ['anchor-type'] = 'as-char';
         } else {
