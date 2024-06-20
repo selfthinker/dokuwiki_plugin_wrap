@@ -15,5 +15,5 @@ $lang['todo']      = 'todo box';
 $lang['clear']     = 'clear floats';
 
 $lang['em']        = 'especially emphasised';
-$lang['hi']        = 'highlighted';
+$lang['hi']        = 'marked';
 $lang['lo']        = 'less significant';

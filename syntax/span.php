@@ -10,6 +10,7 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
     protected $special_pattern = '<span\b[^>\r\n]*?/>';
     protected $entry_pattern   = '<span\b.*?>(?=.*?</span>)';
     protected $exit_pattern    = '</span>';
+	protected $output_tag      = 'span';
 
     function getType(){ return 'formatting';}
     function getAllowedTypes() { return array('formatting', 'substition', 'disabled'); }
@@ -70,12 +71,12 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
                     $wrap = $this->loadHelper('wrap');
                     $attr = $wrap->buildAttributes($data);
 
-                    $renderer->doc .= '<span'.$attr.'>';
-                    if ($state == DOKU_LEXER_SPECIAL) $renderer->doc .= '</span>';
+                    $renderer->doc .= '<'.$this->output_tag.$attr.'>';
+                    if ($state == DOKU_LEXER_SPECIAL) $renderer->doc .= '</'.$this->output_tag.'>';
                     break;
 
                 case DOKU_LEXER_EXIT:
-                    $renderer->doc .= '</span>';
+                    $renderer->doc .= '</'.$this->output_tag.'>';
                     break;
             }
             return true;
@@ -84,7 +85,7 @@ class syntax_plugin_wrap_span extends DokuWiki_Syntax_Plugin {
             switch ($state) {
                 case DOKU_LEXER_ENTER:
                     $wrap = plugin_load('helper', 'wrap');
-                    array_push ($type_stack, $wrap->renderODTElementOpen($renderer, 'span', $data));
+                    array_push ($type_stack, $wrap->renderODTElementOpen($renderer, $this->output_tag, $data));
                     break;
 
                 case DOKU_LEXER_EXIT:
