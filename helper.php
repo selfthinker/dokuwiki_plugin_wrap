@@ -72,14 +72,14 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
             }
 
             //get lang
-            if (preg_match('/:([a-z\-]+)/', $token)) {
-                $attr['lang'] = trim($token,':');
+            if (preg_match('/^:([a-z\-]+)$/', $token, $matches)) {
+                $attr['lang'] = $matches[1];
                 continue;
             }
 
             //get id
-            if (preg_match('/#([A-Za-z0-9_-]+)/', $token)) {
-                $attr['id'] = trim($token,'#');
+            if (preg_match('/^#([A-Za-z0-9_-]+)$/', $token, $matches)) {
+                $attr['id'] = $matches[1];
                 continue;
             }
 
@@ -143,7 +143,7 @@ class helper_plugin_wrap extends DokuWiki_Plugin {
                 }
             }
             // only write lang if it's a language in lang2dir.conf
-            if($attr['dir'])   $out .= ' lang="'.$attr['lang'].'" xml:lang="'.$attr['lang'].'" dir="'.$attr['dir'].'"';
+            if($attr['dir'])   $out .= ' lang="'.hsc($attr['lang']).'" xml:lang="'.hsc($attr['lang']).'" dir="'.$attr['dir'].'"';
         }
 
         return $out;
